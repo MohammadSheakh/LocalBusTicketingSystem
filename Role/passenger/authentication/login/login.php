@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <div>
-        <!--navbar section start here -->
+    <?php
+        include '../../../system/navbar/mainNavbar.php';
+    ?>
+    <!-- <div>
+        
         <table align="center">
             <tr>
                 <td>
@@ -29,8 +32,8 @@
                 </td>
             </tr>
         </table>
-        <!--navbar section end here -->
-    </div>
+        
+    </div> -->
     <table align="center">
         <tr>
             <td>

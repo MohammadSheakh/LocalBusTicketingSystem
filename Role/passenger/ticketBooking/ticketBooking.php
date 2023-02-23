@@ -11,31 +11,9 @@
 </head>
 
 <body>
-    <div>
-        <!--navbar section start here -->
-        <table align="center">
-            <tr>
-                <td>
-                    <h5>Bus Ticketing System </h5>
-                </td>
-                <td>
-                    <h1> &nbsp;&nbsp;&nbsp;&nbsp;</h1>
-                </td>
-                <td>
-                    <button>Home</button>
-                    <a href="#">Our Service</a>
-                    <button>About Us</button>
-                    <button>Contract Us</button>
-                    <a href="../authentication/login/login.html">
-                        <button>Login</button>
-                    </a>
-
-                    <button>Sign up</button>
-                </td>
-            </tr>
-        </table>
-        <!--navbar section end here -->
-    </div>
+<?php
+        include '../../system/navbar/mainNavbar.php';
+    ?>
 
     <!--ticket booking form start here-->
     <table align="center">
