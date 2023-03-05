@@ -41,7 +41,7 @@
                 https://iconscout.com/icons/bus-booking
                 -->
                 <!-- vfv -->
-                <img width="300px" src="../images/home/bus.png" alt="">
+                <img width="300px" src="../image/home/bus.png" alt="">
             </td>
             <td> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -105,7 +105,7 @@
         <tr>
             <td>
 
-                <img width="80px" src="../images/home/bus.png" alt="">
+                <img width="80px" src="../image/home/bus.png" alt="">
             </td>
             <td>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
@@ -114,7 +114,7 @@
 
                 <h3>Dhaka to Rajshahi</h3>
                 <h6>Next level Poribohon</h6>
-                <button>Book Now</button>
+                <button> <a href="../../passenger/confirmBooking/confirmBooking.php">Book Now</a> </button>
             </td>
         </tr>
 
@@ -122,13 +122,13 @@
             <td>
                 <h3>Dhaka to Rajshahi</h3>
                 <h6>Next level Poribohon</h6>
-                <button>Book Now</button>
+                <button><a href="../../passenger/confirmBooking/confirmBooking.php">Book Now</a></button>
             </td>
             <td>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
             </td>
             <td>
-                <img width="80px" src="../images/home/bus.png" alt="">
+                <img width="80px" src="../image/home/bus.png" alt="">
             </td>
         </tr>
 
@@ -159,34 +159,34 @@
                 <h5>Mohammad Sheakh</h5>
                 <pre>Awsome System of online ticket booking .. 
 Much Appreciated! </pre>
-                <!-- <button>Book Now</button> -->
+
+                <button>
+                    <img src="../image/home/like.png" alt="">
+                    <span>12</span>
+                </button>
+                <button>
+                    <img src="../image/home/dislike.png" alt="">
+                    <span>12</span>
+                </button>
             </td>
             <td>
                 <h5>Mohammad Sheakh</h5>
                 <pre>Awsome System of online ticket booking .. 
 Much Appreciated! </pre>
+
+                <button>
+                    <img src="../image/home/like.png" alt="">
+                    <span>12</span>
+                </button>
+                <button>
+                    <img src="../image/home/dislike.png" alt="">
+                    <span>12</span>
+                </button>
             </td>
         </tr>
 
-        <tr>
-
-            <!-- <td> -->
             <!-- &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -->
-            <!-- </td> -->
-            <td>
-                <h5>Mohammad Sheakh</h5>
-                <pre>Awsome System of online ticket booking .. 
-Much Appreciated! </pre>
-                <!-- <button>Book Now</button> -->
-            </td>
-            <td>
-                <h5>Mohammad Sheakh</h5>
-                <pre>Awsome System of online ticket booking .. 
-Much Appreciated! </pre>
-            </td>
-        </tr>
-
-
+        
     </table>
 
     <!-- Reviews Section Ends Here -->

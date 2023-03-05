@@ -13,7 +13,7 @@
 
     <table align="center">
         <tr>
-            <td>Ticket Booking Details</td>
+            <td> <h2>Ticket Booking Details</h2> <br> </td>
         </tr>
         <tr>
             <td>
@@ -76,13 +76,17 @@
         </tr>
         <tr>
             <td>
-            Seat No. 
-            </td><td>:</td><td></td>
+                Seat No. 
+            </td>
+            <td>:</td>
+            <td></td>
         </tr>
         <tr>
             <td>
-            Total Seat 
-            </td><td>:</td><td></td>
+                Total Seat 
+            </td>
+            <td>:</td>
+            <td></td>
         </tr>
         <tr>
             <td>
@@ -105,14 +109,10 @@
         </tr>
     </table>
 
-    Confirm Booking Page .. 
-    ekhane user er information + 
-    travel er full information + 
-    ticket er information + 
-    full taka er details + 
-    payment er jonno proceed korte bolbo .. 
-    + 
-    payment er page e gele .. bkash nogod er maddhome payment korte parbe ..   
-    
+    <div align="center">
+        <br>
+        <button> <a href="../confirmBooking/confirmBooking.php">Make payment</a> </button>
+        <button> <a href="../confirmBooking/EditBookingInformation.php">Edit Information</a> </button>
+    </div>
 </body>
 </html>
