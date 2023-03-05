@@ -9,7 +9,10 @@
 </head>
 
 <body>
-
+<?php
+        include '../navbar/mainNavbar.php';
+    ?>
+    contract us .. 
 </body>
 
 </html>

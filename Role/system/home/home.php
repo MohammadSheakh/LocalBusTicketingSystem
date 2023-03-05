@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <div>
+    <div align="center">
         <!--navbar section start here -->
-        <table align="center">
+        <!-- <table align="center">
             <tr>
                 <td>
                     <h5>Bus Ticketing System </h5>
@@ -28,7 +28,10 @@
                     <button>Sign up</button>
                 </td>
             </tr>
-        </table>
+        </table> -->
+        <?php
+        include '../navbar/mainNavbar.php';
+    ?>
         <!--navbar section end here -->
     </div>
     <table align="center">
@@ -47,7 +50,7 @@
             <td>
                 <!-- Welcoming Text And Book Now Button -->
                 <h1>Have A NICE TRIP WITH US !</h1>
-                <button>Book Now</button>
+                <button><a href="../../passenger/ticketBooking/ticketBooking.php">Book Now</a></button>
             </td>
         </tr>
         <tr>

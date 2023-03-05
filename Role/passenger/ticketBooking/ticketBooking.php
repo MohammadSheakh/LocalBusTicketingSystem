@@ -156,8 +156,10 @@
 
                                         <td>4</td>
                                         <td>
-                                            <button>Book Now</button>
-                                            <a href="../ticketDetails/ticketDetails.html">
+                                            <button> <a href="../confirmBooking/confirmBooking.php">Book Now</a></button>
+                                            
+                                    
+                                            <a href="../ticketDetails/ticketDetails.php">
                                                 <button>Details</button>
                                             </a>
 

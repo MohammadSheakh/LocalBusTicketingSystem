@@ -12,28 +12,7 @@
     <?php
         include '../../../system/navbar/mainNavbar.php';
     ?>
-    <!-- <div>
-        
-        <table align="center">
-            <tr>
-                <td>
-                    <h5>Bus Ticketing System </h5>
-                </td>
-                <td>
-                    <h1> &nbsp;&nbsp;&nbsp;&nbsp;</h1>
-                </td>
-                <td>
-                    <button> <a href="../../ticketBooking/ticketBooking.html">Home</a> </button>
-                    <a href="#">Our Service</a>
-                    <button>About Us</button>
-                    <button>Contract Us</button>
-                    <button> <a href="../authentication/login/login.html">Login</a> </button>
-                    <button>Sign up</button>
-                </td>
-            </tr>
-        </table>
-        
-    </div> -->
+    
     <table align="center">
         <tr>
             <td>

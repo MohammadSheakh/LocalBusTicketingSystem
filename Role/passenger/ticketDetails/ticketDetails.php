@@ -183,7 +183,7 @@
                                     <p>Total Price : 5 * 20 => 100 Taka</p>
 
 
-                                    <button>Confirm Booking</button>
+                                    <button> <a href="../confirmBooking/confirmBooking.php">Confirm Booking</a> </button>
                                     <button>Cancel </button>
                                 </fieldset>
                             </td>

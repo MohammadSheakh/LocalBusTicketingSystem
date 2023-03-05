@@ -7,13 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Registration</h1>
+    
+    <?php
+        include '../../../system/navbar/mainNavbar.php';
+    ?>
+    
     <form action="register.php" novalidate method="post" >
-        
-
+    <div align="center">
+    <h1>Registration</h1>
+    </div>    
+    
         <table  align="center">
-
-        
         <tr>
             <td>
             
@@ -109,16 +113,24 @@
             </td>
             
         </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Submit">
+            </td>
+        
+        </tr>
         
         
         </table>
-        <input type="submit" value="Submit">
+        
     </form>
         
+    <div align="center">
+    <h4>Already Have an Accout ? Login <a href="login.html">here</a></h4>
 
+    </div>    
 
-        <h4>Already Have an Accout ? Login <a href="login.html">here</a></h4>
-
+        
     
 </body>
 </html>

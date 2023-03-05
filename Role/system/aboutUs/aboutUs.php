@@ -9,7 +9,10 @@
 </head>
 
 <body>
-
+<?php
+        include '../navbar/mainNavbar.php';
+    ?>
+    about us ..  
 </body>
 
 </html>
