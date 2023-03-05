@@ -10,7 +10,101 @@
 <?php
         include '../../system/navbar/mainNavbar.php';
     ?>
-    
+
+    <table align="center">
+        <tr>
+            <td>Ticket Booking Details</td>
+        </tr>
+        <tr>
+            <td>
+            User Name   
+            </td>
+            <td>:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+            User Phone Number 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            User Email 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            User Status 
+            </td><td>:</td><td></td>
+        </tr>
+
+        <tr>
+            <td>
+            Ticket Sl. Number 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            From 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            To 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            Bus Company Name 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            Root No. 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            Vehicle Serial No. 
+
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            Date And Time 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            Seat No. 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+            Total Seat 
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+                Per kilometer price  
+            </td><td>:</td><td></td>
+        </tr>
+        <tr>
+            <td>
+                Total Distance   
+            </td>
+            <td>:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                Total Price 
+            </td>
+            <td>:</td>
+            <td></td>
+        </tr>
+    </table>
+
     Confirm Booking Page .. 
     ekhane user er information + 
     travel er full information + 
