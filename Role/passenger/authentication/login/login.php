@@ -46,31 +46,19 @@
                                         placeholder="Please enter your email...  ">
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <p>Login As</p>
-                                </td>
-                                <td>:</td>
-                                <td>
-                                    <input type="radio" id="admin" name="loginAs" value="admin">
-                                      <label for="admin">Admin</label>
-                                      <input type="radio" id="passenger" name="loginAs" value="passenger">
-                                      <label for="passenger">Passenger</label>
-                                      <input type="radio" id="employee" name="loginAs" value="employee">
-                                      <label for="employee">Employee</label> <br>
-                                    <input type="radio" id="busOwner" name="loginAs" value="busOwner">
-                                      <label for="busOwner">Bus Owner</label>
-                                </td>
-                            </tr>
+                            
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td><input type="checkbox">Remember Me</input></td>
                             </tr>
                             <tr align="center">
+                                
+                                <td> </td>
                                 <td></td>
                                 <td></td>
-                                <td><button> <a href="../../passengerProfile/passengerProfile.html">Login</a> </button>
+                                
+                                <td><button> <a href="../../passengerProfile/subNavbar/personalInformation/personalInformation.php">Login</a> </button>
                                 </td>
                             </tr>
 

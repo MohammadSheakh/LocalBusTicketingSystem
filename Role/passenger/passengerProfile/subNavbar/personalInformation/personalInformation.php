@@ -15,169 +15,166 @@
         include '../../../../system/navbar/mainNavbar.php';
     ?>
 
+<?php
+        include '../../passengerProfile.php';
+    ?>
+
     <!--ticket booking form start here-->
     <table align="center">
         <tr>
             <td>
-                <fieldset>
-                    <table align="center">
-                        <legend>Ticket / Trip Details Page</legend>
-
-                        <!-- <div>
-                            <h3>Rampura to Badda</h3>
-                        </div> -->
-                        <tr>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <!-- Picture of Bus  -->
-                                        <img height="80px" src="../images/passengerProfile/profileImage.png" alt="">
-
-                                    </td>
-                                    <td>
-                                        <h5>Mohammad Bin Ab. Jalil Sheakh</h5>
-                                        <h6> <i><img src="../images/passengerProfile/phone.png" alt=""></i>01518419801
-                                        </h6>
-
-                                        <h6> <i><img src="../images/passengerProfile/home.png" alt=""></i>Lives in
-                                            Rampura, Dhaka, Bangladesh
-                                        </h6>
-                                    </td>
-
-                                    <!-- <td>
-                                        <h5>Arrival Time : 9:25am</h5>
-                                        <h5>Leave Rampura point at 9:30am</h5>
-
-                                    </td> -->
-                                </tr>
-                            </table>
-
-
-                        </tr>
-
-                    </table>
-                </fieldset>
+                
                 <!-- ----------------- Sub Navbar ----------------------- starts here -->
-                <table align="center">
-
-                    <tr>
-                        <td></td>
-                        <td>
-                            <table align="center">
-                                <tr>
-
-                                    <td>
-                                        <h1> &nbsp;&nbsp;&nbsp;&nbsp;</h1>
-                                    </td>
-                                    <td>
-                                        <button>Ticket History</button>
-                                        <a href="#">Personal Information</a>
-                                        <button>Postpaid System</button>
-                                        <button>Review</button>
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td></td>
-
-                    </tr>
-
-                    <!-- ----------------- Sub Navbar ----------------------- ends here -->
-                    <!-- ------------------Ticket History Starts Here --------------------- -->
-
-                    <tr>
-                        <td></td>
-                        <td>
-                            <fieldset>
-                                <legend>Passenger Details</legend>
-
-                                <table>
-                                    <tr>
-                                        <td>
-                                            Name
-                                        </td>
-                                        <td>
-                                            :
-                                        </td>
-                                        <td>
-                                            Mohammad Sheakh
-                                        </td>
-                                        <td></td>
-                                        <td><button>Edit</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Phone Number
-                                        </td>
-                                        <td>
-                                            :
-                                        </td>
-                                        <td>
-                                            01518419801
-                                        </td>
-                                        <td></td>
-                                        <td><button>Edit</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Address
-                                        </td>
-                                        <td>
-                                            :
-                                        </td>
-                                        <td>
-                                            Rampura, Dhaka, Bangladesh
-                                        </td>
-                                        <td></td>
-                                        <td><button>Edit</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Email
-                                        </td>
-                                        <td>
-                                            :
-                                        </td>
-                                        <td>
-                                            xyz@gmail.com
-                                        </td>
-                                        <td></td>
-                                        <td><button>Edit</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Password
-                                        </td>
-                                        <td>
-                                            :
-                                        </td>
-                                        <td>
-                                            123456
-                                        </td>
-                                        <td></td>
-                                        <td><button>Edit</button></td>
-                                    </tr>
-                                </table>
-                            </fieldset>
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <!-- ------------------Ticket History Ends Here --------------------- -->
-
-
-
-                    <!-- </form> -->
-                </table>
+                <?php
+                    include '../passengersSubNavbar.php';
+                ?>
 
             </td>
         </tr>
+        <tr>
+            <td>
+            <table align="center">
+        <tr>
+            <td>
+                
+                
+                <fieldset>
+                    <legend>Personal Information </legend>
+                    <!-- ---------------------------------------- -->
+                    <!-- something.php -->
+                    <form action="" novalidate>
+                        <table>
+
+                            <tr>
+                                <td>
+                                    <p>Full Name</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    Mohammad Bin Ab. Jalil Sheakh
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <input type="fullName" id="fullName" name="fullName" value=""
+                                        placeholder="Enter your full name here...  "> -->
+                                </td>
+                                <!-- ///////////////////// -->
+                                <td>
+                                    <p>Email</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    mohammad.sheakh@gmail.com
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <input type="email" id="email" name="email" value=""
+                                        placeholder="Please enter your email...  ">
+                                      -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Password</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    ********
+                                    <span><button> <img src="../../../images/passengerProfile/eye.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    
+                                    <!-- <input type="password" id="email" name="email" value=""
+                                        placeholder="Please enter your email...  "> -->
+                                </td>
+                                <!-- ///////////////////// -->
+                                <td>
+                                    <p>Father's Name</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    Abdul Jalil Sheakh 
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <input type="text" id="fathersName" name="fathersName"><br><br>
+                                      -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Date of Birth</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    13/9/2000
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <input type="date" id="dateOfBirth" name="dateOfBirth"><br> -->
+                                </td>
+                                <!-- ///////////////////// -->
+                                <td>
+                                    <p>Mother's Name</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    Nasrin Banu
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <input type="text" id="mothersName" name="mothersName"><br><br>
+                                      -->
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>Phone/Mobile</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    01518419801
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <input type="text" id="contractInfo" name="contractInfo"> -->
+                                </td>
+                                <!-- ///////////////////// -->
+                                <td>
+                                    <p>Blood Group</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    O+
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <select name="bloodGroup" id="bloodGroup">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                
+                </select>
+                                      -->
+                                </td>
+                            </tr>
+
+                            <tr>
+                            <td>
+                                    <p>Present Address</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    247, West Rampura, Dhaka - 1219
+                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
+                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
+                                    <!-- <input type="textarea" id="address" name="address"><br><br> -->
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
 
 
+                </fieldset>
+            </td>
+        </tr>
 
-
-
+    </table>
+            </td>
+        </tr>
 
     </table>
     <!--ticket booking form end here-->

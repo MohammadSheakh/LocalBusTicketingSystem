@@ -16,113 +16,109 @@
     <div align="center">
     <h1>Registration</h1>
     </div>    
+
+    <table align="center">
+        <tr>
+            <td>
+                <br>
+                <br>
+                <br>
+                <fieldset>
+                    <legend>Login Form </legend>
+                    <!-- ---------------------------------------- -->
+                    <form action="" novalidate>
+                        <table>
+                        
+                            <tr>
+                                <td>
+                                    <p>Full Name</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    <input type="fullName" id="fullName" name="fullName" value=""
+                                        placeholder="Enter your full name here...  ">
+                                     
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Email</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    <input type="email" id="email" name="email" value=""
+                                        placeholder="Enter your email...  ">
+                                     
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Password</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    <input type="password" id="email" name="email" value=""
+                                        placeholder="Enter your email...  ">
+                                </td>
+                            </tr>
+                            
+
+                <tr>
+                                <td>
+                                    <p>Gender</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    
+                                    <input type="radio" id="gender" value="gender" name="gender"> 
+                                    <label for="gender">Male</label>
+
+                                    <input type="radio" id="gender" value="gender" name="gender"> 
+                                    <label for="gender">Female</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p>Registration As</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    
+                                      <input type="radio" id="passenger" name="loginAs" value="passenger">
+                                      <label for="passenger">Passenger</label>
+                                      <input type="radio" id="employee" name="loginAs" value="employee">
+                                      <label for="employee">Employee</label> <br>
+                                    <input type="radio" id="busOwner" name="loginAs" value="busOwner">
+                                      <label for="busOwner">Bus Owner</label>
+                                </td>
+                            </tr>
+                            
+                            <tr align="center">
+                                <td></td>
+                                <td></td>
+                                <td><button> <a href="../../passengerProfile/subNavbar/personalInformation/personalInformation.php">Registration</a> </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td> <a href="">Forgot Password</a></td>
+
+                            </tr>
+
+
+
+                        </table>
+                    </form>
+
+
+                </fieldset>
+            </td>
+        </tr>
+
+    </table>
     
-        <table  align="center">
-        <tr>
-            <td>
-            
-                <fieldset>
-                <legend>Personalia:</legend>
-                <label for="firstName">First name:</label>
-                <input type="text" id="firstName" name="firstName"><br><br>
-                
-                <label for="lastName">Last name:</label>
-                <input type="text" id="lastName" name="lastName"><br><br>
-                
-                <label for="fathersName">Father's Name :</label>
-                <input type="text" id="fathersName" name="fathersName"><br><br>
-                
-                <label for="mothersName">Mother's Name :</label>
-                <input type="text" id="mothersName" name="mothersName"><br><br>
-                
-                <label for="gender">Gender :</label>
-                <input type="radio" id="gender" value="gender" name="gender"> 
-                <label for="gender">Male</label>
-
-                <input type="radio" id="gender" value="gender" name="gender"> 
-                <label for="gender">Female</label> <br>
-
-                <label for="dateOfBirth">Date of Birth:</label>
-                <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
-
-                
-
-                <label for="cars">Blood Group :</label>
-
-                <select name="bloodGroup" id="bloodGroup">
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                
-                </select>
-
-                
-                </fieldset>
-            </form>
-
-            
-            </td>
-            
-        </tr>
-
-        <tr>
-            <td>
-            
-                <fieldset>
-                <legend>Personalia:</legend>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br><br>
-
-                <label for="contractInfo">Phone/Mobile : </label>
-                <input type="text" id="contractInfo" name="contractInfo"><br><br>
-                
-
-                <label for="website">Website : </label>
-                <input type="text" id="website" name="website"><br><br>
-                
-                <label for="address">Present Address : </label>
-                <input type="textarea" id="address" name="address"><br><br>
-                
-                
-                
-                </fieldset>
-            
-
-            
-            </td>
-            
-        </tr>
-
-        <tr>
-            <td>
-            
-                <fieldset>
-                <legend>Account Information:</legend>
-                <label for="userName">UserName : </label>
-                <input type="text" id="userName" name="userName"><br><br>
-                
-
-                <label for="password">Password : </label>
-                <input type="text" id="password" name="password"><br><br>
-                
-
-                </fieldset>
-            
-
-            
-            </td>
-            
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Submit">
-            </td>
-        
-        </tr>
-        
-        
-        </table>
-        
     </form>
         
     <div align="center">
