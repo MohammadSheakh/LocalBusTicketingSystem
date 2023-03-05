@@ -22,6 +22,7 @@
     <!--ticket booking form start here-->
     <table align="center">
         <tr>
+            
             <td>
                 
                 <!-- ----------------- Sub Navbar ----------------------- starts here -->
@@ -31,6 +32,8 @@
 
             </td>
         </tr>
+        </table>
+        <table align="center">
         <tr>
             <td>
             <table align="center">
@@ -174,7 +177,15 @@
 
     </table>
             </td>
+            <!-- ================== Notification System ============= -->
+            <td>
+            <?php
+        include '../../passengerNotification/passengerNotification.php';
+    ?>
+                
+            </td>
         </tr>
+        
 
     </table>
     <!--ticket booking form end here-->

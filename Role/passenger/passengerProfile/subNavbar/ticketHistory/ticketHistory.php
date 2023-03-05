@@ -28,7 +28,7 @@
                 <table align="center">
 
                     <tr>
-                        <td></td>
+                        
                         <td>
                             <!-- Sub navbar Start here  -->
                             <?php
@@ -36,15 +36,16 @@
                             ?>
                             <!-- Sub navbar End here  -->
                         </td>
-                        <td></td>
+                        
 
                     </tr>
-
+                </table>
+                <table>
                     <!-- ----------------- Sub Navbar ----------------------- ends here -->
-                    <!-- ------------------Ticket History Starts Here --------------------- -->
+                    
 
                     <tr>
-                        <td></td>
+                        <!-- ------------------Ticket History Starts Here --------------------- -->
                         <td>
                             <table border="1">
                                 <tr>
@@ -110,10 +111,18 @@
 
                             </table>
                         </td>
-                        <td></td>
+                        <!-- ------------------Ticket History Ends Here --------------------- -->
+                        <!-- ------------------ Notification Section Starts Here --------------------- -->
+                        <td>
+                        <?php
+                            include '../../passengerNotification/passengerNotification.php';
+                        ?>
+                        </td>
+                        <!-- ------------------ Notification Section Ends Here --------------------- -->
+                        
                     </tr>
 
-                    <!-- ------------------Ticket History Ends Here --------------------- -->
+                    
 
 
 
