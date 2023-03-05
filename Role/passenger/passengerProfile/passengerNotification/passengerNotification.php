@@ -36,7 +36,7 @@
                             </td>
                         </tr>
                         
-                        <tr>
+                        <!-- <tr>
                             <td>
                                 <fieldset>
                                     <p>
@@ -48,7 +48,7 @@
                                     <button>save as archive</button>
                                 </fieldset>
                             </td>
-                        </tr>
+                        </tr> -->
 
                     </table>
                 </fieldset>

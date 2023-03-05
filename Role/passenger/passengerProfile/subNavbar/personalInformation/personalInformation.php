@@ -177,13 +177,28 @@
 
     </table>
             </td>
-            <!-- ================== Notification System ============= -->
+            <!-- ================== Notification System Start here ============= -->
             <td>
-            <?php
-        include '../../passengerNotification/passengerNotification.php';
-    ?>
+                <?php
+                    include '../../passengerNotification/passengerNotification.php';
+                ?>
+            </td>
+            <td>
                 
             </td>
+            <!-- ================== Notification System Ends here ============= -->
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+            <!-- ================== Messaging System Start Here ============= -->
+            <td>
+            <?php
+                    include '../../passengerMessaging/passengerMessaging.php';
+                ?>
+            </td>
+            <!-- ================== Messaging System Ends Here ============= -->
         </tr>
         
 
