@@ -12,7 +12,7 @@
         include '../../../system/navbar/mainNavbar.php';
     ?>
     
-    <form action="register.php" novalidate method="post" >
+    <form action="registrationProcess.php" novalidate method="post" >
     <div align="center">
     <h1>Registration</h1>
     </div>    
@@ -24,7 +24,7 @@
                 <br>
                 <br>
                 <fieldset>
-                    <legend>Login Form </legend>
+                    <legend>Registration Form </legend>
                     <!-- ---------------------------------------- -->
                     <form action="" novalidate>
                         <table>
@@ -37,7 +37,7 @@
                                 <td>
                                     <input type="fullName" id="fullName" name="fullName" value=""
                                         placeholder="Enter your full name here...  ">
-                                     
+                                    Mohammad Bin Ab. Jalil Sheakh
                                 </td>
                             </tr>
                             <tr>
@@ -78,7 +78,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
+                            <!-- <tr>
                                 <td>
                                     <p>Registration As</p>
                                 </td>
@@ -91,6 +91,20 @@
                                       <label for="employee">Employee</label> <br>
                                     <input type="radio" id="busOwner" name="loginAs" value="busOwner">
                                       <label for="busOwner">Bus Owner</label>
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <td>
+                                    <p>Passenger Type</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    
+                                      <input type="radio" id="Working People" name="type" value="working people">
+                                      <label for="passenger">Working People</label>
+                                      <input type="radio" id="student" name="type" value="student">
+                                      <label for="employee">Student</label> <br>
+                                    
                                 </td>
                             </tr>
                             

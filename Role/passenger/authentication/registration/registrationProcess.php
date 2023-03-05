@@ -11,54 +11,29 @@
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
             // general information
-            $firstName = sanitize($_POST['firstName']);
-            $lastName = sanitize($_POST['lastName']);
-            $fathersName = sanitize($_POST['fathersName']);
-            $mothersName = sanitize($_POST['mothersName']);
-            $gender = sanitize($_POST['gender']);
-            $dateOfBirth = sanitize($_POST['dateOfBirth']);
-            $bloodGroup = sanitize($_POST['bloodGroup']);
-            //Contract information
+            $fullName = sanitize($_POST['fullName']);
             $email = sanitize($_POST['email']);
-            $contractInfo = sanitize($_POST['contractInfo']);
-            $website = sanitize($_POST['website']);
-            $address = sanitize($_POST['address']);
-            // Account Information 
-            $userName = sanitize($_POST['userName']);
             $password = sanitize($_POST['password']);
+            $gender = sanitize($_POST['gender']);
+            $type = sanitize($_POST['type']);
+
+
+            // $mothersName = sanitize($_POST['mothersName']);
+            // $dateOfBirth = sanitize($_POST['dateOfBirth']);
+            // $bloodGroup = sanitize($_POST['bloodGroup']);
+            // $contractInfo = sanitize($_POST['contractInfo']);
+            // $website = sanitize($_POST['website']);
+            // $address = sanitize($_POST['address']);
+            // $userName = sanitize($_POST['userName']);
+            
 
             // if input form is empty then show some specific error 
-            if(empty($firstName)){
+            if(empty($fullName)){
                 echo "please fill up the firstName form";
                 $flag = false;
             }
-            if(empty($lastName)){
-                echo "please fill up the lastName form";
-                $flag = false;
-            }
-            if(empty($fathersName)){
-                echo "please fill up the fathersName form";
-                $flag = false;
-            }
-            if(empty($mothersName)){
-                echo "please fill up the mothersName form";
-                $flag = false;
-            }
-            if(empty($gender)){
-                echo "please fill up the gender form";
-                $flag = false;
-            }
-            if(empty($dateOfBirth)){
-                echo "please fill up the dateOfBirth form";
-                $flag = false;
-            }
-            if(empty($bloodGroup)){
-                echo "please fill up the bloodGroup form";
-                $flag = false;
-            }
-
             if(empty($email)){
-                echo "please fill up the email form";
+                echo "please fill up the lastName form";
                 $flag = false;
             }else{
                 // email er formatting thik ase kina check korbo 
@@ -67,29 +42,21 @@
                     $flag = false;
                 }
             }
-
-            if(empty($contractInfo)){
-                echo "please fill up the contractInfo form";
-                $flag = false;
-            }
-            if(empty($website)){
-                echo "please fill up the website form";
-                $flag = false;
-            }
-            if(empty($address)){
-                echo "please fill up the address form";
-                $flag = false;
-            }
-            if(empty($userName)){
-                echo "please fill up the userName form";
-                $flag = false;
-            }
             if(empty($password)){
-                echo "please fill up the password form";
+                echo "please fill up the fathersName form";
                 $flag = false;
             }
-
+            if(empty($gender)){
+                echo "please fill up the mothersName form";
+                $flag = false;
+            }
+            if(empty($type)){
+                echo "please fill up the gender form";
+                $flag = false;
+            }
+        
             if($flag === true){
+                // database e data create korbo ........................... 
                 echo $email;
                 echo "<hr>";
                 echo $password;
