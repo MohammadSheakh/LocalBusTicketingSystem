@@ -22,7 +22,7 @@
                 <fieldset>
                     <legend>Login Form </legend>
                     <!-- ---------------------------------------- -->
-                    <form action="" novalidate>
+                    <form action="./loginProcess.php" method="post" novalidate>
                         <table>
 
                             <tr>
@@ -42,7 +42,7 @@
                                 </td>
                                 <td>:</td>
                                 <td>
-                                    <input type="password" id="email" name="email" value=""
+                                    <input type="password" id="password" name="password" value=""
                                         placeholder="Please enter your email...  ">
                                 </td>
                             </tr>
@@ -58,7 +58,7 @@
                                 <td></td>
                                 <td></td>
                                 
-                                <td><button> <a href="../../passengerProfile/subNavbar/personalInformation/personalInformation.php">Login</a> </button>
+                                <td><button type="submit"> Login </button>
                                 </td>
                             </tr>
 

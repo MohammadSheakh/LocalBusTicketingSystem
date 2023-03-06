@@ -8,6 +8,9 @@
 </head>
 <body>
     <?php
+
+    include '../../database/dbConnect.php';
+
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
             // general information
@@ -17,7 +20,7 @@
             $gender = sanitize($_POST['gender']);
             $type = sanitize($_POST['type']);
 
-
+            
             // $mothersName = sanitize($_POST['mothersName']);
             // $dateOfBirth = sanitize($_POST['dateOfBirth']);
             // $bloodGroup = sanitize($_POST['bloodGroup']);
@@ -29,11 +32,11 @@
 
             // if input form is empty then show some specific error 
             if(empty($fullName)){
-                echo "please fill up the firstName form";
+                echo "please fill up the fullName form";
                 $flag = false;
             }
             if(empty($email)){
-                echo "please fill up the lastName form";
+                echo "please fill up the email form";
                 $flag = false;
             }else{
                 // email er formatting thik ase kina check korbo 
@@ -43,23 +46,35 @@
                 }
             }
             if(empty($password)){
-                echo "please fill up the fathersName form";
+                echo "please fill up the password form";
                 $flag = false;
             }
             if(empty($gender)){
-                echo "please fill up the mothersName form";
+                echo "please fill up the gender form";
                 $flag = false;
             }
             if(empty($type)){
-                echo "please fill up the gender form";
+                echo "please fill up the type form";
                 $flag = false;
             }
         
             if($flag === true){
                 // database e data create korbo ........................... 
-                echo $email;
-                echo "<hr>";
-                echo $password;
+                // write insert query
+                $sql = "insert into `local_bus_ticketing_system`.`passenger`(fullName, email, password, gender, type) values('$fullName', '$email','$password','$gender','$type')";
+                    
+                // to execute this query 
+                $result = mysqli_query($con, $sql); // connection and query variable 
+                // this method will allow us to execute this query
+                if($result){
+                    // if query has execute successfully 
+                    // echo "Data inserted successfully" ; // show me this 
+                    // echo er poriborte ami onno ekta page e redirect korte chai .. 
+                    header('location:../login/login.php');
+                }else{
+                    // error 
+                    die(mysqli_error($con));
+                }
             }
         }else{
             echo "404 Error !";

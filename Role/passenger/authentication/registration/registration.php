@@ -26,7 +26,7 @@
                 <fieldset>
                     <legend>Registration Form </legend>
                     <!-- ---------------------------------------- -->
-                    <form action="" novalidate>
+                    <form action="./registrationProcess.php" novalidate>
                         <table>
                         
                             <tr>
@@ -57,7 +57,7 @@
                                 </td>
                                 <td>:</td>
                                 <td>
-                                    <input type="password" id="email" name="email" value=""
+                                    <input type="password" id="password" name="password" value=""
                                         placeholder="Enter your email...  ">
                                 </td>
                             </tr>
@@ -111,7 +111,7 @@
                             <tr align="center">
                                 <td></td>
                                 <td></td>
-                                <td><button> <a href="../../passengerProfile/subNavbar/personalInformation/personalInformation.php">Registration</a> </button>
+                                <td><button type="submit"> Registration</button>
                                 </td>
                             </tr>
 
@@ -136,7 +136,7 @@
     </form>
         
     <div align="center">
-    <h4>Already Have an Accout ? Login <a href="login.html">here</a></h4>
+    <h4>Already Have an Accout ? Login <a href="../login/login.php">here</a></h4>
 
     </div>    
 
