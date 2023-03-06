@@ -11,12 +11,12 @@
                         <tr>
                             <td>
                                 <fieldset>
-                                    <p>
+                                    <p >
                                     Raida Poribohon : Bus Number 2233 is arrived
                                     in bus stop .. 
                                     Time : 12:03pm , Date : 2:3:23
                                     </p>
-                                    <button><img src="../../../images/passengerNotifications/delete.png" alt=""></button>
+                                    <button><img  src="../../../images/passengerNotifications/delete.png" alt=""></button>
                                     <button>Save as Archive</button>
                                 </fieldset>
                             </td>

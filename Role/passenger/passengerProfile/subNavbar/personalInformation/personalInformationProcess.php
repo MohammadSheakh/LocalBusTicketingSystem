@@ -12,7 +12,6 @@
     //     preDbOperation("fullName_mode", $_GET['fullName_mode']);
     // }
     
-
     $_SESSION["fullName_mode"] = $fullName_mode;
 
     if($_SESSION["fullName_mode"] == "edit"){
@@ -36,6 +35,20 @@
     }
 
     if ($_SESSION["email_mode"] == "save"){
+        // ekhane db operation korte hobe .. 
+        dbOperation($_SESSION["field_name"]);
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////// password
+    $password_mode = $_GET['password_mode'];
+    $_SESSION["password_mode"] = $password_mode;
+
+    if($_SESSION["password_mode"] == "edit"){
+        header('location:./personalInformation.php');
+    }
+
+    if ($_SESSION["password_mode"] == "save"){
         // ekhane db operation korte hobe .. 
         dbOperation($_SESSION["field_name"]);
     }

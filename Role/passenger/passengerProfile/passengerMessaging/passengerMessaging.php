@@ -1,4 +1,5 @@
-<fieldset>
+
+                <fieldset>
                     <legend>Messaging</legend>
                     <table>
                         <tr>
@@ -11,14 +12,16 @@
                         <tr>
                             <td>
                                 <fieldset>
-                                    <p>
-                                    Raida Poribohon : Vai Koi Apni ? Moja nen naki vai !
-                                    Time : 12:03pm , Date : 2:3:23
+                                    <p align="left">
+                                    Raida Poribohon : Vai Koi Apni 
                                     </p>
-                                    <form novalidate action="">
+                                    <p align="right">
+                                    Mohammad Sheakh : Mia apne Koi ?  
+                                    </p>
+                                    <form novalidate action="./passengerMessagingProcess.php">
                                         <table>
                                             <tr>
-                                                <td>
+                                                <td >
                                                     Mohammad Sheakh 
                                                 </td>
                                                 <td> :</td>

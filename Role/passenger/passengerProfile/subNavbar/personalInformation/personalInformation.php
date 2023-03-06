@@ -95,35 +95,31 @@
                                     echo "</form>";
                                 ?>
                                 </td>
-                                <!-- <td>
-                                    <p>Email</p>
-                                </td>
-                                <td>:</td>
-                                <td>
-                                    <?php 
-                                        echo $_SESSION["email"] ?? ''
-                                    ?>
-                                    
-                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
-                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
-                                    
-                                </td> -->
+                                
                             </tr>
                             <tr>
-                                <td>
+                            <td>
                                     <p>Password</p>
                                 </td>
                                 <td>:</td>
                                 <td>
                                 <?php 
-                                        echo $_SESSION["password"] ?? ''
-                                    ?>
-                                    <span><button> <img src="../../../images/passengerProfile/eye.png" alt=""> </button></span>
-                                    <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
-                                    <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
-                                    
-                                    <!-- <input type="password" id="email" name="email" value=""
-                                        placeholder="Please enter your email...  "> -->
+                                    if($_SESSION["password_mode"] == "edit"){
+                                        $_SESSION["field_name"] = "password";
+                                        echo'
+                                            <form action ="./personalInformationProcess.php?password_mode=save" method="post" novalidate >
+                                            <input type="password" id="password" name="password" value= "'.$_SESSION["password"].'" placeholder="Enter your Password here...">&nbsp;&nbsp;'
+                                        ;
+                                        echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        ';
+                                    }else{
+                                        echo $_SESSION["password"]   ?? '';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?password_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                    }
+                                ?>
+                                <?php 
+                                    echo "</form>";
+                                ?>
                                 </td>
                                 <!-- ///////////////////// -->
                                 <td>
