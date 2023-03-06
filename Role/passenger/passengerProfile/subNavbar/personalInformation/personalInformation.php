@@ -46,10 +46,7 @@
                 <fieldset>
                     <legend>Personal Information </legend>
                     <!-- ---------------------------------------- -->
-                    <!-- something.php -->
-                    <!-- <form action="" novalidate> -->
                         <table>
-
                             <tr>
                                 <td>
                                     <p>Full Name</p>
@@ -58,6 +55,7 @@
                                 <td>
                                 <?php 
                                     if($_SESSION["fullName_mode"] == "edit"){
+                                        $_SESSION["field_name"] = "fullName";
                                         echo'
                                             <form action ="./personalInformationProcess.php?fullName_mode=save" method="post" novalidate >
                                             <input type="fullName" id="fullName" name="fullName" value= " '.$_SESSION["fullName"].' " placeholder="Enter your full name here...">&nbsp;&nbsp;'
@@ -68,22 +66,36 @@
                                         echo $_SESSION["fullName"]   ?? '';
                                         echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?fullName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
-                                        
                                     ?>
-                                    
-                                    <!-- </form> -->
-                                    
-                                    <!-- <span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
-                                     -->
-                                    <?php 
+                                    <?php
                                         echo "</form>";
                                     ?>
-
-                                    <!-- <input type="fullName" id="fullName" name="fullName" value=""
-                                        placeholder="Enter your full name here...  "> -->
                                 </td>
                                 <!-- ///////////////////// -->
                                 <td>
+                                    <p>Email</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                <?php 
+                                    if($_SESSION["email_mode"] == "edit"){
+                                        $_SESSION["field_name"] = "email";
+                                        echo'
+                                            <form action ="./personalInformationProcess.php?email_mode=save" method="post" novalidate >
+                                            <input type="email" id="email" name="email" value= " '.$_SESSION["email"].' " placeholder="Enter your email here...">&nbsp;&nbsp;'
+                                        ;
+                                        echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        ';
+                                    }else{
+                                        echo $_SESSION["email"]   ?? '';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?email_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                    }
+                                ?>
+                                <?php 
+                                    echo "</form>";
+                                ?>
+                                </td>
+                                <!-- <td>
                                     <p>Email</p>
                                 </td>
                                 <td>:</td>
@@ -94,10 +106,8 @@
                                     
                                     <span><button> <img src="../../../images/passengerProfile/edit.png" alt=""> </button></span>
                                     <span><button> <img src="../../../images/passengerProfile/diskette.png" alt=""> </button></span>
-                                    <!-- <input type="email" id="email" name="email" value=""
-                                        placeholder="Please enter your email...  ">
-                                      -->
-                                </td>
+                                    
+                                </td> -->
                             </tr>
                             <tr>
                                 <td>
