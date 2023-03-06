@@ -60,20 +60,21 @@
                                     if($_SESSION["fullName_mode"] == "edit"){
                                         echo'
                                             <form action ="./personalInformationProcess.php?fullName_mode=save" method="post" novalidate >
-                                            <input type="fullName" id="fullName" name="fullName" value=""
-                                            placeholder="Enter your full name here...">'
+                                            <input type="fullName" id="fullName" name="fullName" value= " '.$_SESSION["fullName"].' " placeholder="Enter your full name here...">&nbsp;&nbsp;'
                                         ;
+                                        echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        ';
                                     }else{
-                                        echo $_SESSION["fullName"] ?? '';
-                                        echo '<span><button ><a href="./personalInformationProcess.php?fullName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo $_SESSION["fullName"]   ?? '';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?fullName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                         
                                     ?>
                                     
                                     <!-- </form> -->
                                     
-                                    <span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
-                                    
+                                    <!-- <span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                     -->
                                     <?php 
                                         echo "</form>";
                                     ?>
