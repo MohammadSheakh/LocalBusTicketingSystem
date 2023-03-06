@@ -52,6 +52,7 @@
                     $_SESSION["password"]= $row['password'];
                     $_SESSION["gender"]= $row['gender'];
                     $_SESSION["type"]= $row['type'];
+                    
 
                     // 😀 ei data gula amra session er moddhe rekhe dibo .. jeno amra ek page theke onno page e 
                     // data gula access korte pari 
@@ -61,7 +62,7 @@
                     
                     
                 }else{
-                    echo "we dont found a user ";
+                    echo "we don't found a user ";
                 }
 
             }

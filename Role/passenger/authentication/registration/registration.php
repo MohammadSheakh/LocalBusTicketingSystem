@@ -70,10 +70,10 @@
                                 <td>:</td>
                                 <td>
                                     
-                                    <input type="radio" id="gender" value="gender" name="gender"> 
+                                    <input type="radio" id="gender" value="male" name="gender"> 
                                     <label for="gender">Male</label>
 
-                                    <input type="radio" id="gender" value="gender" name="gender"> 
+                                    <input type="radio" id="gender" value="female" name="gender"> 
                                     <label for="gender">Female</label>
                                 </td>
                             </tr>
