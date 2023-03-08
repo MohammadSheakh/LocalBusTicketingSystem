@@ -1,6 +1,8 @@
 <?php
 session_start();
     include '../database/dbConnect.php';
+    
+    
     if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
             $routeId = "";
@@ -48,7 +50,10 @@ session_start();
                     //die(mysqli_error($con));
                 }
             }
-        }
+    }
+    
+
+    
 
 function sanitize($data){
      $data = trim($data);

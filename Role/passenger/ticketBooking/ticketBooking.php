@@ -18,6 +18,7 @@
         $companyName = "";
         $_SESSION["dbError"] = " " ;
         $_SESSION["route"];
+        $flag = false;
     ?>
 
     <!--ticket booking form start here-->
@@ -109,7 +110,10 @@
                             </tr> -->
                             <tr>
                                 <td>
-                                    <?php echo "Error::::: ".$_SESSION["dbError"] ; ?>
+                                    <?php 
+                                    // echo "Error::::: ".$_SESSION["dbError"] ; 
+                                    
+                                    ?>
                                     
                                 </td>
                             </tr>
@@ -126,47 +130,55 @@
                                         //$_SESSION["sql"] = $sql;
                                         $result = mysqli_query($con, $sql);
                                         if($result){
-                                            $flag = false;
+                                            //$flag = false;
+                                            
                                             while($row = mysqli_fetch_assoc($result)){
                                                 $companyName= $row['companyName'];
                                                 
-                                                echo "<button>".$companyName."</button>";
+                                                echo "<h4>Bus Company Name : <span><button>".$companyName."</button></span> </h4>";
                                                 $flag = true;
                                             }
                                             if($flag == false){
                                                 echo " <h4> No Bus Available. for this route </h4>";
                                             }
-                                            echo "Not Error :::::::::".$_SESSION["sql"];
+                                            
+                                            // echo "Not Error :::::::::".$_SESSION["sql"];
                                         }else{
                                             
                                             echo " <h1> No. Bus Available. for this route </h1>";
                                             $_SESSION["dbError"] = mysqli_error($con);
                                             //die(mysqli_error($con));
-                                            echo "Error :::::::::".$_SESSION["sql"];
+                                            //echo "Error :::::::::".$_SESSION["sql"];
                                         }
                                     ?>
-                                   
                                 </td>
                             </tr>
+                            <?php
+                            if($flag){
+                                // ekhane baki shob content dekhabo .. 
 
+                                
+                            }
+                            ?>
+                        <form action="./saveDateForTicketBooking.php" method="post" novalidate>
+                            
                             <tr>
                                 <td> <label for="area">Select your destination</label> </td>
                                 <td>:</td>
                                 <td>
                                     <!-- input form Start------------------------------------->
                                     <?php 
-                                        echo ' <select name="startAreaName" id="startAreaName" value=" '.$_SESSION["startArea"] .'">'
+                                        echo ' <select name="destinationAreaName" id="destinationAreaName" value=" '.$_SESSION["destinationArea"] .'">'
                                         ?>
-                                       
                                             <!-- area gula data base theke ashte hobe ... ei area gula admin save kore rakhbe .. database e -->
                                             <!-- lets pull all Area Name value from database  -->
                                             <?php
-                                                $sql = "select DISTINCT areaName from `local_bus_ticketing_system`.`area`";
-                                                
+                                                $sql = 'select areaName from `local_bus_ticketing_system`.`area` where routeId="'.$_SESSION['routeId'].'" && areaName!="'.$_SESSION['startArea'].'"';
+                                                // $_SESSION["sql"] = $sql;
                                                 $result = mysqli_query($con, $sql);
                                                 if($result){
                                                     
-                                                    echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
+                                                    echo "<option value=".$_SESSION["destinationArea"]. ">".$_SESSION["destinationArea"]. "</option>";
                                                     while($row = mysqli_fetch_assoc($result)){
                                                         $areaName= $row['areaName'];
                                                         echo "<option value=".$areaName.">$areaName</option>";
@@ -174,6 +186,7 @@
                                                     //$FinalArea = $_SESSION["startArea"];
                                                 }else{
                                                     // error 
+                                                    // echo "Error :::::::::".$_SESSION["sql"];
                                                     die(mysqli_error($con));
                                                 }
                                             ?>
@@ -190,6 +203,7 @@
                                     <!-- Input form End-------------------------------------- -->
                                 </td>
                             </tr>
+
                             
                             <tr>
                                 <td>
@@ -198,86 +212,94 @@
                                 </td>
                                 <td>:</td>
                                 <td>
-                                    <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+                                    
+                                    <input type="date" id="dateForTicketBooking" name="dateForTicketBooking"><br>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td> <label for="area">Time</label> </td>
-                                <td>:</td>
                                 <td>
-                                    <!-- input form-->
-                                    <select name="area" id="area">
-                                        <!-- bus er schedule time  gula data base theke ashte hobe ... ei area gula admin save kore rakhbe .. database e -->
-
-                                        <option value="saab">8:15 am</option>
-                                        <option value="volvo">9:00 am</option>
-                                        <option value="mercedes">9:10 am</option>
-                                        <option value="audi">9:30 am</option>
-                                    </select>
 
                                 </td>
+                                <td>
+                                    
+                                </td>
+                                    <td>
+                                    <button type="submit">Submit</button>
+                                    </td>
                             </tr>
-                        
+                        </form>
+
                             <tr>
-
-
                                 <td>
                                     <h3>Available bus of list and seat no.</h3>
-                                    <!-- ekhane amra table er moddhe arekta table dekhabo 
-                                            -->
-
-
+                                    
                                     <table border="1">
                                         <tr>
-                                            <th>No. </th>
-                                            <th>Vehicle Serial No.</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
+                                            <th>routeId.</th>
+                                            <th>Vehicle Serial No. busId </th>
+                                            <th>departureTime</th>
+                                            <th>arrivalTime</th>
                                             <th>Avaiable Total Seat</th>
                                             <th></th>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>DHK METRO-GA 20-42132-1</td>
-
-                                            <td>2 / 12/ 2022</td>
-                                            <td>8:45 am</td>
-
-                                            <td>4</td>
-                                            <td>
-                                                <button> <a href="../confirmBooking/confirmBooking.php">Book Now</a></button>
-                                                
                                         
-                                                <a href="../ticketDetails/ticketDetails.php">
-                                                    <button>Details</button>
-                                                </a>
+                                        <?php 
+                                                $sql = "select scheduleId, busId, routeId, arrivalTime, departureTime, availableTotalSeat from `local_bus_ticketing_system`.`tripschedule` where scheduleId=".$_SESSION['scheduleId'];
+                                                $_SESSION["sql"] = $sql;
+                                                $result = mysqli_query($con, $sql);
+                                                $scheduleId =  "";
+                                                $routeId = "";
+                                                $busId =  "";
+                                                $areaId = "";
+                                                $arrivalTime = "" ;
+                                                $date = "";
+                                                $availableTotalSeat ="" ;
+                                                $departureTime = "";
+                                        
+                                                if($result){
+                                                    while($row = mysqli_fetch_assoc($result)){
+                                                        $routeId = $row['routeId'];
+                                                        $busId = $row['busId'];
+                                                        $departureTime = $row['departureTime'];
+                                                        $arrivalTime = $row['arrivalTime'];
+                                                        $availableTotalSeat = $row['availableTotalSeat'];
 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>DHK METRO-GA 20-42132-1</td>
+                                                        // ekhane ki ami busID er maddhome bus table theke data ene dekhate parbo ?
+                                                        // lets try ...
 
-                                            <td>2 / 12/ 2022</td>
-                                            <td>8:45 am</td>
+                                                        
+                                                        
+                                                    }
+                                                    echo "
+                                                        <tr>
+                                                            <td>$routeId</td>
+                                                            <td>$busId</td>
+                                                            <td>$departureTime</td>
+                                                            <td>$arrivalTime</td>
+                                                            <td>$availableTotalSeat</td>
+                                                            <td>
+                                                                <button> <a href='../confirmBooking/confirmBooking.php'>Book Now</a></button>
+                                                                
+                                                        
+                                                                <a href='../ticketDetails/ticketDetails.php'>
+                                                                    <button>Details</button>
+                                                                </a>
 
-                                            <td>4</td>
-                                            <td>
-                                                <button>Book Now</button>
-                                                <button>Details</button>
-                                            </td>
-                                        </tr>
+                                                            </td>
+                                                        </tr>
+                                                        ";
+                                                }else{
+                                                    
+                                                    die(mysqli_error($con));
+                                                }
+                                        ?>
                                         
                                     </table>
-                                
-
+                            
                                 </td>
                             </tr>
-                        
-
-
-                        <!-- </form> -->
+            
                     </table>
                 </fieldset>
             </td>
