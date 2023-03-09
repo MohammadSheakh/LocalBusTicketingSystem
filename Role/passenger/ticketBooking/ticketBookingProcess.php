@@ -9,7 +9,7 @@ session_start();
             $areaName = "";
             
             $startAreaName = sanitize($_POST['startAreaName']);
-            $_SESSION["dbError"] = $startAreaName ;
+            $_SESSION["startArea"] = $startAreaName;
             //$startAreaName = $_GET['startPoint'];
             
             if(empty($startAreaName)){
@@ -32,8 +32,12 @@ session_start();
                     }
                     echo $areaName;
                     $_SESSION["route"] = $areaName;
-                    $_SESSION["routeId"] = $routeId;
+                    $_SESSION["routeId"] = $routeId; ////////////////////////////////////////////////
                     $_SESSION["startArea"] = $startAreaName;
+                    $_SESSION["busId"] = "";
+                    $_SESSION["departureTime"] = " ";
+                    $_SESSION["arrivalTime"] = " ";
+                    $_SESSION["availableTotalSeat"] = " ";
                     // $sqlForAllAreaNameForThatRoute = "select areaName from `local_bus_ticketing_system`.`route` where routeId='$routeId'";
                     // $sqlForAllAreaNameForThatRoute = "select areaName from `local_bus_ticketing_system`.`route` where routeId=(select routeId from `local_bus_ticketing_system`.`area` where areaName='$startAreaName')";
                     // $resultAgain = mysqli_query($con, $sqlForAllAreaNameForThatRoute);

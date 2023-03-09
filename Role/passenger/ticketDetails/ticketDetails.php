@@ -13,6 +13,8 @@
 <body>
     <!-- for main navbar  -->
     <?php
+    session_start();
+    include '../database/dbConnect.php';
         include '../../system/navbar/mainNavbar.php';
     ?>
 
@@ -25,7 +27,17 @@
                         <legend>Ticket / Trip Details Page</legend>
 
                         <div>
-                            <h3>Rampura to Badda</h3>
+                            <h3>
+                            <?php 
+                                        echo $_SESSION["startArea"] ?? " "; 
+                                        ?>
+                                
+                            to 
+                            <?php 
+                                        echo $_SESSION["destinationArea"] ?? " "; //////// 😀
+                                        ?>
+                                        
+                                    </h3>
                         </div>
                         <tr>
                             <table>
@@ -36,13 +48,31 @@
 
                                     </td>
                                     <td>
-                                        <h5>Raida Paribahan</h5>
-                                        <h6>Root No. 4332</h6>
+                                        <h5><?php 
+                                        echo $_SESSION["companyName"]." Paribahan" ?? " ";
+                                        ?>
+                                            </h5>
+                                            <h5>Root No. 
+                                        <?php 
+                                        echo $_SESSION["routeId"] ?? " ";
+                                        ?>
+                                        </h5>
+                                        
                                     </td>
 
                                     <td>
-                                        <h5>Arrival Time : 9:25am</h5>
-                                        <h5>Leave Rampura point at 9:30am</h5>
+                                        <h5>Arrival Time : <?php 
+                                        echo $_SESSION["arrivalTime"] ?? " ";
+                                        ?></h5>
+                                        <h5>Leave 
+                                        <?php 
+                                        echo $_SESSION["startArea"] ?? " "; 
+                                        ?>
+                                        point at 
+                                        <?php 
+                                        echo $_SESSION["departureTime"] ?? " "; 
+                                        ?>
+                                    </h5>
 
                                     </td>
                                 </tr>
@@ -122,25 +152,110 @@
                             <td>
                                 <fieldset>
                                     <!-- ---------------------------------------- -->
-                                    <form action="" novalidate>
+                                    <form action="./ticketDetailsProcess.php" novalidate>
                                         <table>
-                                            <tr>
-                                                <td>
-                                                    <p>Status of <button>A1</button></p>
-                                                </td>
-                                                <td>:</td>
-                                                <td>
-                                                    <input type="radio" id="booked" name="seat_status" value="booked">
-                                                      <label for="booked">Booked</label>
-                                                      <input type="radio" id="free" name="seat_status" value="free">
-                                                      <label for="free">Free</label>
-                                                      <input type="radio" id="reserved" name="seat_status"
-                                                        value="reserved">
-                                                      <label for="reserved">Reserved</label>
-                                                </td>
-                                            </tr>
 
-                                            <tr>
+                                            <?php
+                                                // echo $_SESSION['busId'];
+                                                $sql = "select seatNo, seatStatus from `local_bus_ticketing_system`.`ticket` where busId=".$_SESSION['busId'];
+                                                $result = mysqli_query($con, $sql);
+                                                if($result){
+                                                    while($row = mysqli_fetch_assoc($result)){
+                                                        // echo $row['seatStatus'];
+                                                        if($row['seatStatus'] === "Free"){
+                                                            
+                                                            echo '
+                                                            <tr>
+                                                            <td>
+                                                                <p>Status of <button>'.$row['seatNo'].'</button></p>
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td>
+                                                            
+                                                                <input    type="radio" id="booked" name="seat_status_'.$row['seatNo'].'" value="booked">
+                                                                <label for="booked">Booked</label>
+                                                                <input   checked type="radio" id="free" name="seat_status_'.$row['seatNo'].'" value="free">
+                                                                <label for="free">Free</label>
+                                             
+                                                            </td>
+                                                        </tr>
+                                                            ';
+                                                        }
+                                                        
+                                                    }
+                                                }
+                                                else{
+                                                    echo "sorry";
+                                                    die(mysqli_error($con));
+                                                }
+                                        ?>
+                                            
+                                        <?php 
+                                            $sql = "select perKmCost, tollCost from `local_bus_ticketing_system`.`route` where routeId=".$_SESSION['routeId'];
+                                            // echo $sql;
+                                            $result = mysqli_query($con, $sql);
+                                            if($result){
+                                                while($row = mysqli_fetch_assoc($result)){
+                                                    $_SESSION["perKmCost"] = $row['perKmCost'];
+                                                    $_SESSION["tollCost"] = $row['tollCost'];
+                                                }
+                                            }else{
+                                                echo "sorry";
+                                                die(mysqli_error($con));
+                                            }
+
+                                            //$sqlForStartAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area` where routeId IN (select routeId from `local_bus_ticketing_system`.`area` where areaName="'.$_SESSION['startArea'].'")';
+                                            $sqlForStartAreaIndex = 'select areaIndex from `local_bus_ticketing_system`.`area`where areaName="'.$_SESSION['startArea'].'" AND routeId="'.$_SESSION['routeId'].'"';
+                                            $_SESSION["sqlForCheck"] = $sqlForStartAreaIndex;
+                                            $result = mysqli_query($con, $sqlForStartAreaIndex);
+                                            if($result){
+                                                while($row = mysqli_fetch_assoc($result)){
+                                                    echo "-----------------".$row['areaIndex'];
+                                                    $_SESSION["startAreaIndex"] = $row['areaIndex'];
+                                                }
+                                            }else{
+                                                echo "sorry";
+                                                die(mysqli_error($con));
+                                            }
+                                            //$sqlForDestAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area` where routeId IN (select routeId from `local_bus_ticketing_system`.`area` where areaName="'.$_SESSION["destinationArea"].'")';
+                                            $sqlForDestAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area`where areaName="'.$_SESSION['destinationArea'].'" AND routeId="'.$_SESSION['routeId'].'"';
+                                            $result2 = mysqli_query($con, $sqlForDestAreaIndex);
+                                            if($result2){
+                                                while($row = mysqli_fetch_assoc($result)){
+                                                    echo "------------------".$row['areaIndex'];
+                                                    $_SESSION["destinationAreaIndex"] = $row['areaIndex'];
+                                                }
+                                            }else{
+                                                echo "sorry";
+                                                die(mysqli_error($con));
+                                            }
+                                            
+                                            //////////////////////////////////////////////////////////////////////////////////////
+                                            $sqlForCalculateDistance = 'select distanceFromPrevArea from `local_bus_ticketing_system`.`area` where ( areaIndex BETWEEN "'.$_SESSION["startAreaIndex"].'+1" AND "'.$_SESSION["destinationAreaIndex"].'") AND routeId='.$_SESSION['routeId'];
+                                            $result3 = mysqli_query($con, $sqlForCalculateDistance);
+                                            $_SESSION["distanceCalculation"] = 0;
+                                            if($result3){
+                                                while($row = mysqli_fetch_assoc($result3)){
+                                                    //echo $row['distanceFromPrevArea'];
+                                                    $_SESSION["distanceCalculation"] = $_SESSION["distanceCalculation"] + $row['distanceFromPrevArea'];
+                                                }
+                                            }else{
+                                                echo "sorry";
+                                                die(mysqli_error($con));
+                                            }
+                                            echo "perKmCost -> ".$_SESSION["perKmCost"]."tollCost -> ".$_SESSION["tollCost"]."startAreaIndex -> ".$_SESSION["startAreaIndex"]."destinationAreaIndex -> ".$_SESSION["destinationAreaIndex"]." distanceCalculate -> ".$_SESSION["distanceCalculation"]."";//.$_SESSION["distanceCalculation"]
+                                        ?>  
+                                            
+                                            <!-- /**
+                                                arekta jinish lagbe .. sheta hocche .. Ulon theke AftabNogor hoile ..
+                                                jokhon route Id 1 .. tokhon Ulon er areaIndex lagbe and AftabNogor er 
+                                                areaIndex lagbe .. then 
+                                                ulon bad e baki gular distanceFromPrevArea Plus kore .. total distance 
+                                                calculate kora lagbe .. 
+                                            */ -->
+                                            
+
+                                            <!-- <tr>
                                                 <td>
                                                     <p>Status of <button>A2</button></p>
                                                 </td>
@@ -170,15 +285,20 @@
                                                         value="reserved">
                                                       <label for="reserved">Reserved</label>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </table>
                                     </form>
 
                                     <!-- ----------------------------------------- -->
                                     <legend>Details seat plan</legend>
-                                    <h5>You have selected A1, A2, A3 seat</h5>
-                                    <p>Per kilometer price : 20 Tk</p>
-                                    <p>Total Seat : 2</p>
+                                    <!-- <h5>You have selected A1, A2, A3 seat</h5> -->
+                                    <?php
+                                        echo "<p>Per kilometer price : ". $_SESSION["perKmCost"] ."Tk</p>
+                                        <p>Total Distance : ".$_SESSION["distanceCalculation"]." kilometer</p>
+                                        ".$_SESSION["startAreaIndex"].$_SESSION["sqlForCheck"];
+                                        ?>
+                                    
+                                    <p>Total Seat : 1</p>
                                     <p>Total Distance : 5 kilometer</p>
                                     <p>Total Price : 5 * 20 => 100 Taka</p>
 

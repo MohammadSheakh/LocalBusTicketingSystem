@@ -31,7 +31,6 @@
                 <?php
                     include '../passengersSubNavbar.php';
                 ?>
-
             </td>
         </tr>
         </table>
@@ -41,8 +40,6 @@
             <table align="center">
         <tr>
             <td>
-                
-                
                 <fieldset>
                     <legend>Personal Information </legend>
                     <!-- ---------------------------------------- -->
@@ -95,7 +92,6 @@
                                     echo "</form>";
                                 ?>
                                 </td>
-                                
                             </tr>
                             <tr>
                             <td>

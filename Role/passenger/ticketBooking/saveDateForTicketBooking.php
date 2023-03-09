@@ -8,7 +8,8 @@ session_start();
             
             
             $destinationAreaName = sanitize($_POST['destinationAreaName']);
-            
+            $_SESSION["destinationArea"] = $destinationAreaName;
+
             $dateForTicketBooking = $_POST['dateForTicketBooking'];
 
             if(empty($dateForTicketBooking)){
