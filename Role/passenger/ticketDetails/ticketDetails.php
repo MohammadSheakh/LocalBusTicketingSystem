@@ -270,6 +270,8 @@
                                         <p>Total Price : (".$_SESSION["distanceCalculation"]." * ".$_SESSION["perKmCost"].") * ".$_SESSION['seatCount']." => 
                                         ". ($_SESSION["distanceCalculation"] * $_SESSION["perKmCost"]) * $_SESSION['seatCount']. "
                                         Taka</p>
+                                        <p> Passenger Id :".$_SESSION['passenger_id']." </p>
+                                        <p> Passenger Name :".$_SESSION['fullName']." </p>
                                         ";
                                         // .$_SESSION["startAreaIndex"]
                                         // .$_SESSION["sqlForCheck"]

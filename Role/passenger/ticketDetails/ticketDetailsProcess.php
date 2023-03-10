@@ -40,7 +40,7 @@
 
         if($seatNo_A1 && $seatStatusA1 == "booked"){
             
-            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A1."'";
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName=".$_SESSION['fullName']."  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A1."'";
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
                 $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
