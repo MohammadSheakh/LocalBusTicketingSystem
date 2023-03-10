@@ -38,15 +38,10 @@ session_start();
                     $_SESSION["departureTime"] = " ";
                     $_SESSION["arrivalTime"] = " ";
                     $_SESSION["availableTotalSeat"] = " ";
-                    // $sqlForAllAreaNameForThatRoute = "select areaName from `local_bus_ticketing_system`.`route` where routeId='$routeId'";
-                    // $sqlForAllAreaNameForThatRoute = "select areaName from `local_bus_ticketing_system`.`route` where routeId=(select routeId from `local_bus_ticketing_system`.`area` where areaName='$startAreaName')";
-                    // $resultAgain = mysqli_query($con, $sqlForAllAreaNameForThatRoute);
-                    // if($resultAgain){
-                    //     while($row = mysqli_fetch_assoc($resultAgain)){
-                    //         $areaName = $row['areaName'];
-                    //         echo "$areaName";
-                    //     }
-                    // }
+                    
+
+                    
+
                     
                     header('location: ./ticketBooking.php');
                 }else{

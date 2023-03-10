@@ -152,7 +152,7 @@
                             <td>
                                 <fieldset>
                                     <!-- ---------------------------------------- -->
-                                    <form action="./ticketDetailsProcess.php" novalidate>
+                                    <form action="./ticketDetailsProcess.php" novalidate method="post">
                                         <table>
 
                                             <?php
@@ -167,7 +167,7 @@
                                                             echo '
                                                             <tr>
                                                             <td>
-                                                                <p>Status of <button>'.$row['seatNo'].'</button></p>
+                                                                <p>Status of <input name="seatNo_'.$row['seatNo'].'" id="seatNo" type="text" size="1" value="'.$row['seatNo'].'"></input></p>
                                                             </td>
                                                             <td>:</td>
                                                             <td>
@@ -176,7 +176,6 @@
                                                                 <label for="booked">Booked</label>
                                                                 <input   checked type="radio" id="free" name="seat_status_'.$row['seatNo'].'" value="free">
                                                                 <label for="free">Free</label>
-                                             
                                                             </td>
                                                         </tr>
                                                             ';
@@ -243,50 +242,22 @@
                                                 echo "sorry";
                                                 die(mysqli_error($con));
                                             }
-                                            echo "perKmCost -> ".$_SESSION["perKmCost"]."tollCost -> ".$_SESSION["tollCost"]."startAreaIndex -> ".$_SESSION["startAreaIndex"]."destinationAreaIndex -> ".$_SESSION["destinationAreaIndex"]." distanceCalculate -> ".$_SESSION["distanceCalculation"]."";//.$_SESSION["distanceCalculation"]
+                                            //echo "perKmCost -> ".$_SESSION["perKmCost"]."tollCost -> ".$_SESSION["tollCost"]."startAreaIndex -> ".$_SESSION["startAreaIndex"]."destinationAreaIndex -> ".$_SESSION["destinationAreaIndex"]." distanceCalculate -> ".$_SESSION["distanceCalculation"]."";//.$_SESSION["distanceCalculation"]
                                         ?>  
-                                            
-                                            <!-- /**
-                                                arekta jinish lagbe .. sheta hocche .. Ulon theke AftabNogor hoile ..
-                                                jokhon route Id 1 .. tokhon Ulon er areaIndex lagbe and AftabNogor er 
-                                                areaIndex lagbe .. then 
-                                                ulon bad e baki gular distanceFromPrevArea Plus kore .. total distance 
-                                                calculate kora lagbe .. 
-                                            */ -->
-                                            
-
-                                            <!-- <tr>
-                                                <td>
-                                                    <p>Status of <button>A2</button></p>
-                                                </td>
-                                                <td>:</td>
-                                                <td>
-                                                    <input type="radio" id="booked" name="seat_status" value="booked">
-                                                      <label for="booked">Booked</label>
-                                                      <input type="radio" id="free" name="seat_status" value="free">
-                                                      <label for="free">Free</label>
-                                                      <input type="radio" id="reserved" name="seat_status"
-                                                        value="reserved">
-                                                      <label for="reserved">Reserved</label>
-                                                </td>
-                                            </tr>
-
                                             <tr>
                                                 <td>
-                                                    <p>Status of <button>A3</button></p>
+
                                                 </td>
-                                                <td>:</td>
                                                 <td>
-                                                    <input type="radio" id="booked" name="seat_status" value="booked">
-                                                      <label for="booked">Booked</label>
-                                                      <input type="radio" id="free" name="seat_status" value="free">
-                                                      <label for="free">Free</label>
-                                                      <input type="radio" id="reserved" name="seat_status"
-                                                        value="reserved">
-                                                      <label for="reserved">Reserved</label>
+
                                                 </td>
-                                            </tr> -->
+                                                <td>
+                                                <button type="submit">Submit</button>
+                                                </td>
+                                            </tr>
+                                            
                                         </table>
+                                        
                                     </form>
 
                                     <!-- ----------------------------------------- -->
@@ -295,11 +266,12 @@
                                     <?php
                                         echo "<p>Per kilometer price : ". $_SESSION["perKmCost"] ."Tk</p>
                                         <p>Total Distance : ".$_SESSION["distanceCalculation"]." kilometer</p>
-                                        ".$_SESSION["startAreaIndex"].$_SESSION["sqlForCheck"];
+                                        ";
+                                        // .$_SESSION["startAreaIndex"]
+                                        // .$_SESSION["sqlForCheck"]
                                         ?>
                                     
                                     <p>Total Seat : 1</p>
-                                    <p>Total Distance : 5 kilometer</p>
                                     <p>Total Price : 5 * 20 => 100 Taka</p>
 
 

@@ -298,9 +298,10 @@
                                                         // ekhane ki ami busID er maddhome bus table theke data ene dekhate parbo ?
                                                         // lets try ...
 
-                                                        
+                                                        echo "routeID===================".$_SESSION["sql"];
                                                         
                                                     }
+                                                    echo "routeID===================".$_SESSION["sql"];
                                                     echo "
                                                         <tr>
                                                             <td>".$_SESSION['routeId']."</td>
@@ -320,6 +321,7 @@
                                                         </tr>
                                                         ";
                                                 }else{
+                                                    echo "routeID===================".$_SESSION["sql"];
                                                     $_SESSION["routeId"] = " ";
                                                     $_SESSION["busId"] = " ";
                                                     $_SESSION["departureTime"] = " ";
