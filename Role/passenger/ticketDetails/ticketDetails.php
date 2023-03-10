@@ -266,13 +266,17 @@
                                     <?php
                                         echo "<p>Per kilometer price : ". $_SESSION["perKmCost"] ."Tk</p>
                                         <p>Total Distance : ".$_SESSION["distanceCalculation"]." kilometer</p>
+                                        <p>Total Seat : ".$_SESSION['seatCount']."</p>
+                                        <p>Total Price : (".$_SESSION["distanceCalculation"]." * ".$_SESSION["perKmCost"].") * ".$_SESSION['seatCount']." => 
+                                        ". ($_SESSION["distanceCalculation"] * $_SESSION["perKmCost"]) * $_SESSION['seatCount']. "
+                                        Taka</p>
                                         ";
                                         // .$_SESSION["startAreaIndex"]
                                         // .$_SESSION["sqlForCheck"]
                                         ?>
                                     
-                                    <p>Total Seat : 1</p>
-                                    <p>Total Price : 5 * 20 => 100 Taka</p>
+                                    
+                                    
 
 
                                     <button> <a href="../confirmBooking/confirmBooking.php">Confirm Booking</a> </button>

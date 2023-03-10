@@ -37,19 +37,63 @@
         echo $_SESSION['busId'];
         
         echo "=========================";
+
+        if($seatNo_A1 && $seatStatusA1 == "booked"){
+            
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A1."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                header('location: ./ticketDetails.php');
+                
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
+            
+        }
+
+        if($seatNo_A2 && $seatStatusA2 == "booked"){
+            
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A2."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                header('location: ./ticketDetails.php');
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
+            
+        }
         
-        // if($seatNo_A3 && $seatStatusA3 == "booked"){
+        if($seatNo_A3 && $seatStatusA3 == "booked"){
             
-        //     $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A3."'";
-        //     $result = mysqli_query($con, $sqlForSeatBooking);
-        //     if($result){
-        //         header('location: ./ticketDetails.php');
-        //     }else{
-        //         echo "sorry";
-        //         die(mysqli_error($con));
-        //     }
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A3."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                header('location: ./ticketDetails.php');
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
             
-        // }
+        }
+
+        if($seatNo_A4 && $seatStatusA4 == "booked"){
+            
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A4."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                header('location: ./ticketDetails.php');
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
+            
+        }
                     
                 
 
