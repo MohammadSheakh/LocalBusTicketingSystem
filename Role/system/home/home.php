@@ -30,6 +30,7 @@
             </tr>
         </table> -->
         <?php
+        include '../../passenger/database/dbConnect.php';
         include '../navbar/mainNavbar.php';
     ?>
         <!--navbar section end here -->
@@ -151,39 +152,43 @@
         </tr>
 
         <tr>
-
-            <!-- <td> -->
-            <!-- &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -->
-            <!-- </td> -->
-            <td>
-                <h5>Mohammad Sheakh</h5>
-                <pre>Awsome System of online ticket booking .. 
-Much Appreciated! </pre>
-
-                <button>
-                    <img src="../image/home/like.png" alt="">
-                    <span>12</span>
-                </button>
-                <button>
-                    <img src="../image/home/dislike.png" alt="">
-                    <span>12</span>
-                </button>
-            </td>
-            <td>
-                <h5>Mohammad Sheakh</h5>
-                <pre>Awsome System of online ticket booking .. 
-Much Appreciated! </pre>
-
-                <button>
-                    <img src="../image/home/like.png" alt="">
-                    <span>12</span>
-                </button>
-                <button>
-                    <img src="../image/home/dislike.png" alt="">
-                    <span>12</span>
-                </button>
-            </td>
+            <?php 
+                $sqlAgain = "select reviewId, passengerId, fullName, review, likeNumber, dislikeNumber from `local_bus_ticketing_system`.`review`";
+                $resultAgain = mysqli_query($con, $sqlAgain);
+                if($resultAgain){
+                    while($rowAgain = mysqli_fetch_assoc($resultAgain)){
+                        $reviewId= $rowAgain['reviewId'];
+                        $passengerId= $rowAgain['passengerId'];
+                        $fullName= $rowAgain['fullName'];
+                        $review= $rowAgain['review'];
+                        $likeNumber= $rowAgain['likeNumber'];
+                        $dislikeNumber= $rowAgain['dislikeNumber'];
+                        echo "
+                        <td>
+                        <h5>".$fullName."</h5>
+                        <pre>".$review."</pre>
+        
+                        <button> <a href='./updateLikeProcess.php?updateId=".$reviewId."'>
+                        <img src='../image/home/like.png' alt=''>
+                            <span>".$likeNumber."</span>
+                        </a>
+                            
+                        </button>
+                        <button>
+                        <a href='./updateDislikeProcess.php?updateId=".$reviewId."'> 
+                        <img src='../image/home/dislike.png' alt=''>
+                            <span>".$dislikeNumber."</span>
+                        </a>
+                            
+                        </button>
+                    </td>
+                        ";
+                    }
+                }
+            ?>
+            
         </tr>
+        
 
             <!-- &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -->
         
@@ -207,7 +212,7 @@ Much Appreciated! </pre>
                         <fieldset>
                             <legend>Review Form </legend>
                             <!-- ---------------------------------------- -->
-                            <form action="" novalidate>
+                            <form action="./homeProcess.php" novalidate method='post'>
                                 <table>
                                     <tr>
                                         <td>
@@ -237,7 +242,7 @@ Much Appreciated! </pre>
                                         <td></td>
                                         <td></td>
 
-                                        <td><button> <a href="../home/home.html">Post</a>
+                                        <td><button type='submit'> Post
                                             </button>
                                         </td>
                                     </tr>

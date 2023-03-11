@@ -110,7 +110,7 @@
                                     echo "<p align='right'>
                                     ".str_replace("@gmail.com", "", $senderEmail)." : ".$message." 
                                     </p>
-                                     <h6 align='right'>".$timeStamps."</h6>
+                                    <h6 align='right'>".$timeStamps."</h6>
                                     ";
                                 }else if($receiverEmail === $_SESSION["email"]){
                                     $actualReceiverEmail = $senderEmail;
