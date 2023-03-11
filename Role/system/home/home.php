@@ -51,7 +51,25 @@
             <td>
                 <!-- Welcoming Text And Book Now Button -->
                 <h1>Have A NICE TRIP WITH US !</h1>
-                <button><a href="../../passenger/ticketBooking/ticketBooking.php">Book Now</a></button>
+                <button>
+
+                <?php 
+                    if($_SESSION["passenger_id"]){
+                        echo "
+                        <a href='../../passenger/ticketBooking/ticketBooking.php'
+                
+                >Book Now</a></button>
+                        ";
+                    }else{
+                        echo "
+                        <a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php'
+                
+                >Book Now</a></button>
+                        ";
+                    }
+                ?>
+                    
+                
             </td>
         </tr>
         <tr>

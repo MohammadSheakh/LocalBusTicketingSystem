@@ -12,7 +12,7 @@
 
 <body>
 <?php
-    session_start();
+    // session_start();
     //include './personalInformationProcess.php'; ///////////////// Process Page Include Done ...  
         include '../../../database/dbConnect.php';
         include '../../../../system/navbar/mainNavbar.php';

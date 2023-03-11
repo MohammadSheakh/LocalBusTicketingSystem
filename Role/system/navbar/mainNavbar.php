@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+$flag = false;
+?>
 <div>
     
     <table align="center">
@@ -15,12 +18,29 @@
                 <button> <a href="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/system/aboutUs/aboutUs.php">About Us</a> </button>
                 <button> <a href="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/system/contractUs/contractUs.php">Contract Us</a> </button>
                 <?php 
-                    
+                    if($_SESSION["fullName"]){
+                        $flag = true;
+                    }
                 ?>
-                <button> <a href="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php">Login</a> </button>
-                <button> <a href="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/registration/registration.php">Sign up</a> </button>
-                <button> <a href="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/logout/logoutProcess.php">Logout</a> </button>
-            </td>
+                <?php
+                if($flag == false){
+                    echo "
+                    <button> <a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php'>Login</a> </button>
+                <button> <a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/registration/registration.php'>Sign up</a> </button>
+                    ";
+                }
+                if($flag){
+                    echo "
+                    <button> <a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php'>Profile</a> </button>
+            
+                    <button> <a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/logout/logoutProcess.php'>Logout</a> </button>
+            
+                    ";
+                }
+                ?>
+                
+                
+                </td>
         </tr>
     </table>
     

@@ -12,6 +12,7 @@
 
 <body>
     <?php
+        include '../../../database/dbConnect.php';
         include '../../../../system/navbar/mainNavbar.php';
     ?>
 
