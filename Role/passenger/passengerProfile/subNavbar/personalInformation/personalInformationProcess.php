@@ -1,10 +1,10 @@
 <?php
-    session_start();
+     session_start();
     include '../../../database/dbConnect.php';
 
     //////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////// fullName
-
+    
     $fullName_mode = $_GET['fullName_mode'];
     
     // if($fullName_mode){
