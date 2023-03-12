@@ -9,6 +9,7 @@
 <body>
     
     <?php
+    // session_start();
         include '../../../system/navbar/mainNavbar.php';
     ?>
     
@@ -37,7 +38,11 @@
                                 <td>
                                     <input type="fullName" id="fullName" name="fullName" value=""
                                         placeholder="Enter your full name here...  ">
-                                    Mohammad Bin Ab. Jalil Sheakh
+                                        <?php
+                                if(isset($_SESSION['fullNameErrorMsg'])){
+                                    echo "<p>".$_SESSION['fullNameErrorMsg']."</p>";
+                                }
+                ?>
                                 </td>
                             </tr>
                             <tr>
@@ -48,7 +53,11 @@
                                 <td>
                                     <input type="email" id="email" name="email" value=""
                                         placeholder="Enter your email...  ">
-                                     
+                                         <?php
+                    if(isset($_SESSION['emailErrorMsg'])){
+                        echo "<p>".$_SESSION['emailErrorMsg']."</p>";
+                    }
+                ?>
                                 </td>
                             </tr>
                             <tr>
@@ -59,6 +68,11 @@
                                 <td>
                                     <input type="password" id="password" name="password" value=""
                                         placeholder="Enter your email...  ">
+                                        <?php
+                    if(isset($_SESSION['passwordErrorMsg'])){
+                        echo "<p>".$_SESSION['passwordErrorMsg']."</p>";
+                    }
+                ?>
                                 </td>
                             </tr>
                             
@@ -75,6 +89,12 @@
 
                                     <input type="radio" id="gender" value="female" name="gender"> 
                                     <label for="gender">Female</label>
+
+                                    <?php
+                    if(isset($_SESSION['genderErrorMsg'])){
+                        echo "<p>".$_SESSION['genderErrorMsg']."</p>";
+                    }
+                ?>
                                 </td>
                             </tr>
 
@@ -103,7 +123,11 @@
                                       <label for="passenger">Working People</label>
                                       <input type="radio" id="student" name="type" value="student">
                                       <label for="employee">Student</label> <br>
-                                    
+                                    <?php
+                    if(isset($_SESSION['typeErrorMsg'])){
+                        echo "<p>".$_SESSION['typeErrorMsg']."</p>";
+                    }
+                ?>
                                 </td>
                             </tr>
                             

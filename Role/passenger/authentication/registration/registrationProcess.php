@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-
+session_start();
     include '../../database/dbConnect.php';
 
         if($_SERVER['REQUEST_METHOD'] === "POST"){
@@ -21,40 +21,53 @@
             $type = sanitize($_POST['type']);
 
             
-            // $mothersName = sanitize($_POST['mothersName']);
-            // $dateOfBirth = sanitize($_POST['dateOfBirth']);
-            // $bloodGroup = sanitize($_POST['bloodGroup']);
-            // $contractInfo = sanitize($_POST['contractInfo']);
-            // $website = sanitize($_POST['website']);
-            // $address = sanitize($_POST['address']);
-            // $userName = sanitize($_POST['userName']);
             
-
             // if input form is empty then show some specific error 
             if(empty($fullName)){
-                echo "please fill up the fullName form";
+                //echo "please fill up the fullName form";
+
+                
+                $_SESSION['fullNameErrorMsg'] = "please fill up the fullName form";
+
                 $flag = false;
             }
             if(empty($email)){
-                echo "please fill up the email form";
+                //echo "please fill up the email form";
+                
+                $_SESSION['emailErrorMsg'] = "please fill up the email form";
                 $flag = false;
             }else{
                 // email er formatting thik ase kina check korbo 
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                    echo "This is not correct email format ";
+                    //echo "This is not correct email format ";
+
+                
+                $_SESSION['emailErrorMsg'] = "This is not correct email format";
                     $flag = false;
                 }
             }
             if(empty($password)){
-                echo "please fill up the password form";
+                //echo "please fill up the password form";
+
+                
+                $_SESSION['passwordErrorMsg'] = "please fill up the password form";
+
                 $flag = false;
             }
             if(empty($gender)){
-                echo "please fill up the gender form";
+               // echo "please fill up the gender form";
+
+                
+                $_SESSION['genderErrorMsg'] = "please fill up the gender form";
+
                 $flag = false;
             }
             if(empty($type)){
                 echo "please fill up the type form";
+
+                
+                $_SESSION['typeErrorMsg'] = "please fill up the type form";
+
                 $flag = false;
             }
         
@@ -70,11 +83,23 @@
                     // if query has execute successfully 
                     // echo "Data inserted successfully" ; // show me this 
                     // echo er poriborte ami onno ekta page e redirect korte chai .. 
+
+                    // session er value gula clear korte hobe .. 
+                    $_SESSION['fullNameErrorMsg'] = "";
+                    $_SESSION['typeErrorMsg'] = "";
+                    $_SESSION['genderErrorMsg'] = "";
+                    $_SESSION['passwordErrorMsg']  ="";
+                    $_SESSION['emailErrorMsg'] = "";
+
+
                     header('location:../login/login.php');
                 }else{
                     // error 
                     die(mysqli_error($con));
                 }
+            }else{
+                header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/registration/registration.php');
+                
             }
         }else{
             echo "404 Error !";
