@@ -99,7 +99,6 @@
                                 </td>
                                 <td>:</td>
                                 <td>
-                                    
                                       <input type="radio" id="Working People" name="type" value="working people">
                                       <label for="passenger">Working People</label>
                                       <input type="radio" id="student" name="type" value="student">

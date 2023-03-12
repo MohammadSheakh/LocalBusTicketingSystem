@@ -1,3 +1,7 @@
+<?php
+    if(isset($_COOKIE['status'])){
+?>
+
 
 
 <fieldset>
@@ -224,3 +228,10 @@
 
                     </table>
                 </fieldset>
+
+                <?php
+	}
+	else {
+		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+	}
+?>

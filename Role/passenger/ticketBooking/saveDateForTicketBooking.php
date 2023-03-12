@@ -1,4 +1,9 @@
 <?php
+    if(isset($_COOKIE['status'])){
+?>
+
+
+<?php
 
 session_start();
     include '../database/dbConnect.php';
@@ -65,3 +70,9 @@ function sanitize($data){
 }
 ?>
 
+<?php
+	}
+	else {
+		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+	}
+?>

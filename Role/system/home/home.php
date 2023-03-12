@@ -54,7 +54,12 @@
                 <button>
 
                 <?php 
-                    if($_SESSION["passenger_id"]){
+                    $passengerIdVariable = '';
+                    if(isset($_SESSION["passenger_id"])){
+                        $passengerIdVariable = $_SESSION["passenger_id"];
+                    }
+
+                    if($passengerIdVariable){
                         echo "
                         <a href='../../passenger/ticketBooking/ticketBooking.php'
                 

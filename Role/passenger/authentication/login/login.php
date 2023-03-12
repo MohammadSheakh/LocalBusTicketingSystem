@@ -11,6 +11,14 @@
 <body>
     <?php
         include '../../../system/navbar/mainNavbar.php';
+        // $fullNameVariable = '';
+        // if(isset($_SESSION['fullName'])){
+        //     $fullNameVariable = $_SESSION["fullName"];
+        // }
+        // if($fullNameVariable){
+        //     header('location:../../passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                    
+        // }
     ?>
     
     <table align="center">
@@ -33,7 +41,13 @@
                                 <td>
                                     <input type="email" id="email" name="email" value=""
                                         placeholder="Please enter your email...  ">
-                                     
+                                         <?php
+                                            if(isset($_SESSION['emailErrorMsg'])){
+                                                echo "<p>".$_SESSION['emailErrorMsg']."</p>";
+                                            }
+                                        ?>
+                                        
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -44,6 +58,12 @@
                                 <td>
                                     <input type="password" id="password" name="password" value=""
                                         placeholder="Please enter your email...  ">
+                                        <?php
+                                            if(isset($_SESSION['passErrorMsg'])){
+                                                echo "<p>".$_SESSION['passErrorMsg']."</p>";
+                                            }
+                                        ?>
+                                        
                                 </td>
                             </tr>
                             
@@ -57,7 +77,6 @@
                                 <td> </td>
                                 <td></td>
                                 <td></td>
-                                
                                 <td><button type="submit"> Login </button>
                                 </td>
                             </tr>

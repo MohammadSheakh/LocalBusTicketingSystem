@@ -1,3 +1,7 @@
+<?php
+    if(isset($_COOKIE['status'])){
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,3 +188,10 @@
     </div>
 </body>
 </html>
+
+<?php
+	}
+	else {
+		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+	}
+?>

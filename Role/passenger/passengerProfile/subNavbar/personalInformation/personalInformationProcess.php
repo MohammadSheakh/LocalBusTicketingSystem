@@ -4,8 +4,11 @@
 
     //////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////// fullName
-    
-    $fullName_mode = $_GET['fullName_mode'];
+    $fullName_mode = '';
+    if(isset($_GET['fullName_mode'])){
+        $fullName_mode = $_GET['fullName_mode'];
+    }
+    //$fullName_mode = $_GET['fullName_mode'];
     
     // if($fullName_mode){
     //     $fullName_mode = $_GET['fullName_mode'];
@@ -23,11 +26,14 @@
     }
     //////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////// email
-    $email_mode = $_GET['email_mode'];
-    // if(isset($email_mode)){
-    //     $email_mode = $_GET['email_mode'];
-    //     preDbOperation("email_mode", $_GET['email_mode']);
-    // }
+    
+    $email_mode = '';
+    if(isset($_GET['email_mode'])){
+        $email_mode = $_GET['email_mode'];
+    }
+    
+    //$email_mode = $_GET['email_mode'];
+    
     $_SESSION["email_mode"] = $email_mode;
 
     if($_SESSION["email_mode"] == "edit"){
@@ -41,7 +47,13 @@
 
     //////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////// password
-    $password_mode = $_GET['password_mode'];
+    
+    $password_mode = '';
+    if(isset($_GET['password_mode'])){
+        $password_mode = $_GET['password_mode'];
+    }
+    
+    //$password_mode = $_GET['password_mode'];
     $_SESSION["password_mode"] = $password_mode;
 
     if($_SESSION["password_mode"] == "edit"){
@@ -49,6 +61,84 @@
     }
 
     if ($_SESSION["password_mode"] == "save"){
+        // ekhane db operation korte hobe .. 
+        dbOperation($_SESSION["field_name"]);
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////// fatherName
+    $fatherName_mode = '';
+    if(isset($_GET['fatherName_mode'])){
+        $fatherName_mode = $_GET['fatherName_mode'];
+    }
+
+    //$fatherName_mode = $_GET['fatherName_mode'];
+    $_SESSION["fatherName_mode"] = $fatherName_mode;
+
+    if($_SESSION["fatherName_mode"] == "edit"){
+        header('location:./personalInformation.php');
+    }
+
+    if ($_SESSION["fatherName_mode"] == "save"){
+        // ekhane db operation korte hobe .. 
+        dbOperation($_SESSION["field_name"]);
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////// dateOfBirth
+    $dateOfBirth_mode = '';
+    if(isset($_GET['dateOfBirth_mode'])){
+        $dateOfBirth_mode = $_GET['dateOfBirth_mode'];
+    }
+
+    //$dateOfBirth_mode = $_GET['dateOfBirth_mode'];
+    $_SESSION["dateOfBirth_mode"] = $dateOfBirth_mode;
+
+    if($_SESSION["dateOfBirth_mode"] == "edit"){
+        header('location:./personalInformation.php');
+    }
+
+    if ($_SESSION["dateOfBirth_mode"] == "save"){
+        // ekhane db operation korte hobe .. 
+        dbOperation($_SESSION["field_name"]);
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////// phone/mobile
+
+    $phoneNo_mode = '';
+    if(isset($_GET['phoneNo_mode'])){
+        $phoneNo_mode = $_GET['phoneNo_mode'];
+    }
+
+    //$passengerType_mode = $_GET['passengerType_mode'];
+    $_SESSION["phoneNo_mode"] = $phoneNo_mode;
+
+    if($_SESSION["phoneNo_mode"] == "edit"){
+        header('location:./personalInformation.php');
+    }
+
+    if ($_SESSION["phoneNo_mode"] == "save"){
+        // ekhane db operation korte hobe .. 
+        dbOperation($_SESSION["field_name"]);
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////// type
+
+    $type_mode = '';
+    if(isset($_GET['type_mode'])){
+        $type_mode = $_GET['type_mode'];
+    }
+
+    //$passengerType_mode = $_GET['passengerType_mode'];
+    $_SESSION["type_mode"] = $type_mode;
+
+    if($_SESSION["type_mode"] == "edit"){
+        header('location:./personalInformation.php');
+    }
+
+    if ($_SESSION["type_mode"] == "save"){
         // ekhane db operation korte hobe .. 
         dbOperation($_SESSION["field_name"]);
     }
@@ -77,7 +167,7 @@
             $flag = true;
             $fieldNameValue = sanitize($_POST[$fieldName]);
             if(empty($fieldNameValue)){
-                echo "please fill up the fullName form";
+                echo "please fill up the ".$fieldName." form";
                 $flag = false;
             }
             if($flag === true){

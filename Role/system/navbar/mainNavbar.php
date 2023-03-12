@@ -18,7 +18,12 @@ $flag = false;
                 <button> <a href="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/system/aboutUs/aboutUs.php">About Us</a> </button>
                 <button> <a href="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/system/contractUs/contractUs.php">Contract Us</a> </button>
                 <?php 
-                    if($_SESSION["fullName"]){
+
+                    $fullNameVariable = '';
+                    if(isset($_SESSION["fullName"])){
+                        $fullNameVariable = $_SESSION["fullName"];
+                    }
+                    if($fullNameVariable){
                         $flag = true;
                     }
                 ?>

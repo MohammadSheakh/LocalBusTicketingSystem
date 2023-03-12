@@ -1,4 +1,9 @@
 <!-- http://localhost/Local%20Bus%20Ticketing%20System/Role/passenger/ticketBooking/ticketBooking.html -->
+<?php
+    if(isset($_COOKIE['status'])){
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -368,3 +373,10 @@
 </body>
 
 </html>
+
+<?php
+	}
+	else {
+		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+	}
+?>

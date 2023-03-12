@@ -23,19 +23,23 @@
             // if input form is empty then show some specific error 
             
             if(empty($email)){
-                echo "please fill up the email form";
+                $_SESSION['emailErrorMsg'] = "please fill up the email form";
+                //echo "please fill up the email form";
                 $flag = false;
             }else{
                 // email er formatting thik ase kina check korbo 
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                    echo "This is not correct email format ";
+                    $_SESSION['emailErrorMsg'] = "This is not correct email format";
+                    //echo "This is not correct email format ";
                     $flag = false;
                 }
             }
             if(empty($password)){
-                echo "please fill up the password form";
+                $_SESSION['passErrorMsg'] = "please fill up the password form";
+                //echo "please fill up the password form";
                 $flag = false;
             }
+
 
             if($flag === true){
                 // Data base operation should be done here ..  
@@ -58,16 +62,30 @@
                     // data gula access korte pari 
 
                     // ekhon passenger Profile e niye jabo 
-                    header('location:../../passengerProfile/subNavbar/personalInformation/personalInformation.php');
-                    
-                    
+                    // if(isset($_SESSION["passenger_id"])){
+                        
+                        $_SESSION['status'] = true;
+                        setcookie('status', 'true', time()+3600, '/');
+                        
+                        header('location:../../passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                        
+                    // }else{
+                    //     echo "sorry";
+                    // }
                 }else{
-                    echo "we don't found a user ";
+                    // echo "problem 1";
+                    header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+                    
+                    
+                    // echo "we don't found a user ";
                 }
 
+            }else{
+                header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+                    
             }
         }else{
-            echo "404 Error !";
+        //echo "404 Error !";
         }
 
         function sanitize($data){
