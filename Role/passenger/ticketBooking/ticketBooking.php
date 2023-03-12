@@ -12,12 +12,12 @@
 
 <body>
 <?php
-    session_start();
+    // session_start();
     include '../database/dbConnect.php';
         include '../../system/navbar/mainNavbar.php';
         $companyName = "";
         $_SESSION["dbError"] = " " ;
-        $_SESSION["route"];
+        // $_SESSION["route"] = ;
         $flag = false;
         $masterFlag = false;
 
@@ -51,7 +51,12 @@
                                     <td>
                                         <!-- input form-->
                                         <?php 
-                                        echo ' <select name="startAreaName" id="startAreaName" value=" '.$_SESSION["startArea"] .'">'
+                                        $startAreaVariable = '';
+                                        if(isset($_SESSION["startArea"])){
+                                            $startAreaVariable = $_SESSION["startArea"];
+                                        }
+
+                                        echo ' <select name="startAreaName" id="startAreaName" value=" '.$startAreaVariable .'">'
                                         ?>
                                             <!-- area gula data base theke ashte hobe ... ei area gula admin save kore rakhbe .. database e -->
                                             <!-- lets pull all Area Name value from database  -->
@@ -96,7 +101,7 @@
                             </tr>
                             </form>
                             <tr>
-                                <td> <label for="area">Select a route</label> </td>
+                                <td> <label for="area">Available route</label> </td>
                                 <td>:</td>
                                 <td>
                                     <!-- input form-->
@@ -132,21 +137,26 @@
 
                                 <td>
                                     <?php 
-                                        echo "<h3>Available bus of route [ ".$_SESSION['routeId']." ] </h3>";
+
+                                        $routeIdVariable = '';
+                                        if(isset($_SESSION['routeId'])){
+                                            $routeIdVariable = $_SESSION['routeId'];
+                                        }
+                                        echo "<h3>Available bus of route [ ".$routeIdVariable." ] </h3>";
                                     ?>
 
                                     <?php 
-                                        $sql = "select companyName from `local_bus_ticketing_system`.`bus` where routeId = ".$_SESSION['routeId']." ";
+                                        $sql = "select companyName from `local_bus_ticketing_system`.`bus` where routeId = ".$routeIdVariable." ";
                                         //$_SESSION["sql"] = $sql;
                                         $result = mysqli_query($con, $sql);
                                         if($result){
                                             //$flag = false;
                                             
                                             while($row = mysqli_fetch_assoc($result)){
-                                                $companyName= $row['companyName'];
-                                                $_SESSION["companyName"] = $companyName;
+                                                $_SESSION["companyName"]= $row['companyName'];
                                                 
-                                                echo "<h4>Bus Company Name : <span><button>".$companyName."</button></span> </h4>";
+                                                
+                                                echo "<h4>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
                                                 $flag = true;
                                             }
                                             if($flag == false){
@@ -188,7 +198,11 @@
                                 <td>
                                     
                                     <?php 
-                                        echo ' <select name="destinationAreaName" id="destinationAreaName" value=" '.$_SESSION["destinationArea"] .'">'
+                                        $destArea = '';
+                                        if(isset($_SESSION["destinationArea"])){
+                                            $destArea = $_SESSION["destinationArea"];
+                                        }
+                                        echo ' <select name="destinationAreaName" id="destinationAreaName" value=" '.$destArea.'">'
                                         ?>
                                             
                                             <?php
@@ -257,7 +271,11 @@
                                                 <th></th>
                                             </tr> -->
                                         <?php 
-                                                $sql = "select scheduleId, busId, routeId, arrivalTime, departureTime, availableTotalSeat from `local_bus_ticketing_system`.`tripschedule` where scheduleId=".$_SESSION['scheduleId'];
+                                        $scheduledIdVariable = '';
+                                        if(isset($_SESSION["scheduleId"])){
+                                            $scheduledIdVariable = $_SESSION["scheduleId"];
+                                        }
+                                                $sql = "select scheduleId, busId, routeId, arrivalTime, departureTime, availableTotalSeat from `local_bus_ticketing_system`.`tripschedule` where scheduleId=".$scheduledIdVariable;
                                                 $_SESSION["sql"] = $sql;
                                                 $result = mysqli_query($con, $sql);
 
@@ -295,13 +313,9 @@
                                                         $_SESSION["arrivalTime"] = $arrivalTime;
                                                         $_SESSION["availableTotalSeat"] = $availableTotalSeat;
 
-                                                        // ekhane ki ami busID er maddhome bus table theke data ene dekhate parbo ?
-                                                        // lets try ...
-
-                                                        echo "routeID===================".$_SESSION["sql"];
-                                                        
+                                                        // flag er maddhome control korte hobe ...................................................... 
                                                     }
-                                                    echo "routeID===================".$_SESSION["sql"];
+                                                    //echo "routeID===after while loop 309================".$_SESSION["sql"];
                                                     echo "
                                                         <tr>
                                                             <td>".$_SESSION['routeId']."</td>
@@ -321,13 +335,14 @@
                                                         </tr>
                                                         ";
                                                 }else{
-                                                    echo "routeID===================".$_SESSION["sql"];
+                                                    //echo "routeID===================".$_SESSION["sql"];
+                                                    
                                                     $_SESSION["routeId"] = " ";
                                                     $_SESSION["busId"] = " ";
                                                     $_SESSION["departureTime"] = " ";
                                                     $_SESSION["arrivalTime"] = " ";
                                                     $_SESSION["availableTotalSeat"] = " ";
-                                                    die(mysqli_error($con));
+                                                    //die(mysqli_error($con));
                                                 }
                                         ?>
                                         

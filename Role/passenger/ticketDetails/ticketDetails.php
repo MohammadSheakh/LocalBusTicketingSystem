@@ -13,9 +13,12 @@
 <body>
     <!-- for main navbar  -->
     <?php
-    session_start();
+    // session_start();
     include '../database/dbConnect.php';
         include '../../system/navbar/mainNavbar.php';
+        
+        $masterFlag = false;
+                                    
     ?>
 
     <!--ticket booking form start here-->
@@ -152,6 +155,8 @@
                             <td>
                                 <fieldset>
                                     <!-- ---------------------------------------- -->
+                                    
+                                    
                                     <form action="./ticketDetailsProcess.php" novalidate method="post">
                                         <table>
 
@@ -179,9 +184,11 @@
                                                             </td>
                                                         </tr>
                                                             ';
+                                                            $masterFlag = true;
                                                         }
                                                         
                                                     }
+                                                    
                                                 }
                                                 else{
                                                     echo "sorry";
@@ -209,7 +216,7 @@
                                             $result = mysqli_query($con, $sqlForStartAreaIndex);
                                             if($result){
                                                 while($row = mysqli_fetch_assoc($result)){
-                                                    echo "-----------------".$row['areaIndex'];
+                                                    // echo "---------areaIndex--------".$row['areaIndex'];
                                                     $_SESSION["startAreaIndex"] = $row['areaIndex'];
                                                 }
                                             }else{
@@ -217,11 +224,12 @@
                                                 die(mysqli_error($con));
                                             }
                                             //$sqlForDestAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area` where routeId IN (select routeId from `local_bus_ticketing_system`.`area` where areaName="'.$_SESSION["destinationArea"].'")';
+                                            
                                             $sqlForDestAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area`where areaName="'.$_SESSION['destinationArea'].'" AND routeId="'.$_SESSION['routeId'].'"';
                                             $result2 = mysqli_query($con, $sqlForDestAreaIndex);
                                             if($result2){
-                                                while($row = mysqli_fetch_assoc($result)){
-                                                    echo "------------------".$row['areaIndex'];
+                                                while($row = mysqli_fetch_assoc($result2)){
+                                                    // echo "-----------destination index-------".$row['areaIndex'];
                                                     $_SESSION["destinationAreaIndex"] = $row['areaIndex'];
                                                 }
                                             }else{
@@ -230,14 +238,16 @@
                                             }
                                             
                                             //////////////////////////////////////////////////////////////////////////////////////
-                                            $sqlForCalculateDistance = 'select distanceFromPrevArea from `local_bus_ticketing_system`.`area` where ( areaIndex BETWEEN "'.$_SESSION["startAreaIndex"].'+1" AND "'.$_SESSION["destinationAreaIndex"].'") AND routeId='.$_SESSION['routeId'];
+                                            $skipStartAreaPreviousDistance = $_SESSION["startAreaIndex"]+1;
+                                            $sqlForCalculateDistance = 'select distanceFromPrevArea from `local_bus_ticketing_system`.`area` where ( areaIndex BETWEEN "'.$skipStartAreaPreviousDistance.'+1" AND "'.$_SESSION["destinationAreaIndex"].'") AND routeId='.$_SESSION['routeId'];
                                             $result3 = mysqli_query($con, $sqlForCalculateDistance);
                                             $_SESSION["distanceCalculation"] = 0;
                                             if($result3){
                                                 while($row = mysqli_fetch_assoc($result3)){
-                                                    //echo $row['distanceFromPrevArea'];
+                                                    // echo "Distance From Prev Area ->".$row['distanceFromPrevArea']." ->> ";
                                                     $_SESSION["distanceCalculation"] = $_SESSION["distanceCalculation"] + $row['distanceFromPrevArea'];
                                                 }
+                                                // echo $_SESSION["distanceCalculation"]
                                             }else{
                                                 echo "sorry";
                                                 die(mysqli_error($con));
@@ -252,7 +262,12 @@
 
                                                 </td>
                                                 <td>
-                                                <button type="submit">Submit</button>
+                                                    <?php 
+                                                    if($masterFlag){
+                                                        echo "<button type='submit'>Submit</button>";
+                                                    }
+                                                    ?>
+                                                
                                                 </td>
                                             </tr>
                                             
@@ -264,11 +279,16 @@
                                     <legend>Details seat plan</legend>
                                     <!-- <h5>You have selected A1, A2, A3 seat</h5> -->
                                     <?php
+                                        $seatCountVariable = 0;
+                                        if(isset($_SESSION['seatCount'])){
+                                            $seatCountVariable = $_SESSION['seatCount'];
+                                        }
+                                        $_SESSION['totalPrice'] = ($_SESSION["distanceCalculation"] * $_SESSION["perKmCost"]) * $seatCountVariable;
                                         echo "<p>Per kilometer price : ". $_SESSION["perKmCost"] ."Tk</p>
                                         <p>Total Distance : ".$_SESSION["distanceCalculation"]." kilometer</p>
-                                        <p>Total Seat : ".$_SESSION['seatCount']."</p>
-                                        <p>Total Price : (".$_SESSION["distanceCalculation"]." * ".$_SESSION["perKmCost"].") * ".$_SESSION['seatCount']." => 
-                                        ". ($_SESSION["distanceCalculation"] * $_SESSION["perKmCost"]) * $_SESSION['seatCount']. "
+                                        <p>Total Seat : ".$seatCountVariable."</p>
+                                        <p>Total Price : (".$_SESSION["distanceCalculation"]." * ".$_SESSION["perKmCost"].") * ".$seatCountVariable." => 
+                                        ".$_SESSION['totalPrice'] ."
                                         Taka</p>
                                         <p> Passenger Id :".$_SESSION['passenger_id']." </p>
                                         <p> Passenger Name :".$_SESSION['fullName']." </p>
@@ -280,9 +300,10 @@
                                     
                                     
 
-
+                                        
                                     <button> <a href="../confirmBooking/confirmBooking.php">Confirm Booking</a> </button>
-                                    <button>Cancel </button>
+                                    <button>Cancel </button> 
+                                    <!-- Cancel button e press korle .. ... total seat er session .. khali kore dite hobe ..   -->
                                 </fieldset>
                             </td>
 

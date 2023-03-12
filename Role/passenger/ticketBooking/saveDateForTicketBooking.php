@@ -40,13 +40,13 @@ session_start();
                 $result = mysqli_query($con, $sqlForScheduleId);
                 if($result){
                     while($row = mysqli_fetch_assoc($result)){
-                        $scheduleId = $row['scheduleId'];
+                        $_SESSION["scheduleId"] = $row['scheduleId'];
                         
                     }
                     echo "from here if block : ::: ".$_SESSION["sql"];
                     
                     
-                    $_SESSION["scheduleId"] = $scheduleId;
+                    //$_SESSION["scheduleId"] = $scheduleId;
                     
                     header('location: ./ticketBooking.php');
                 }else{

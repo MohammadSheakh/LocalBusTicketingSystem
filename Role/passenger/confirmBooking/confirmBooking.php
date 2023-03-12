@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php
-    session_start();
+    // session_start();
         include '../../system/navbar/mainNavbar.php';
     ?>
 
@@ -65,7 +65,7 @@
             </td><td>:</td>
             <td>
             <?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION["ticketSerial"]   ?? '';
                 ?> 
             </td>
         </tr>
@@ -75,7 +75,7 @@
             </td><td>:</td>
             <td>
             <?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION["startArea"]   ?? '';
                 ?> 
             </td>
         </tr>
@@ -85,7 +85,7 @@
             </td><td>:</td>
             <td>
             <?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION["destinationArea"]   ?? '';
                 ?> 
             </td>
         </tr>
@@ -95,7 +95,7 @@
             </td><td>:</td>
             <td>
             <?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    $_SESSION["companyName"]  ;
                 ?> 
             </td>
         </tr>
@@ -104,7 +104,7 @@
             Root No. 
             </td><td>:</td>
             <td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION["routeId"]   ?? '';
                 ?> </td>
         </tr>
         <tr>
@@ -112,14 +112,15 @@
             Vehicle Serial No. 
 
             </td><td>:</td><td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                ///////////////////////////////////////// eita database theke niye dekhate hobe .. 
+                    echo $_SESSION["busId"]   ?? '';
                 ?> </td>
         </tr>
         <tr>
             <td>
             Date And Time 
             </td><td>:</td><td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION["departureTime"]   ?? ''; // $_SESSION["arrivalTime"]
                 ?> </td>
         </tr>
         <tr>
@@ -128,7 +129,13 @@
             </td>
             <td>:</td>
             <td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    // if(isset($_SESSION["seatNoVarA1"])){
+                        
+                    // }
+                    echo $_SESSION["seatNoVarA1"]   ?? '';
+                    echo $_SESSION["seatNoVarA2"]   ?? '';
+                    echo $_SESSION["seatNoVarA3"]   ?? '';
+                    echo $_SESSION["seatNoVarA4"]   ?? '';
                 ?> </td>
         </tr>
         <tr>
@@ -137,14 +144,14 @@
             </td>
             <td>:</td>
             <td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION['seatCount']." seat"   ?? '';
                 ?> </td>
         </tr>
         <tr>
             <td>
                 Per kilometer price  
             </td><td>:</td><td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION["perKmCost"]." Tk"   ?? '';
                 ?> </td>
         </tr>
         <tr>
@@ -153,7 +160,7 @@
             </td>
             <td>:</td>
             <td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION["distanceCalculation"]." Km"    ?? '';
                 ?> </td>
         </tr>
         <tr>
@@ -162,12 +169,14 @@
             </td>
             <td>:</td>
             <td><?php 
-                    echo $_SESSION["fullName"]   ?? '';
+                    echo $_SESSION['totalPrice']." Tk"  ?? '';
                 ?> </td>
         </tr>
+        
     </table>
 
     <div align="center">
+        <h4>To Confirm Booking And Get Ticket Serial No. Please Payment First By Online Payment System</h4>
         <br>
         <button> <a href="../ticketBooking/ticketBooking.php">Go Back</a> </button>
         <button> <a href="../confirmBooking/confirmBooking.php">Make payment</a> </button>
