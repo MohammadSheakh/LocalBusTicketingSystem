@@ -20,33 +20,23 @@ function checkUserForLogin($email, $password){
     
     $stmt = $con -> prepare($sql);
     $stmt->bind_param("ss", $email,$password );
-    $stmt -> execute();  // true false return kore ..  
-    // successfully execute korle mysqli object return kore 
-    // select statement er khetre bolte hobe .. $stmt->get_result() // mysqli_result object return kore .. 
-    // er moddhe num_rows return kore 0 or 1 or multiple 
-
-    /*
-    die(var_dump($stmt->get_result()));
-    die(var_dump($stmt->get_result()->num_rows)); // object er property access korar jonno amra -> ei sign use kori 
-    */
-
-    // $email $password
-    // we want to execute the query
-    $result = mysqli_query($con, $sql);
-    // if(mysqli_num_rows($result) === 1) // then return true otherwise return false 
-    /////////////////$row = mysqli_fetch_assoc($result);
-    
-    //if($row > 0){
-    if($stmt->get_result()->num_rows > 0){     //  or === jodi 1 hoy ..  
-        // that means return true .. otherwise return false ..  
-        //echo " we found a user ";
-
-        $stmt->bind_result($passenger_id, $fullName, $email, $password, $gender, $type);
+    //$stmt -> execute();  // true false return kore ..  
+    // if ($stmt->error) {
+    //     echo "Error: " . $stmt->error;
+    // }
+    //$result = mysqli_query($con, $sql);
+    /////////////////// $stmt->get_result()->num_rows
+    if($stmt -> execute() > 0){     //  or === jodi 1 hoy ..  
         
+        $stmt->bind_result($passenger_id, $fullName, $email, $password, $gender, $type);
+
         $rows = array();
         while ($stmt->fetch()) {
             $rows[] = array('passenger_id' => $passenger_id, 'fullName' => $fullName, 'email' => $email, 'password' => $password, 'gender' => $gender, 'type' => $type);
         }
+        //echo "in num rows > 0";
+        var_dump($rows);
+        echo "after printing rows";
         $_SESSION['passenger_All_Details'] = $rows;
         $stmt->close(); // close the prepared statement
 

@@ -50,14 +50,18 @@ function showAllReview(){
 
     $stmt = $con -> prepare($sql);
     //$stmt->bind_param("ss",$name,$review);
-
-    if($stmt -> execute()){
+    
+    // $stmt -> execute();
+    // echo $stmt -> execute();
+    if($stmt -> execute() > 0){
         // ekhane jei value gula return korbe .. shegula array te save korbo ..  
         $stmt->bind_result($reviewId, $passengerId, $fullName, $review, $likeNumber, $dislikeNumber);
         $rows = array();
         while ($stmt->fetch()) {
+
             $rows[] = array('reviewId' => $reviewId, 'passengerId' => $passengerId, 'fullName' => $fullName, 'review' => $review, 'likeNumber' => $likeNumber, 'dislikeNumber' => $dislikeNumber);
         }
+        var_dump($rows);
         $_SESSION['all_reviews'] = $rows;
         $stmt->close(); // close the prepared statement
         //$mysqli->close(); // close the database connection

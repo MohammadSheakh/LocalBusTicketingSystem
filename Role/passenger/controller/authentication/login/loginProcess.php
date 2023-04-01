@@ -71,23 +71,49 @@
 
                 // user valid kina .. ekhane check korte hobe 
                 $flag = checkUserForLogin($email, $password);
-                echo "Flag".$flag;
-                if($flag){
+                
+                if($flag === true){
+                    //echo "Flag ->>>>>>>>>".$flag;
                     // er pore amra profile page e redirect kore dibo ..
                     $passenger_All_Details = $_SESSION['passenger_All_Details'];
                     // Loop through the array and display the data
+                    
+                    $passenger_id = '';
+                    $fullName = ''; 
+                    $email = ''; 
+                    $password = '';
+                    $gender = '';
+                    $type = '';
+                    //var_dump($passenger_All_Details) ;
                     foreach ($passenger_All_Details as $row) {
-                        $_SESSION["passenger_id"]= $row['passenger_id'];
-                        $_SESSION["fullName"]= $row['fullName']; // row theke data gula access kortesi 
-                        $_SESSION["email"]= $row['email']; // 'email' // eita hocche amar table er column field  
-                        $_SESSION["password"]= $row['password'];
-                        $_SESSION["gender"]= $row['gender'];
-                        $_SESSION["type"]= $row['type'];
+                        
+
+                        // may be age normal variable e save kore then session e add korte hobe 
+
+                        $passenger_id = $row['passenger_id'];
+                        $fullName = $row['fullName']; // row theke data gula access kortesi 
+                        $email = $row['email']; // 'email' // eita hocche amar table er column field  
+                        $password = $row['password'];
+                        $gender = $row['gender'];
+                        $type = $row['type'];
+
                     }
+
+
+                    $_SESSION["passenger_id"]= $passenger_id;
+                    $_SESSION["fullName"]= $fullName; // row theke data gula access kortesi 
+                    $_SESSION["email"]= $email; // 'email' // eita hocche amar table er column field  
+                    $_SESSION["password"]= $password;
+                    $_SESSION["gender"]= $gender;
+                    $_SESSION["type"]=  $type;
+
                     $_SESSION['status'] = true;
                     setcookie('status', 'true', time()+3600, '/');
                     $_SESSION['emailErrorMsg'] = '';
                     $_SESSION['passErrorMsg'] = '';
+                    
+                    
+                    //echo  "<<id >> ",$passenger_id;
                     header('location:../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                     
                 }else{

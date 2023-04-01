@@ -1,7 +1,8 @@
 <?php
      session_start();
-    include '../../../database/dbConnect.php';
-
+    // include '../../../database/dbConnect.php';
+    require '../../../../model/passengerProfile/subNavbar/personalInformation/passenger.php';
+    
     //////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////// fullName
     $fullName_mode = '';
@@ -18,7 +19,8 @@
     $_SESSION["fullName_mode"] = $fullName_mode;
 
     if($_SESSION["fullName_mode"] == "edit"){
-        header('location:./personalInformation.php');
+        
+        header('location: ../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
 
     if ($_SESSION["fullName_mode"] == "save"){
@@ -37,7 +39,7 @@
     $_SESSION["email_mode"] = $email_mode;
 
     if($_SESSION["email_mode"] == "edit"){
-        header('location:./personalInformation.php');
+        header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
 
     if ($_SESSION["email_mode"] == "save"){
@@ -57,7 +59,7 @@
     $_SESSION["password_mode"] = $password_mode;
 
     if($_SESSION["password_mode"] == "edit"){
-        header('location:./personalInformation.php');
+        header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
 
     if ($_SESSION["password_mode"] == "save"){
@@ -76,7 +78,7 @@
     $_SESSION["fatherName_mode"] = $fatherName_mode;
 
     if($_SESSION["fatherName_mode"] == "edit"){
-        header('location:./personalInformation.php');
+        header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
 
     if ($_SESSION["fatherName_mode"] == "save"){
@@ -95,7 +97,7 @@
     $_SESSION["dateOfBirth_mode"] = $dateOfBirth_mode;
 
     if($_SESSION["dateOfBirth_mode"] == "edit"){
-        header('location:./personalInformation.php');
+        header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
 
     if ($_SESSION["dateOfBirth_mode"] == "save"){
@@ -115,7 +117,7 @@
     $_SESSION["phoneNo_mode"] = $phoneNo_mode;
 
     if($_SESSION["phoneNo_mode"] == "edit"){
-        header('location:./personalInformation.php');
+        header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
 
     if ($_SESSION["phoneNo_mode"] == "save"){
@@ -135,12 +137,54 @@
     $_SESSION["type_mode"] = $type_mode;
 
     if($_SESSION["type_mode"] == "edit"){
-        header('location:./personalInformation.php');
+        header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
 
     if ($_SESSION["type_mode"] == "save"){
         // ekhane db operation korte hobe .. 
         dbOperation($_SESSION["field_name"]);
+    }
+
+    //////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////// type
+
+    $profilePicture_mode = '';
+    if(isset($_GET['profilePicture_mode'])){
+        $profilePicture_mode = $_GET['profilePicture_mode'];
+    }
+
+    //$passengerType_mode = $_GET['passengerType_mode'];
+    $_SESSION["profilePicture_mode"] = $profilePicture_mode;
+
+    if($_SESSION["profilePicture_mode"] == "edit"){
+        header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+    }
+
+    if ($_SESSION["profilePicture_mode"] == "save"){
+        // ekhane db operation korte hobe ..
+        
+        //dbOperation($_SESSION["field_name"]);
+        if($_SERVER['REQUEST_METHOD'] === "POST"){
+            $flag = true;
+            $fieldName = "profilePicture";
+            $fieldNameValue = $_POST["profilePicture"];
+            if(empty($fieldNameValue)){
+                echo "please select a image in ".$fieldName." form";
+                $flag = false;
+            }
+            if($flag === true){
+                $flag = updatePersonalInformation($fieldName, $fieldNameValue);
+                if($flag === true){
+                    $_SESSION[$fieldName] = $fieldNameValue;
+                    // echo $fieldName;
+                    // echo $fieldNameValue;
+                    header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                }else{
+                    //die(mysqli_error($con));
+                    // 😀 ashole ekhaneo session e error er message save kore front end e dekhabo 
+                }
+            }
+        }
     }
 
     //////////////////////////////////////////////////////////////////
@@ -151,7 +195,7 @@
         $_SESSION[$modeName] = $mode;
         if($_SESSION[$mode] == "edit"){
             echo $_SESSION[$mode];
-            header('location:./personalInformation.php');
+            header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
         }
         if($_SESSION[$mode] == "save")
         {
@@ -162,7 +206,7 @@
 
     /////////////////////////////////////////////////////////////////
     function dbOperation($fieldName){
-        include '../../../database/dbConnect.php';
+        // include '../../../database/dbConnect.php';
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
             $fieldNameValue = sanitize($_POST[$fieldName]);
@@ -171,14 +215,24 @@
                 $flag = false;
             }
             if($flag === true){
-                $sql = "update `local_bus_ticketing_system`.`passenger` set $fieldName='$fieldNameValue' where passenger_id=".$_SESSION['passenger_id'];
-                $result = mysqli_query($con, $sql);
-                if($result){
+                $flag = updatePersonalInformation($fieldName, $fieldNameValue);
+                if($flag === true){
                     $_SESSION[$fieldName] = $fieldNameValue;
-                    header('location:./personalInformation.php');
+                    // echo $fieldName;
+                    // echo $fieldNameValue;
+                    header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                 }else{
-                    die(mysqli_error($con));
+                    //die(mysqli_error($con));
+                    // 😀 ashole ekhaneo session e error er message save kore front end e dekhabo 
                 }
+                // $sql = "update `local_bus_ticketing_system`.`passenger` set $fieldName='$fieldNameValue' where passenger_id=".$_SESSION['passenger_id'];
+                // $result = mysqli_query($con, $sql);
+                // if($result){
+                //     $_SESSION[$fieldName] = $fieldNameValue;
+                //     header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                // }else{
+                //     die(mysqli_error($con));
+                // }
             }
         }
         // if($_SERVER['REQUEST_METHOD'] === "POST"){

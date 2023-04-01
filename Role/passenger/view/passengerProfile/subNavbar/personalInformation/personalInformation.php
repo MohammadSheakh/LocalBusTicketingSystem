@@ -19,14 +19,15 @@
 <?php
     //include_once("../../../authentication/session/session.php");
     
-    // session_start();
+     session_start();
+     
     //include './personalInformationProcess.php'; ///////////////// Process Page Include Done ...  
         // include '../../../database/dbConnect.php';
         include '../../../../view/system/navbar/mainNavbar.php';
     ?>
 
 <?php
-        include '../../ passengerProfile.php';
+        include '../../passengerProfile.php';
     ?>
 
     <!--ticket booking form start here-->
@@ -66,14 +67,14 @@
                                     if($fullNameModeVariable == "edit"){
                                         $_SESSION["field_name"] = "fullName";
                                         echo'
-                                            <form action ="./personalInformationProcess.php?fullName_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=save" method="post" novalidate >
                                             <input type="fullName" id="fullName" name="fullName" value= " '.$_SESSION["fullName"].' " placeholder="Enter your full name here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
                                         echo $_SESSION["fullName"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?fullName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                     ?>
                                     <?php
@@ -95,14 +96,14 @@
                                     
                                         $_SESSION["field_name"] = "email";
                                         echo'
-                                            <form action ="./personalInformationProcess.php?email_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?email_mode=save" method="post" novalidate >
                                             <input type="email" id="email" name="email" value= " '.$_SESSION["email"].' " placeholder="Enter your email here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
                                         echo $_SESSION["email"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?email_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?email_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
                                 <?php 
@@ -125,14 +126,14 @@
                                     
                                         $_SESSION["field_name"] = "password";
                                         echo'
-                                            <form action ="./personalInformationProcess.php?password_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?password_mode=save" method="post" novalidate >
                                             <input type="password" id="password" name="password" value= "'.$_SESSION["password"].'" placeholder="Enter your Password here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
                                         echo $_SESSION["password"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?password_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?password_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
                                 <?php 
@@ -158,14 +159,14 @@
                                     
                                         $_SESSION["field_name"] = "fatherName";
                                         echo'
-                                            <form action ="./personalInformationProcess.php?fatherName_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fatherName_mode=save" method="post" novalidate >
                                             <input type="text" id="fatherName" name="fatherName" value= "'.$_SESSION["fatherName"].'" placeholder="Enter your fathers name here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
                                         echo $_SESSION["fatherName"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?fatherName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fatherName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
                                 <?php 
@@ -192,14 +193,14 @@
                                     
                                         $_SESSION["field_name"] = "dateOfBirth";
                                         echo'
-                                            <form action ="./personalInformationProcess.php?dateOfBirth_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?dateOfBirth_mode=save" method="post" novalidate >
                                             <input type="date" id="dateOfBirth" name="dateOfBirth" value= "'.$_SESSION["dateOfBirth"].'" placeholder="Enter your date Of Birth here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
                                         echo $_SESSION["dateOfBirth"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?dateOfBirth_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?dateOfBirth_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
                                 <?php 
@@ -226,14 +227,14 @@
                                     
                                         $_SESSION["field_name"] = "phoneNo";
                                         echo'
-                                            <form action ="./personalInformationProcess.php?phoneNo_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?phoneNo_mode=save" method="post" novalidate >
                                             <input type="text" id="phoneNo" name="phoneNo" value= "'.$_SESSION["phoneNo"].'" placeholder="Enter your date Of Birth here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
                                         echo $_SESSION["phoneNo"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?phoneNo_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?phoneNo_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
                                 <?php 
@@ -268,7 +269,7 @@
                                     
                                         $_SESSION["field_name"] = "type";
                                         echo'
-                                            <form action ="./personalInformationProcess.php?type_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?type_mode=save" method="post" novalidate >
                                             <input type="radio" id="Working People" name="type" value= "Working People" >&nbsp;&nbsp; working people 
                                             <input type="radio" id="student" name="type" value= "student" >&nbsp;&nbsp; student '
                                         ;
@@ -276,15 +277,50 @@
                                         ';
                                     }else{
                                         echo $_SESSION["type"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="./personalInformationProcess.php?type_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?type_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
                                 <?php 
                                     echo "</form>";
                                 ?>
                                 </td>
-                                <!-- ///////////////////// -->
-                                
+                                <!-- ///////////////////////////// Image Upload Start////////// -->
+                                <td>
+                                    <p>Profile Picture Upload</p>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                <?php 
+                                $profilePictureModeVariable = '';
+                                if(isset($_SESSION["profilePicture_mode"])){
+                                    $profilePictureModeVariable = $_SESSION["profilePicture_mode"];
+                                }
+                                if(!isset($_SESSION["profilePicture"])){
+                                    $_SESSION["profilePicture"] = "";
+                                }
+
+                                if($profilePictureModeVariable == "edit"){
+                                    
+                                        $_SESSION["field_name"] = "profilePicture";
+                                        echo'
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?profilePicture_mode=save" method="post" novalidate >
+                                            <input type="file" id="profilePicture" name="profilePicture" value= "'.$_SESSION["profilePicture"].'">
+                                            '
+                                        ;
+                                        echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        ';
+                                    }else{
+                                        echo $_SESSION["profilePicture"]   ?? '';
+                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?profilePicture_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                    }
+                                ?>
+                                <?php 
+                                    echo "</form>";
+                                ?>
+                                </td>
+
+
+                                <!-- ///////////////////////////////// -->
                             </tr>
 
                             
