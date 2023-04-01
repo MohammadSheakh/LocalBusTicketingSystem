@@ -159,7 +159,7 @@
     if($_SESSION["profilePicture_mode"] == "edit"){
         header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
     }
-
+    
     if ($_SESSION["profilePicture_mode"] == "save"){
         // ekhane db operation korte hobe ..
         
@@ -168,6 +168,13 @@
             $flag = true;
             $fieldName = "profilePicture";
             $fieldNameValue = $_POST["profilePicture"];
+            $file = $_FILES['profilePicture']['tmp_name'];
+            $imgContent = addslashes(file_get_contents($file));
+            // $image_temp_location = $file['tmp_name'];
+            // $image_data = file_get_contents($image_temp_location);
+
+             $fieldNameValue = $imgContent;
+
             if(empty($fieldNameValue)){
                 echo "please select a image in ".$fieldName." form";
                 $flag = false;
@@ -215,13 +222,14 @@
                 $flag = false;
             }
             if($flag === true){
-                $flag = updatePersonalInformation($fieldName, $fieldNameValue);
+                $flag = updateImageInPersonalInformation($fieldName, $fieldNameValue);
                 if($flag === true){
                     $_SESSION[$fieldName] = $fieldNameValue;
                     // echo $fieldName;
                     // echo $fieldNameValue;
                     header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                 }else{
+                    header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                     //die(mysqli_error($con));
                     // 😀 ashole ekhaneo session e error er message save kore front end e dekhabo 
                 }

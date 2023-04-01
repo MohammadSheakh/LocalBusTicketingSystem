@@ -17,15 +17,22 @@
                                         <?php
                                         require '../../../../model/passengerProfile/subNavbar/personalInformation/passenger.php';
                                                 $flag = getProfilePicture($_SESSION["passenger_id"]);
+                                                $passengerImage = '';
                                                 if($flag === true){
+                                                    //$passenger_All_Image = $_SESSION["passenger_image"];
+                                                    // foreach ($passenger_All_Image as $row) {
+                                                    //     $passengerImage =  $row['passenger_image'];
+                                                    // }
+                                                    //$_SESSION["passenger_single_image"] = $passengerImage;
                                                     if(isset($_SESSION["passenger_image"])){
-                                                        echo $_SESSION["passenger_image"];
-                                                        echo "<img height='80px' src='data:image/jpeg;base64," . base64_encode($_SESSION["passenger_image"]) . "' alt='Image'>";
+                                                    
+
+                                                echo "<img height='80px' src='data:image/jpeg;base64," . base64_encode($_SESSION["passenger_image"]['passenger_image']) . "' alt='Image'>";
                                                     }else{
                                                         echo "session is not set";
                                                     }
                                                 }
-                                            ?>
+                                        ?>
                                     </td>
                                     <td>
                                     <?php 

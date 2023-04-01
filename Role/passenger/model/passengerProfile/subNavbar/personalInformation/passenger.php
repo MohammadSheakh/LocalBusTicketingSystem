@@ -29,18 +29,50 @@ function updatePersonalInformation($fieldName, $fieldNameValue){
     }
 }
 
+function updateImageInPersonalInformation($fieldName, $fieldNameValue){
+    $con = connect();
+    $sql = "update `local_bus_ticketing_system`.`passenger` set $fieldName= ? where passenger_id=?";//$_SESSION['passenger_id']
+    echo $fieldName;
+    echo $fieldNameValue;
+    $stmt = $con -> prepare($sql);
+    $stmt->bind_param("sb", $fieldNameValue, $_SESSION['passenger_id']);
+    // echo $fieldName;
+    // echo $fieldNameValue;
+    if($stmt->execute() > 0){ 
+        // because 1 return kore .. 
+        
+        $stmt->close();
+
+        return true;
+    }else{
+    //     echo $fieldName;
+    // echo $fieldNameValue;
+         return false; 
+    }
+}
+
 function getProfilePicture(){
     $con = connect();
     $sql = "select profilePicture from `local_bus_ticketing_system`.`passenger` where passenger_id=?";//$_SESSION['passenger_id']
     $stmt = $con -> prepare($sql);
     $stmt->bind_param("i", $_SESSION['passenger_id']);
-    if($stmt->execute()){
-        $stmt->bind_result($profilePicture);
-        $stmt->fetch();
-        $stmt->close();
-        echo $profilePicture;
-        $_SESSION["passenger_image"] = $profilePicture;
-        // return true;
+    if($stmt->execute() > 0){
+         $stmt->bind_result($profilePicture);
+        // $stmt->fetch();
+        // $stmt->close();
+
+        //$_SESSION["passenger_image"] = $profilePicture;
+
+        $rows = array();
+
+        while ($stmt->fetch()) {
+            $rows[] = array('passenger_image' => $profilePicture);
+        }
+        
+        
+        
+        $_SESSION["passenger_image"] = $rows[0];
+        return true;
     }else{
         return false;
     }
