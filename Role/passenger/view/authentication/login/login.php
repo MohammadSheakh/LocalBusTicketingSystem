@@ -10,7 +10,7 @@
 
 <body>
     <?php
-        include '../../../system/navbar/mainNavbar.php';
+        include '../../system/navbar/mainNavbar.php';
         // $fullNameVariable = '';
         // if(isset($_SESSION['fullName'])){
         //     $fullNameVariable = $_SESSION["fullName"];
@@ -19,6 +19,7 @@
         //     header('location:../../passengerProfile/subNavbar/personalInformation/personalInformation.php');
                     
         // }
+        session_start();
     ?>
     
     <table align="center">
@@ -30,7 +31,7 @@
                 <fieldset>
                     <legend>Login Form </legend>
                     <!-- ---------------------------------------- -->
-                    <form action="./loginProcess.php" method="post" novalidate>
+                    <form action="../../../controller/authentication/login/loginProcess.php" method="post" novalidate>
                         <table>
 
                             <tr>

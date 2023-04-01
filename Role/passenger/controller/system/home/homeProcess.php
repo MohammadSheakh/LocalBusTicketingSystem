@@ -9,7 +9,7 @@
 <body>
     <?php
     session_start();
-    include '../../passenger/database/dbConnect.php';
+    // include '../../passenger/database/dbConnect.php';
 
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
@@ -30,19 +30,18 @@
             }
         
             if($flag === true){
-                // database e data create korbo ........................... 
-                // write insert query
-                $sql = "insert into `local_bus_ticketing_system`.`review`(passengerId, fullName, review) values('".$_SESSION['passenger_id']."', '$name','$review')";
+                
+                //$sql = "insert into `local_bus_ticketing_system`.`review`(passengerId, fullName, review) values('".$_SESSION['passenger_id']."', '$name','$review')";
                     
-                // to execute this query 
-                $result = mysqli_query($con, $sql); // connection and query variable 
-                // this method will allow us to execute this query
-                if($result){
+                $flag = insertAReview($name, $review);
+                
+                if($flag === true){
                     //echo $name.$review;
                     header('location: ./home.php');
                 }else{
                     // error 
                     die(mysqli_error($con));
+                    // 😀 home ei return korbo .. but error dekhabo session er maddhome front end e 
                 }
             }
         }else{

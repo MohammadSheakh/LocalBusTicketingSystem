@@ -30,7 +30,8 @@
             </tr>
         </table> -->
         <?php
-        include '../../passenger/database/dbConnect.php';
+        // include '../../passenger/database/dbConnect.php';
+        require '../../../model/system/home/review.php';
         include '../navbar/mainNavbar.php';
     ?>
         <!--navbar section end here -->
@@ -176,16 +177,21 @@
 
         <tr>
             <?php 
-                $sqlAgain = "select reviewId, passengerId, fullName, review, likeNumber, dislikeNumber from `local_bus_ticketing_system`.`review`";
-                $resultAgain = mysqli_query($con, $sqlAgain);
-                if($resultAgain){
-                    while($rowAgain = mysqli_fetch_assoc($resultAgain)){
+            // showAllReview
+                $flag = showAllReview();
+                if($flag === true){
+                    // shob gula review array theke niye dekhabo 
+                    $all_reviews = $_SESSION['all_reviews'];
+                    // Loop through the array and display the data
+                    foreach ($all_reviews as $rowAgain) {
+
                         $reviewId= $rowAgain['reviewId'];
                         $passengerId= $rowAgain['passengerId'];
                         $fullName= $rowAgain['fullName'];
                         $review= $rowAgain['review'];
                         $likeNumber= $rowAgain['likeNumber'];
                         $dislikeNumber= $rowAgain['dislikeNumber'];
+                        
                         echo "
                         <td>
                         <h5>".$fullName."</h5>
@@ -207,7 +213,11 @@
                     </td>
                         ";
                     }
+                }else{
+                    /// kono review e kichui dekhabo na .. 
+                    echo "No review Found !";
                 }
+                
             ?>
             
         </tr>

@@ -10,7 +10,7 @@
     
     <?php
     // session_start();
-        include '../../../system/navbar/mainNavbar.php';
+    include '../../system/navbar/mainNavbar.php';
     ?>
     
     <form action="registrationProcess.php" novalidate method="post" >
@@ -27,7 +27,7 @@
                 <fieldset>
                     <legend>Registration Form </legend>
                     <!-- ---------------------------------------- -->
-                    <form action="./registrationProcess.php" novalidate>
+                    <form action="../../../controller/authentication/registration/registrationProcess.php" novalidate>
                         <table>
                         
                             <tr>

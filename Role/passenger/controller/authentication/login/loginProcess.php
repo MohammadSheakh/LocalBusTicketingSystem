@@ -10,17 +10,18 @@
 
     <?php
         session_start();
-        include '../../database/dbConnect.php';
-
+        //include '../../database/dbConnect.php';
+        require '../../../model/authentication/passenger.php';
+        $flag = true;
         if($_SERVER['REQUEST_METHOD'] === "POST"){
-            $flag = true;
+            // $flag = true;
             
             
             // Account Information 
             $email = sanitize($_POST['email']);
             $password = sanitize($_POST['password']);
             
-            $rememberMe = $_POST['rememberMe'];
+            //$rememberMe = $_POST['rememberMe'];
 
             if(isset($_POST['rememberMe'])){
                 setcookie('status', 'true', time()+86400, '/');
@@ -30,13 +31,13 @@
             
             if(empty($email)){
                 $_SESSION['emailErrorMsg'] = "please fill up the email form";
-                //echo "please fill up the email form";
+                echo "please fill up the email form";
                 $flag = false;
             }else{
                 // email er formatting thik ase kina check korbo 
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                     $_SESSION['emailErrorMsg'] = "This is not correct email format";
-                    //echo "This is not correct email format ";
+                    echo "This is not correct email format ";
                     $flag = false;
                 }
             }
@@ -55,57 +56,54 @@
                 if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
                     $_SESSION['passErrorMsg'] = 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
                     $flag = false;
-                    //echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+                    echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
                 }else{
-                    $_SESSION['passErrorMsg'] ='Login credentials is wrong.';
-                    $flag = false; /////////////////////////// 
+                    //$_SESSION['passErrorMsg'] ='Login credentials is wrong.';
+                    //echo "flag from else";
+                    //$flag = false; /////////////////////////// 
                 }
             }
 
 
 
 
-            if($flag === true){
-                // Data base operation should be done here ..  
-                $sql = "Select * from `local_bus_ticketing_system`.`passenger` WHERE  email='$email' AND password='$password' ";
-                // $email $password
-                // we want to execute the query
-                $result = mysqli_query($con, $sql);
-                $row = mysqli_fetch_assoc($result);
-                if($row > 0){
-                    //echo " we found a user ";
-                    $_SESSION["passenger_id"]= $row['passenger_id'];
-                    $_SESSION["fullName"]= $row['fullName']; // row theke data gula access kortesi 
-                    $_SESSION["email"]= $row['email']; // 'email' // eita hocche amar table er column field  
-                    $_SESSION["password"]= $row['password'];
-                    $_SESSION["gender"]= $row['gender'];
-                    $_SESSION["type"]= $row['type'];
+            if($flag){
+
+                // user valid kina .. ekhane check korte hobe 
+                $flag = checkUserForLogin($email, $password);
+                echo "Flag".$flag;
+                if($flag){
+                    // er pore amra profile page e redirect kore dibo ..
+                    $passenger_All_Details = $_SESSION['passenger_All_Details'];
+                    // Loop through the array and display the data
+                    foreach ($passenger_All_Details as $row) {
+                        $_SESSION["passenger_id"]= $row['passenger_id'];
+                        $_SESSION["fullName"]= $row['fullName']; // row theke data gula access kortesi 
+                        $_SESSION["email"]= $row['email']; // 'email' // eita hocche amar table er column field  
+                        $_SESSION["password"]= $row['password'];
+                        $_SESSION["gender"]= $row['gender'];
+                        $_SESSION["type"]= $row['type'];
+                    }
+                    $_SESSION['status'] = true;
+                    setcookie('status', 'true', time()+3600, '/');
+                    $_SESSION['emailErrorMsg'] = '';
+                    $_SESSION['passErrorMsg'] = '';
+                    header('location:../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                     
-
-                    // 😀 ei data gula amra session er moddhe rekhe dibo .. jeno amra ek page theke onno page e 
-                    // data gula access korte pari 
-
-                    // ekhon passenger Profile e niye jabo 
-                    // if(isset($_SESSION["passenger_id"])){
-                        
-                        $_SESSION['status'] = true;
-                        setcookie('status', 'true', time()+3600, '/');
-                        
-                        header('location:../../passengerProfile/subNavbar/personalInformation/personalInformation.php');
-                        
-                    // }else{
-                    //     echo "sorry";
-                    // }
                 }else{
-                    // echo "problem 1";
-                    header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+                    // login page e redirect korbo .. error message shoho 
                     
-                    
-                    // echo "we don't found a user ";
+                    header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
+        
                 }
 
+                // $sql = "Select * from `local_bus_ticketing_system`.`passenger` WHERE  email='$email' AND password='$password' ";
+                
+
             }else{
-                header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+                echo "flag : $flag " ;
+                echo "whats up";
+                // header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
                     
             }
         }else{

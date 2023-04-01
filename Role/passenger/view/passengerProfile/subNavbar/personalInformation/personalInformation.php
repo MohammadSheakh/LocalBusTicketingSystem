@@ -21,12 +21,12 @@
     
     // session_start();
     //include './personalInformationProcess.php'; ///////////////// Process Page Include Done ...  
-        include '../../../database/dbConnect.php';
-        include '../../../../system/navbar/mainNavbar.php';
+        // include '../../../database/dbConnect.php';
+        include '../../../../view/system/navbar/mainNavbar.php';
     ?>
 
 <?php
-        include '../../passengerProfile.php';
+        include '../../ passengerProfile.php';
     ?>
 
     <!--ticket booking form start here-->
