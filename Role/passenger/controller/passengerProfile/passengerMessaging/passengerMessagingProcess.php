@@ -88,61 +88,54 @@
                     }
                     //////////////////////////////////////////////////////
                     // ekhane amra message table e entry dibo ... 
-                    $sql = "insert into `local_bus_ticketing_system`.`message`(senderEmail, receiverEmail, conversationId, message) values('".$_SESSION["email"]."', '".$receiverEmail."','".$conversation_id."','".$message."')";
-                    $result = mysqli_query($con, $sql);
-                    if($result){
-                        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php');
-                        //////////////////// Submission done 
+                    $flag = entryToMessageTable($receiverEmail, $conversation_id, $message);
+                    if($flag === true){
+                        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                     }else{
                         echo "we don't found a conductor with given email address";
                         header('location: ./passengerMessaging.php');
                         die(mysqli_error($con));
                     }
+                    //😀///////////////////////////////////////////
+                    // $sql = "insert into `local_bus_ticketing_system`.`message`(senderEmail, receiverEmail, conversationId, message) values('".$_SESSION["email"]."', '".$receiverEmail."','".$conversation_id."','".$message."')";
+                    // $result = mysqli_query($con, $sql);
+                    // if($result){
+                    //     header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                    //     //////////////////// Submission done 
+                    // }else{
+                    //     echo "we don't found a conductor with given email address";
+                    //     header('location: ./passengerMessaging.php');
+                    //     die(mysqli_error($con));
+                    // }
+                    //😀///////////////////////////////////////////
                 }
                 
                 if($conversationExistFlag){
                     //////////////////////////////////////////////////////
                     // ekhane amra message table e entry dibo ... 
-                    $sql = "insert into `local_bus_ticketing_system`.`message`(senderEmail, receiverEmail, conversationId, message) values('".$_SESSION["email"]."', '".$receiverEmail."','".$conversation_id."','".$message."')";
-                    $result = mysqli_query($con, $sql);
-                    if($result){
-                        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php');
-                    //////////////////// Submission done 
+                    $flag = entryToMessageTable($receiverEmail, $conversation_id, $message);
+                    if($flag === true){
+                        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                     }else{
                         echo "we don't found a conductor with given email address";
                         header('location: ./passengerMessaging.php');
                         die(mysqli_error($con));
                     }
-                    ///////////////////////////////////////////////////////
+
+
+                    //😀/////////////////////////////////////////////////////////
+                    // $sql = "insert into `local_bus_ticketing_system`.`message`(senderEmail, receiverEmail, conversationId, message) values('".$_SESSION["email"]."', '".$receiverEmail."','".$conversation_id."','".$message."')";
+                    // $result = mysqli_query($con, $sql);
+                    // if($result){
+                    //     header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                    // //////////////////// Submission done 
+                    // }else{
+                    //     echo "we don't found a conductor with given email address";
+                    //     header('location: ./passengerMessaging.php');
+                    //     die(mysqli_error($con));
+                    // }
+                    //😀/////////////////////////////////////////////////////
                 }
-
-                
-                // //////////////////////////////////////////////////// ekhon query kore amra conversation id ta ber kore niye ashbo... 
-                // $conversation_id = '';
-                // $sql = "select conversation_id from `local_bus_ticketing_system`.`conversation` where participantEmail='".$participant_email."' OR participantEmail='".$participant_email2."'";
-                // $result = mysqli_query($con, $sql); 
-                // if($result){
-                //     while($row = mysqli_fetch_assoc($result)){
-                //         $conversation_id= $row['conversation_id'];
-                //     }
-                // }else{
-                //     // error 
-                //     die(mysqli_error($con));
-                // }
-                //////////////////////////////////////////////////////
-                // ekhane amra message table e entry dibo ... 
-        //         $sql = "insert into `local_bus_ticketing_system`.`message`(senderEmail, receiverEmail, conversationId, message) values('".$_SESSION["email"]."', '".$receiverEmail."','".$conversation_id."','".$message."')";
-        //         $result = mysqli_query($con, $sql);
-        //         if($result){
-        //             header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php');
-        //  //////////////////// Submission done 
-        //         }else{
-        //             echo "we don't found a conductor with given email address";
-        //             header('location: ./passengerMessaging.php');
-        //             die(mysqli_error($con));
-        //         }
-        //         ///////////////////////////////////////////////////////
-
             }
         }else{
             // ekta error set kore dite hobe 

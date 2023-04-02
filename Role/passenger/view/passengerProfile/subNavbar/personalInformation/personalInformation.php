@@ -24,6 +24,8 @@
     //include './personalInformationProcess.php'; ///////////////// Process Page Include Done ...  
         // include '../../../database/dbConnect.php';
         include '../../../../view/system/navbar/mainNavbar.php';
+
+        require '../../../../model/passengerProfile/notification/notification.php';
     ?>
 
 <?php
@@ -303,14 +305,15 @@
                                     
                                         $_SESSION["field_name"] = "profilePicture";
                                         echo'
-                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?profilePicture_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?profilePicture_mode=save" method="post" novalidate enctype="multipart/form-data">
                                             <input type="file" id="profilePicture" name="profilePicture" value= "'.$_SESSION["profilePicture"].'">
                                             '
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["profilePicture"]   ?? '';
+                                        // echo $_SESSION["profilePicture"]   ?? '';
+                                        // ekhane chobi dekhate hobe picchi kore 
                                         echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?profilePicture_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>

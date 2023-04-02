@@ -167,7 +167,7 @@
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
             $fieldName = "profilePicture";
-            $fieldNameValue = $_POST["profilePicture"];
+            $fieldNameValue = $_FILES["profilePicture"];
             $file = $_FILES['profilePicture']['tmp_name'];
             $imgContent = addslashes(file_get_contents($file));
             // $image_temp_location = $file['tmp_name'];
@@ -201,7 +201,7 @@
 
         $_SESSION[$modeName] = $mode;
         if($_SESSION[$mode] == "edit"){
-            echo $_SESSION[$mode];
+            //echo $_SESSION[$mode];
             header('location:../../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
         }
         if($_SESSION[$mode] == "save")

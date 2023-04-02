@@ -24,10 +24,12 @@
                                                     //     $passengerImage =  $row['passenger_image'];
                                                     // }
                                                     //$_SESSION["passenger_single_image"] = $passengerImage;
+                                                    $image_data = base64_decode($_SESSION["passenger_image"]['passenger_image']);
                                                     if(isset($_SESSION["passenger_image"])){
-                                                    
-
-                                                echo "<img height='80px' src='data:image/jpeg;base64," . base64_encode($_SESSION["passenger_image"]['passenger_image']) . "' alt='Image'>";
+                                                        // header("Content-type: image/jpeg");
+                                                        echo " <img src='data:image/jpeg;base64,".base64_encode($_SESSION["passenger_image"]['passenger_image'])."' height='100' width='100'> "; // alt='Image'
+                                                        //echo $_SESSION["passenger_image"]['passenger_image'];
+                                                //echo "<img height='80px' src='data:image/jpeg;base64," . base64_encode($_SESSION["passenger_image"]['passenger_image']) . "' alt='Image'>";
                                                     }else{
                                                         echo "session is not set";
                                                     }

@@ -35,7 +35,7 @@ function updateImageInPersonalInformation($fieldName, $fieldNameValue){
     echo $fieldName;
     echo $fieldNameValue;
     $stmt = $con -> prepare($sql);
-    $stmt->bind_param("sb", $fieldNameValue, $_SESSION['passenger_id']);
+    $stmt->bind_param("si", $fieldNameValue, $_SESSION['passenger_id']);// 😀😀
     // echo $fieldName;
     // echo $fieldNameValue;
     if($stmt->execute() > 0){ 
@@ -72,7 +72,9 @@ function getProfilePicture(){
         
         
         $_SESSION["passenger_image"] = $rows[0];
-        return true;
+        //echo "from database";
+        //var_dump($rows[0]['passenger_image']);
+         return true;
     }else{
         return false;
     }
