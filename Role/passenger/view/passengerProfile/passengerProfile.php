@@ -25,6 +25,7 @@
                                                     // }
                                                     //$_SESSION["passenger_single_image"] = $passengerImage;
                                                     $image_data = base64_decode($_SESSION["passenger_image"]['passenger_image']);
+                                                    echo $image_data;
                                                     if(isset($_SESSION["passenger_image"])){
                                                         // header("Content-type: image/jpeg");
                                                         echo " <img src='data:image/jpeg;base64,".base64_encode($_SESSION["passenger_image"]['passenger_image'])."' height='100' width='100'> "; // alt='Image'

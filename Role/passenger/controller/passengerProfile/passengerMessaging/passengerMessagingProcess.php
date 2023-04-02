@@ -5,9 +5,6 @@
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
 
-            
-            
-
             // Account Information 
             $receiverEmail = sanitize($_POST['receiverEmail']);
             $message = sanitize($_POST['message']);
@@ -88,26 +85,16 @@
                     }
                     //////////////////////////////////////////////////////
                     // ekhane amra message table e entry dibo ... 
-                    $flag = entryToMessageTable($receiverEmail, $conversation_id, $message);
-                    if($flag === true){
-                        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                    $sql = "insert into `local_bus_ticketing_system`.`message`(senderEmail, receiverEmail, conversationId, message) values('".$_SESSION["email"]."', '".$receiverEmail."','".$conversation_id."','".$message."')";
+                    $result = mysqli_query($con, $sql);
+                    if($result){
+                        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                        //////////////////// Submission done 
                     }else{
                         echo "we don't found a conductor with given email address";
                         header('location: ./passengerMessaging.php');
                         die(mysqli_error($con));
                     }
-                    //😀///////////////////////////////////////////
-                    // $sql = "insert into `local_bus_ticketing_system`.`message`(senderEmail, receiverEmail, conversationId, message) values('".$_SESSION["email"]."', '".$receiverEmail."','".$conversation_id."','".$message."')";
-                    // $result = mysqli_query($con, $sql);
-                    // if($result){
-                    //     header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/subNavbar/personalInformation/personalInformation.php');
-                    //     //////////////////// Submission done 
-                    // }else{
-                    //     echo "we don't found a conductor with given email address";
-                    //     header('location: ./passengerMessaging.php');
-                    //     die(mysqli_error($con));
-                    // }
-                    //😀///////////////////////////////////////////
                 }
                 
                 if($conversationExistFlag){
@@ -134,7 +121,7 @@
                     //     header('location: ./passengerMessaging.php');
                     //     die(mysqli_error($con));
                     // }
-                    //😀/////////////////////////////////////////////////////
+                    ///////////////////////////////////////////////////////
                 }
             }
         }else{

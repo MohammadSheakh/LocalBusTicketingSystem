@@ -2,8 +2,31 @@
 
 
 // conversation create korte hobe ...  
+function checkConversationAlreadyExistOrNot($participant_email,$participant_email2){
+    $con = connectAgain();
+    $sql = "select conversation_id from `local_bus_ticketing_system`.`conversation` where participantEmail=? OR participantEmail=?";
+    $stmt = $con -> prepare($sql);   
+    $stmt->bind_param("ss", $participant_email, $participant_email2);
+    if($stmt -> execute() > 0){
+        // true return korbo 
+        // ekta conversation id return kore .. sheta session e save kore onno page e send kore dibo 
+        $rows = array();
+        while ($stmt->fetch()) {
+
+            $rows[] = array('conversation_id' => $conversation_id);
+        }
+        return true;
+    }else{
+        // false return korbo ..
+        return false;
+    }
+}
 function createConversation(){
-    
+
+}
+
+function findConversationId(){
+
 }
 
 function entryToMessageTable($receiverEmail, $conversation_id, $message){
@@ -19,8 +42,9 @@ function entryToMessageTable($receiverEmail, $conversation_id, $message){
         // false return korbo ..
         return false;
     }
+}
 
-
+function showAllConversation(){
 
 }
 ?>
