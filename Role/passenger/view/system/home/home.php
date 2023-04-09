@@ -26,7 +26,7 @@
                 https://iconscout.com/icons/bus-booking
                 -->
                 <!-- vfv -->
-                <img width="300px" src="../image/home/bus.png" alt="">
+                <img class='bannerImage' width="300px" src="../image/home/bus.png" alt="">
             </td>
             <td> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -45,13 +45,13 @@
 
                     if($passengerIdVariable){
                         echo "
-                        <a class='bookNowBtn aBtn' href='../../passenger/ticketBooking/ticketBooking.php'
+                        <a class='bookNowBtn aBtn' href='../../ticketBooking/ticketBooking.php'
                 
                 >Book Now</a></button>
                         ";
                     }else{
                         echo "
-                        <a class='bookNowBtn aBtn' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php'
+                        <a class='bookNowBtn aBtn' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php'
                 
                 >Book Now</a></button>
                         ";
@@ -80,7 +80,6 @@
                     </span>
                     <h5 class="title">Easy Money Return Policy</h5>
                 </div>
-                
             </td>
             <td>
             <div class="feature">

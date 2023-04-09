@@ -1,5 +1,6 @@
 <?php
     if(isset($_COOKIE['status'])){
+    include '/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/model/passengerProfile/messaging/messaging.php';
 ?>
 
 <!-- passengerMessaging -->
@@ -11,12 +12,12 @@
     
     <style>
         .fieldSet{
-    border: 1px solid wheat;
-    border-radius: 7px;
-}
-.legend{
-    color :white;
-}
+            border: 1px solid wheat;
+            border-radius: 7px;
+        }
+        .legend{
+            color :white;
+        }
     </style>
 </head>
 <body>
@@ -76,35 +77,43 @@
                 $conversationExistFlag = false;
                 $conversations_id[] = [];
                 $conversationIds = "";
+
+                $flag = collectAllConversationIdIfExistForAPassenger();
+                if($flag === true){
+                    // shob gula review array theke niye dekhabo 
+                    $conversation_id_exist_from_database = $_SESSION['conversation_id_exist_from_database']; 
+                    // eta ekta array jetar moddhe conversation id gula ase .. amra ei conversation id er upor loop
+                    // kore kaj korte parbo .. 
+                    $conversationExistFlag = true;
+                }else{
+                    //================== jehetu conversation create kora nai .. tai amra conversation create korbo
+
+                    $conversationExistFlag = false;
+                }
+
+
+
                 //$sql = "select conversation_id from `local_bus_ticketing_system`.`conversation` where participantEmail='%".$_SESSION["email"]."%' OR participantEmail='%".$_SESSION["email"]."-% OR participantEmail='%-".$_SESSION["email"]."%'";
                 $sql = "SELECT conversation_id FROM local_bus_ticketing_system.conversation WHERE participantEmail LIKE '%".$_SESSION["email"]."%'";
-                // '%a@a.com%'
-                // echo $sql;
+                
                 $result = mysqli_query($con, $sql); 
-                // $_SESSION['con']
+                
                 if($result){
-                    // while($row = mysqli_fetch_assoc($result)){
-                    //     $conversations_id[] = $row['conversation_id'];
-                    //     $conversationExistFlag = true;
-                    // }
+                    
                     $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     $conversationIds = array_column($rows, 'conversation_id');
                     $conversationExistFlag = true;
                 }else{
                     // //======================================= jehetu conversation create kora nai .. tai amra conversation create korbo
                     $conversationExistFlag = false;
-                    //die(mysqli_error($con));
+                    
                 }
                 //============================ Conversation jehetu exist kore .. taile .. conversation exist er against e 
                 
                 
                     
                 if($conversationExistFlag){
-                    // foreach ($conversations_id as $conversationId) {
-                    //     // Print out each name value
-                    //     //echo $conversationId . "<br>";
-                    //     print_r(" ", $conversationId);
-                    // }
+                    
                     $actualReceiverEmail = '';
                     foreach ($conversationIds as $convId) {
                         //echo $convId . '<br>';
@@ -141,27 +150,6 @@
                                         <h6 align='left'>".$timeStamps."</h6>
                                     ";
                                 }
-                                //else if($senderEmail !== $_SESSION["email"]){
-                                //     //$receiverEmail !== $_SESSION["email"]
-                                //     //$actualReceiverEmail = $receiverEmail;
-                                    
-                                //     echo"
-                                //     <p align='right'>
-                                //     ".str_replace("@gmail.com", "", $receiverEmail)." :  ".$message." 
-                                //         </p>
-                                //         <h6>".$timeStamps."</h6>
-                                //     ";
-                                // }else if($senderEmail !== $_SESSION["email"]){
-                                //     //$receiverEmail === $_SESSION["email"]
-                                //     //$actualReceiverEmail = $senderEmail;
-                                    
-                                //     echo"
-                                //     <p align='right'>
-                                //     ".str_replace("@gmail.com", "", $receiverEmail)." :  ".$message." 
-                                //         </p>
-                                //         <h6>".$timeStamps."</h6>
-                                //     ";
-                                // }
                                 
                             }
                             echo "
@@ -200,47 +188,10 @@
             <tr>
 
             </tr>
-            
-                      
+
                     </fieldset>
                 </td>
             </tr>
-
-            <!-- <tr>
-                <td>
-                    <fieldset>
-                        <p>Raida Poribohon - Dhk-Metro-Ja20-42132-1</p>
-                        
-                        <p align="left">
-                        Raida Poribohon : Vai Koi Apni 
-                        </p>
-                        <p align="right">
-                        Mohammad Sheakh : Mia apne Koi ?  
-                        </p>
-                        <form novalidate action="./passengerMessagingProcess.php">
-                            <table>
-                                <tr>
-                                    <td >
-                                        Mohammad Sheakh 
-                                    </td>
-                                    <td> :</td>
-                                    <td>
-                                    <textarea type="textarea"> </textarea>
-                                    </td>
-                                    <td>
-                                        <button>post</button>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </form>
-                        <button><img src="../../../images/passengerNotifications/delete.png" alt=""></button>
-                        <button>Save as Archive</button>
-                    </fieldset>
-                </td>
-                
-            </tr> -->
-                        
 
                     </table>
                 </fieldset>
