@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./../login/login.css"/>
 </head>
 <body>
     
@@ -15,7 +16,7 @@
     
     <form action="registrationProcess.php" novalidate method="post" >
     <div align="center">
-    <h1>Registration</h1>
+    <h1  class="legend">Registration</h1>
     </div>    
 
     <table align="center">
@@ -24,19 +25,19 @@
                 <br>
                 <br>
                 <br>
-                <fieldset>
-                    <legend>Registration Form </legend>
+                <fieldset class="fieldSet">
+                    <legend class="legend">Registration Form </legend>
                     <!-- ---------------------------------------- -->
                     <form action="../../../controller/authentication/registration/registrationProcess.php" novalidate>
                         <table>
                         
                             <tr>
                                 <td>
-                                    <p>Full Name</p>
+                                    <p class="inputName">Full Name</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
-                                    <input type="fullName" id="fullName" name="fullName" value=""
+                                    <input class="textBox" type="fullName" id="fullName" name="fullName" value=""
                                         placeholder="Enter your full name here...  ">
                                         <?php
                                 if(isset($_SESSION['fullNameErrorMsg'])){
@@ -47,11 +48,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p>Email</p>
+                                    <p class="inputName">Email</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
-                                    <input type="email" id="email" name="email" value=""
+                                    <input class="textBox" type="email" id="email" name="email" value=""
                                         placeholder="Enter your email...  ">
                                          <?php
                     if(isset($_SESSION['emailErrorMsg'])){
@@ -62,11 +63,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p>Password</p>
+                                    <p class="inputName"> Password</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
-                                    <input type="password" id="password" name="password" value=""
+                                    <input class="textBox" type="password" id="password" name="password" value=""
                                         placeholder="Enter your password...  ">
                                         <?php
                     if(isset($_SESSION['passwordErrorMsg'])){
@@ -79,9 +80,9 @@
 
                 <tr>
                                 <td>
-                                    <p>Gender</p>
+                                    <p class="inputName">Gender</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                     
                                     <input type="radio" id="gender" value="male" name="gender"> 
@@ -115,9 +116,9 @@
                             </tr> -->
                             <tr>
                                 <td>
-                                    <p>Passenger Type</p>
+                                    <p class="inputName">Passenger Type</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                       <input type="radio" id="Working People" name="type" value="working people">
                                       <label for="passenger">Working People</label>
@@ -134,13 +135,13 @@
                             <tr align="center">
                                 <td></td>
                                 <td></td>
-                                <td><button type="submit"> Registration</button>
+                                <td><button  class="submitBtn" type="submit"> Registration</button>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td></td>
-                                <td> <a href="">Forgot Password</a></td>
+                                <td> <a class="decoration" href=""><span class="forgetPass">Forgot Password</span></a></td>
 
                             </tr>
 

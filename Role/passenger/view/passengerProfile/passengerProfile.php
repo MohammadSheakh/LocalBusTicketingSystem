@@ -1,10 +1,27 @@
     <!--ticket booking form start here-->
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./mainNavbar.css"/>
+    <style>
+        .fieldSet{
+            border: 1px solid wheat;
+            border-radius: 7px;
+        }   
+        .legend{
+            color :white;
+        }   
+    </style>
+</head>
+<body>
     <table align="center">
         <tr>
             <td>
-                <fieldset>
+                <fieldset class="fieldSet">
                     <table>
-                        <legend>Ticket / Trip Details Page</legend>
+                        <legend class="legend">Ticket / Trip Details Page</legend>
 
                         <!-- <div>
                             <h3>Rampura to Badda</h3>
@@ -25,7 +42,7 @@
                                                     // }
                                                     //$_SESSION["passenger_single_image"] = $passengerImage;
                                                     $image_data = base64_decode($_SESSION["passenger_image"]['passenger_image']);
-                                                    echo $image_data;
+                                                    // echo $image_data;
                                                     if(isset($_SESSION["passenger_image"])){
                                                         // header("Content-type: image/jpeg");
                                                         echo " <img src='data:image/jpeg;base64,".base64_encode($_SESSION["passenger_image"]['passenger_image'])."' height='100' width='100'> "; // alt='Image'
@@ -94,3 +111,4 @@
             </td>
         </tr>
     </table>
+<body>

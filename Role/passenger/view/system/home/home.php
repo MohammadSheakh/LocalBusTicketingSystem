@@ -5,30 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./home.css"/>
     <title>Document</title>
 </head>
 
 <body>
     <div align="center">
-        <!--navbar section start here -->
-        <!-- <table align="center">
-            <tr>
-                <td>
-                    <h5>Bus Ticketing System </h5>
-                </td>
-                <td>
-                    <h1> &nbsp;&nbsp;&nbsp;&nbsp;</h1>
-                </td>
-                <td>
-                    <button> <a href="../../ticketBooking/ticketBooking.html">Home</a> </button>
-                    <a href="#">Our Service</a>
-                    <button>About Us</button>
-                    <button>Contract Us</button>
-                    <button> <a href="../authentication/login/login.html">Login</a> </button>
-                    <button>Sign up</button>
-                </td>
-            </tr>
-        </table> -->
+        
         <?php
         // include '../../passenger/database/dbConnect.php';
         require '../../../model/system/home/review.php';
@@ -51,8 +34,8 @@
             </td>
             <td>
                 <!-- Welcoming Text And Book Now Button -->
-                <h1>Have A NICE TRIP WITH US !</h1>
-                <button>
+                <h1 class="title">Have A NICE TRIP WITH US !</h1>
+                <button class="bookNowBtn">
 
                 <?php 
                     $passengerIdVariable = '';
@@ -62,13 +45,13 @@
 
                     if($passengerIdVariable){
                         echo "
-                        <a href='../../passenger/ticketBooking/ticketBooking.php'
+                        <a class='bookNowBtn aBtn' href='../../passenger/ticketBooking/ticketBooking.php'
                 
                 >Book Now</a></button>
                         ";
                     }else{
                         echo "
-                        <a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php'
+                        <a class='bookNowBtn aBtn' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php'
                 
                 >Book Now</a></button>
                         ";
@@ -80,7 +63,7 @@
         </tr>
         <tr>
             <td>
-                <h3>Features</h3>
+                <h3 class="title">Features</h3>
             </td>
         </tr>
 
@@ -89,20 +72,45 @@
     </table>
     <!--Feature section start here -->
     <table align="center">
-        <tr>
+        <tr class="features">
             <td>
-                <h5>Easy Money Return Policy</h5>
+                <div class="feature">
+                    <span>
+                        <img src="../../images/home/feature/cashback.png" alt="">
+                    </span>
+                    <h5 class="title">Easy Money Return Policy</h5>
+                </div>
+                
             </td>
             <td>
-                <h5>Convenient Ticking Booking Process</h5>
+            <div class="feature">
+                    <span>
+                        <img src="../../images/home/feature/booking.png" alt="">
+                    </span>
+                    <h5 class="title">Convenient Ticking Booking Process</h5>
+                </div>
+                
             </td>
         </tr>
-        <tr>
+        <tr class="features">
             <td>
-                <h5>Emergency Balance </h5>
+            <div class="feature">
+                    <span>
+                        <img src="../../images/home/feature/wallet.png" alt="">
+                    </span>
+                    <h5 class="title">Get Emergency Balance Easily</h5>
+                </div>
+                
             </td>
             <td>
-                <h5>Carry Luggage Easily</h5>
+            <div class="feature">
+                    <span>
+                        <img src="../../images/home/feature/carrier.png" alt="">
+                    </span>
+                    
+                    <h5 class="title">Carry Luggage Easily</h5>
+                </div>
+                
             </td>
         </tr>
         <tr>
@@ -123,7 +131,7 @@
     <table align="center">
         <tr>
             <td>
-                <h3>Trending Trip</h3>
+                <h3 class="title">Trending Trip</h3>
             </td>
         </tr>
 
@@ -137,17 +145,17 @@
             </td>
             <td>
 
-                <h3>Dhaka to Rajshahi</h3>
-                <h6>Next level Poribohon</h6>
-                <button> <a href="../../passenger/confirmBooking/confirmBooking.php">Book Now</a> </button>
+                <h3 class="title">Dhaka to Rajshahi</h3>
+                <h6 class="title">Next level Poribohon</h6>
+                <button class='bookNowBtn'> <a class="aBtn" href="../../passenger/confirmBooking/confirmBooking.php">Book Now</a> </button>
             </td>
         </tr>
 
         <tr>
             <td>
-                <h3>Dhaka to Rajshahi</h3>
-                <h6>Next level Poribohon</h6>
-                <button><a href="../../passenger/confirmBooking/confirmBooking.php">Book Now</a></button>
+                <h3 class="title">Dhaka to Rajshahi</h3>
+                <h6 class="title">Next level Poribohon</h6>
+                <button class='bookNowBtn'><a class="aBtn" href="../../passenger/confirmBooking/confirmBooking.php">Book Now</a></button>
             </td>
             <td>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
@@ -171,7 +179,7 @@
     <table align="center">
         <tr>
             <td>
-                <h3>Review</h3>
+                <h3  class="title">Review</h3>
             </td>
         </tr>
 
@@ -183,6 +191,7 @@
                     // shob gula review array theke niye dekhabo 
                     $all_reviews = $_SESSION['all_reviews'];
                     // Loop through the array and display the data
+                    echo "<div class='allReview'>";
                     foreach ($all_reviews as $rowAgain) {
 
                         $reviewId= $rowAgain['reviewId'];
@@ -194,25 +203,30 @@
                         
                         echo "
                         <td>
-                        <h5>".$fullName."</h5>
-                        <pre>".$review."</pre>
-        
-                        <button> <a href='./updateLikeProcess.php?updateId=".$reviewId."'>
-                        <img src='../image/home/like.png' alt=''>
-                            <span>".$likeNumber."</span>
-                        </a>
+                        <div class='singleReview'>
+                            <h5 class='reviewTitle'>".$fullName."</h5>
+                            <pre class='reviewBody'>".$review."</pre>
+                            <div> 
+                                <button class='bookNowBtn'> <a class='innerBtn' href='./updateLikeProcess.php?updateId=".$reviewId."'>
+                                <img  class='innerBtn' src='../image/home/like.png' alt=''>
+                                    <span class='innerBtn'>".$likeNumber."</span>
+                                </a>
+                                    
+                                </button>
+                                <button class='bookNowBtn'>
+                                <a class='innerBtn' href='./updateDislikeProcess.php?updateId=".$reviewId."'> 
+                                <img class='innerBtn' src='../image/home/dislike.png' alt=''>
+                                    <span class='innerBtn'>".$dislikeNumber."</span>
+                                </a>
+                                    
+                                </button>
+                            </div>
                             
-                        </button>
-                        <button>
-                        <a href='./updateDislikeProcess.php?updateId=".$reviewId."'> 
-                        <img src='../image/home/dislike.png' alt=''>
-                            <span>".$dislikeNumber."</span>
-                        </a>
-                            
-                        </button>
+                        </div>
                     </td>
                         ";
                     }
+                    echo "</div>";
                 }else{
                     /// kono review e kichui dekhabo na .. 
                     echo "No review Found !";
@@ -234,7 +248,7 @@
     <table align="center">
         <tr>
             <td>
-                <h3>Write a review</h3>
+                <h3 class='title'>Write a review</h3>
             </td>
         </tr>
         <tr>
@@ -242,29 +256,29 @@
             <table align="center">
                 <tr>
                     <td>
-                        <fieldset>
-                            <legend>Review Form </legend>
+                        <fieldset class="fieldSet">
+                            <legend class="legend">Review Form </legend>
                             <!-- ---------------------------------------- -->
                             <form action="./homeProcess.php" novalidate method='post'>
                                 <table>
                                     <tr>
                                         <td>
-                                            <p>Name</p>
+                                            <p class="inputName">Name</p>
                                         </td>
-                                        <td>:</td>
+                                        <td class="inputName">:</td>
                                         <td>
-                                            <input type="text" id="name" name="name" value=""
+                                            <input  class="textBox" type="text" id="name" name="name" value=""
                                                 placeholder="Enter your name...  ">
                                              
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p>Review</p>
+                                            <p class="inputName">Review</p>
                                         </td>
-                                        <td>:</td>
+                                        <td class="inputName">:</td>
                                         <td>
-                                            <textarea type="textarea" id="review" name="review" value=""
+                                            <textarea class="textBox" type="textarea" id="review" name="review" value=""
                                                 placeholder="Please enter your Review...  "></textarea>
                                         </td>
                                     </tr>
@@ -275,7 +289,7 @@
                                         <td></td>
                                         <td></td>
 
-                                        <td><button type='submit'> Post
+                                        <td><button class="submitBtn" type='submit'> Post
                                             </button>
                                         </td>
                                     </tr>

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./login.css"/>
 </head>
 
 <body>
@@ -28,19 +29,19 @@
                 <br>
                 <br>
                 <br>
-                <fieldset>
-                    <legend>Login Form </legend>
+                <fieldset class="fieldSet">
+                    <legend class="legend">Login Form </legend>
                     <!-- ---------------------------------------- -->
                     <form action="../../../controller/authentication/login/loginProcess.php" method="post" novalidate>
                         <table>
 
                             <tr>
                                 <td>
-                                    <p>Email</p>
+                                    <p class="inputName">Email</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
-                                    <input type="email" id="email" name="email" value=""
+                                    <input class="textBox"  type="email" id="email" name="email" value=""
                                         placeholder="Please enter your email...  ">
                                          <?php
                                             if(isset($_SESSION['emailErrorMsg'])){
@@ -53,11 +54,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p>Password</p>
+                                    <p class="inputName">Password</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
-                                    <input type="password" id="password" name="password" value=""
+                                    <input  class="textBox" type="password" id="password" name="password" value=""
                                         placeholder="Please enter your email...  ">
                                         <?php
                                             if(isset($_SESSION['passErrorMsg'])){
@@ -71,20 +72,20 @@
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td><input type="checkbox" name="rememberMe" id="rememberMe" >Remember Me</input></td>
+                                <td><input  type="checkbox" name="rememberMe" id="rememberMe" > <span class="inputName">Remember Me</span> </input></td>
                             </tr>
                             <tr align="center">
                                 
                                 <td> </td>
                                 <td></td>
                                 <td></td>
-                                <td><button type="submit"> Login </button>
+                                <td><button class="submitBtn" type="submit" class="inputName"> Login </button>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td></td>
-                                <td> <a href="">Forgot Password</a></td>
+                                <td> <a class="decoration" href=""> <span class="forgetPass">Forgot Password</span> </a></td>
 
                             </tr>
 

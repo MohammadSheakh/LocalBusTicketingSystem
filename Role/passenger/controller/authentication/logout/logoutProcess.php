@@ -9,6 +9,6 @@
 
     setcookie('status', 'true', time()-86600, '/');
 
-    header('location: ../../../system/home/home.php');
+    header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/system/home/home.php');
 
 ?>

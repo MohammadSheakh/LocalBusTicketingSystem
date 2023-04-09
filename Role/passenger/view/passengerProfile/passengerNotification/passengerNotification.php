@@ -2,14 +2,44 @@
     if(isset($_COOKIE['status'])){
     
 ?>
-
-<fieldset>
-                    <legend>Notifications</legend>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .fieldSet{
+            border: 1px solid wheat;
+            border-radius: 7px;
+        }
+        .legend{
+            color :white;
+        }
+        .button{
+            
+            background: linear-gradient(to right, #06b6d4, #14b8a6 );/**50%, transparent 50%, transparent */
+            border: 2px solid #14b8a6;
+            color: black;
+            text-transform: uppercase;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .divInsideFieldSet{
+            background-color: teal !important;
+            padding: 3px;
+            border-radius:7px;
+        }       
+    </style>
+</head>
+<body>
+<fieldset class="fieldSet"> 
+                    <legend class="legend">Notifications</legend>
                     <table>
                         <tr>
                             <td>
-                            <button>Archived</button>
-                            <button>Recycle Bin</button>
+                            <button class="button">Archived</button>
+                            <button class="button">Recycle Bin</button>
                             </td>
                         </tr>
 
@@ -35,18 +65,18 @@
                                 $employeeId= $rowAgain['employeeId'];
                                 $companyName= $rowAgain['companyName'];
                                 $busRegistrationNo= $rowAgain['busRegistrationNo'];
-
-                                echo "<fieldset>";
-                                echo "<p>".$companyName."-".$busRegistrationNo."&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;".$notification."</p>";
+                                // <fieldset class='fieldSet'>
+                                echo " <div class='divInsideFieldSet'>";
+                                echo "<p  class='divInsideFieldSet'>".$companyName."-".$busRegistrationNo."&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;".$notification."</p>";
                                 // echo "notificationid".$notificationId;
                                 echo "
-                                <div align='right'>
-                                <button><a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=".$notificationId."'><img  src='../../../images/passengerNotifications/delete.png' ></a></button>
-                                        <button>Save as Archive</button>
+                                <div  class='divInsideFieldSet' align='right'>
+                                <button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=".$notificationId."'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button>
+                                        <button class='button'>Save as Archive</button>
                                 </div>
-                                    
                                 ";
-                                echo "</fieldset><br>";
+                                echo "</div><br>";
+                                // </fieldset>
                             }
                         }
 

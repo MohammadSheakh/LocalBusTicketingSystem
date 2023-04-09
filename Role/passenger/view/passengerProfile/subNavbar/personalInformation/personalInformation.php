@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./personalInformation.css"/>
 </head>
 
 <body>
@@ -51,15 +52,15 @@
             <table align="center">
         <tr>
             <td>
-                <fieldset>
-                    <legend>Personal Information </legend>
+                <fieldset class="fieldSet">
+                    <legend  class="legend">Personal Information </legend>
                     <!-- ---------------------------------------- -->
-                        <table>
-                            <tr>
-                                <td>
-                                    <p>Full Name</p>
+                        <table >
+                            <tr >
+                                <td >
+                                    <p  class="inputName">Full Name</p>
                                 </td>
-                                <td>:</td>
+                                <td  class="inputName">:</td>
                                 <td>
                                 <?php 
                                     $fullNameModeVariable = '';
@@ -69,14 +70,14 @@
                                     if($fullNameModeVariable == "edit"){
                                         $_SESSION["field_name"] = "fullName";
                                         echo'
-                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=save" method="post" novalidate >
-                                            <input type="fullName" id="fullName" name="fullName" value= " '.$_SESSION["fullName"].' " placeholder="Enter your full name here...">&nbsp;&nbsp;'
+                                            <form    action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=save" method="post" novalidate >
+                                            <input class="textBox" type="fullName" id="fullName" name="fullName" value= " '.$_SESSION["fullName"].' " placeholder="Enter your full name here...">&nbsp;&nbsp;'
                                         ;
-                                        echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        echo '<span><button class="submitBtn" type="submit"><img class="submitBtn" src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["fullName"]   ?? '';
-                                        echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
+                                        echo '<span class="text">'.$_SESSION["fullName"].'</span>'    ?? '';
+                                        echo '&nbsp;&nbsp;<span><button class="submitBtn"><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=edit"><img class="submitBtn" src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                     ?>
                                     <?php
@@ -85,9 +86,9 @@
                                 </td>
                                 <!-- ///////////////////// -->
                                 <td>
-                                    <p>Email</p>
+                                    <p class="inputName">Email</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                 <?php 
                                 $emailModeVariable = '';
@@ -99,12 +100,13 @@
                                         $_SESSION["field_name"] = "email";
                                         echo'
                                             <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?email_mode=save" method="post" novalidate >
-                                            <input type="email" id="email" name="email" value= " '.$_SESSION["email"].' " placeholder="Enter your email here...">&nbsp;&nbsp;'
+                                            <input  class="textBox"  type="email" id="email" name="email" value= " '.$_SESSION["email"].' " placeholder="Enter your email here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["email"]   ?? '';
+                                        echo '<span class="text">'.$_SESSION["email"].'</span>'    ?? '';
+                                        // echo $_SESSION["email"]   ?? '';
                                         echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?email_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
@@ -115,9 +117,9 @@
                             </tr>
                             <tr>
                             <td>
-                                    <p>Password</p>
+                                    <p class="inputName">Password</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                 <?php 
                                 $passwordModeVariable = '';
@@ -129,12 +131,14 @@
                                         $_SESSION["field_name"] = "password";
                                         echo'
                                             <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?password_mode=save" method="post" novalidate >
-                                            <input type="password" id="password" name="password" value= "'.$_SESSION["password"].'" placeholder="Enter your Password here...">&nbsp;&nbsp;'
+                                            <input class="textBox" type="password" id="password" name="password" value= "'.$_SESSION["password"].'" placeholder="Enter your Password here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["password"]   ?? '';
+                                        // echo $_SESSION["password"]   ?? '';
+                                        echo '<span class="text">'.$_SESSION["password"].'</span>'    ?? '';
+                                        
                                         echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?password_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
@@ -144,9 +148,9 @@
                                 </td>
                                 <!-- ///////////////////// -->
                                 <td>
-                                    <p>Fathers Name</p>
+                                    <p class="inputName">Fathers Name</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                 <?php 
                                 $fatherNameModeVariable = '';
@@ -162,12 +166,14 @@
                                         $_SESSION["field_name"] = "fatherName";
                                         echo'
                                             <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fatherName_mode=save" method="post" novalidate >
-                                            <input type="text" id="fatherName" name="fatherName" value= "'.$_SESSION["fatherName"].'" placeholder="Enter your fathers name here...">&nbsp;&nbsp;'
+                                            <input class="textBox" type="text" id="fatherName" name="fatherName" value= "'.$_SESSION["fatherName"].'" placeholder="Enter your fathers name here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["fatherName"]   ?? '';
+                                        // echo $_SESSION["fatherName"]   ?? '';
+                                        echo '<span class="text">'.$_SESSION["fatherName"].'</span>'    ?? '';
+                                        
                                         echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fatherName_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
@@ -178,9 +184,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p>Date of Birth</p>
+                                    <p class="inputName">Date of Birth</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                 <?php 
                                 $dateOfBirthModeVariable = '';
@@ -196,12 +202,14 @@
                                         $_SESSION["field_name"] = "dateOfBirth";
                                         echo'
                                             <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?dateOfBirth_mode=save" method="post" novalidate >
-                                            <input type="date" id="dateOfBirth" name="dateOfBirth" value= "'.$_SESSION["dateOfBirth"].'" placeholder="Enter your date Of Birth here...">&nbsp;&nbsp;'
+                                            <input class="textBox" type="date" id="dateOfBirth" name="dateOfBirth" value= "'.$_SESSION["dateOfBirth"].'" placeholder="Enter your date Of Birth here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["dateOfBirth"]   ?? '';
+                                        // echo $_SESSION["dateOfBirth"]   ?? '';
+                                        echo '<span class="text">'.$_SESSION["dateOfBirth"].'</span>'    ?? '';
+                                        
                                         echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?dateOfBirth_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
@@ -212,9 +220,9 @@
 
                                 <!-- //////////////////////// -->
                                 <td>
-                                    <p>Phone/Mobile</p>
+                                    <p class="inputName">Phone/Mobile</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                 <?php 
                                 $phoneNoModeVariable = '';
@@ -230,12 +238,14 @@
                                         $_SESSION["field_name"] = "phoneNo";
                                         echo'
                                             <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?phoneNo_mode=save" method="post" novalidate >
-                                            <input type="text" id="phoneNo" name="phoneNo" value= "'.$_SESSION["phoneNo"].'" placeholder="Enter your date Of Birth here...">&nbsp;&nbsp;'
+                                            <input class="textBox" type="text" id="phoneNo" name="phoneNo" value= "'.$_SESSION["phoneNo"].'" placeholder="Enter your date Of Birth here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["phoneNo"]   ?? '';
+                                        // echo $_SESSION["phoneNo"]   ?? '';
+                                        echo '<span class="text">'.$_SESSION["phoneNo"].'</span>'    ?? '';
+                                        
                                         echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?phoneNo_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
@@ -254,9 +264,9 @@
 
                             <tr>
                                 <td>
-                                    <p>Passenger Type</p>
+                                    <p class="inputName">Passenger Type</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                 <?php 
                                 $typeModeVariable = '';
@@ -272,13 +282,15 @@
                                         $_SESSION["field_name"] = "type";
                                         echo'
                                             <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?type_mode=save" method="post" novalidate >
-                                            <input type="radio" id="Working People" name="type" value= "Working People" >&nbsp;&nbsp; working people 
-                                            <input type="radio" id="student" name="type" value= "student" >&nbsp;&nbsp; student '
+                                            <input  class="inputName" type="radio" id="Working People" name="type" value= "Working People" >&nbsp;&nbsp; working people 
+                                            <input  class="inputName" type="radio" id="student" name="type" value= "student" >&nbsp;&nbsp; student '
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
                                         ';
                                     }else{
-                                        echo $_SESSION["type"]   ?? '';
+                                        // echo $_SESSION["type"]   ?? '';
+                                        echo '<span class="text">'.$_SESSION["type"].'</span>'    ?? '';
+                                        
                                         echo '&nbsp;&nbsp;<span><button ><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?type_mode=edit"><img src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
                                     }
                                 ?>
@@ -288,9 +300,9 @@
                                 </td>
                                 <!-- ///////////////////////////// Image Upload Start////////// -->
                                 <td>
-                                    <p>Profile Picture Upload</p>
+                                    <p class="inputName">Profile Picture Upload</p>
                                 </td>
-                                <td>:</td>
+                                <td class="inputName">:</td>
                                 <td>
                                 <?php 
                                 $profilePictureModeVariable = '';
@@ -306,7 +318,7 @@
                                         $_SESSION["field_name"] = "profilePicture";
                                         echo'
                                             <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?profilePicture_mode=save" method="post" novalidate enctype="multipart/form-data">
-                                            <input type="file" id="profilePicture" name="profilePicture" value= "'.$_SESSION["profilePicture"].'">
+                                            <input class="textBox" type="file" id="profilePicture" name="profilePicture" value= "'.$_SESSION["profilePicture"].'">
                                             '
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>

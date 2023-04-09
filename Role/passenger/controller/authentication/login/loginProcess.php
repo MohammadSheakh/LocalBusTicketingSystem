@@ -108,7 +108,7 @@
                     $_SESSION["type"]=  $type;
 
                     $_SESSION['status'] = true;
-                    setcookie('status', 'true', time()+3600, '/');
+                    setcookie('status', 'true', time()+3600, '/'); // 60 * 60 => 1 hour .. 
                     $_SESSION['emailErrorMsg'] = '';
                     $_SESSION['passErrorMsg'] = '';
                     

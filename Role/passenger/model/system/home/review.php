@@ -61,7 +61,7 @@ function showAllReview(){
 
             $rows[] = array('reviewId' => $reviewId, 'passengerId' => $passengerId, 'fullName' => $fullName, 'review' => $review, 'likeNumber' => $likeNumber, 'dislikeNumber' => $dislikeNumber);
         }
-        var_dump($rows);
+        // var_dump($rows);
         $_SESSION['all_reviews'] = $rows;
         $stmt->close(); // close the prepared statement
         //$mysqli->close(); // close the database connection

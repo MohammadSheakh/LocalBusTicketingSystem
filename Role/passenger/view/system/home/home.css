@@ -1,0 +1,108 @@
+* {
+    background-color: #01263f;
+    /* background-color: teal; */
+    
+}
+.title{
+    color : white;
+}
+
+.bookNowBtn{
+    border: 1px solid #4988;
+    border-radius: 3px;
+    /* padding : 3px; */
+    /* background-color: rgb(4, 123, 83); */
+    color:black !important;
+    background-color :rgb(4, 123, 83) !important;
+}
+.innerBtn{
+    color:black !important;
+    background-color :rgb(4, 123, 83) !important;
+    text-decoration: none;
+}
+.aBtn{
+    text-decoration : none;
+    background-color: rgb(4, 123, 83)  ;
+    color :white;
+}
+.features{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px ;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.feature{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 100px ; */
+}
+.allReview{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    justify-content: space-evenly;
+    align-items: center;
+    
+
+}
+.singleReview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 0px 10px  ; */
+    border: 1px solid #ffff;
+    padding : 6px;
+    border-radius : 7px;
+}
+.reviewTitle{
+    color : #6c7bf0;
+}
+
+.reviewBody{
+    color : #b1b8ee;
+}
+
+
+.fieldSet{
+    border: 1px solid wheat;
+    border-radius: 7px;
+}
+.legend{
+    color :white;
+}
+
+
+.inputName{
+    color : white;
+}
+.rememberMe{
+    color : white;
+}
+.textBox{
+    margin-top: 20px;
+    border: 1px solid #4985 ;
+    border-radius: 6px;
+    width : 99%;
+}
+.textBox:focus {
+    background-color: teal;
+}
+.textBox:not(:focus) {
+    background-color: teal;
+}
+.submitBtn{
+    border: 2px solid #4988;
+    border-radius: 7px;
+    padding : 3px;
+    background-color: rgb(4, 123, 83);
+}
+.decoration{
+    /* width : 70%; */
+    text-decoration : none;
+}
