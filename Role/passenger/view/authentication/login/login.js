@@ -68,8 +68,18 @@ function getLoginErrorMsg(form) {
         document.getElementById("emailErrorMsg").innerText =
             "Please provide your email address ! from js validation";
         return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+        // console.log("in if statement");
+        document.getElementById("emailErrorMsg").style.color = "white";
+        document.getElementById("emailErrorMsg").innerText =
+            "Please provide correct email format ! from js validation";
+        return false;
     } else {
         console.log("in else statement");
-        return true;
+        // document.getElementById("generalErrorMsg").style.color = "white";
+        // document.getElementById("generalErrorMsg").innerText =
+        //     "Credential is invalid ! from js validation";
+
+        return true; // may be ekhaneo false return korte hobe ...
     }
 }

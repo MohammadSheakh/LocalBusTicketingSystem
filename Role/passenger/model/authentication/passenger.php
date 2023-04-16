@@ -27,26 +27,36 @@ function checkUserForLogin($email, $password){
     //$result = mysqli_query($con, $sql);
     /////////////////// $stmt->get_result()->num_rows
     if($stmt -> execute() > 0){     //  or === jodi 1 hoy ..  
-        
-        $stmt->bind_result($passenger_id, $fullName, $email, $password, $gender, $type);
+        // if($stmt->get_result()->num_rows > 0){
+            $stmt->bind_result($passenger_id, $fullName, $email, $password, $gender, $type);
 
-        $rows = array();
-        while ($stmt->fetch()) {
-            $rows[] = array('passenger_id' => $passenger_id, 'fullName' => $fullName, 'email' => $email, 'password' => $password, 'gender' => $gender, 'type' => $type);
-        }
-        //echo "in num rows > 0";
-        var_dump($rows);
-        // echo "after printing rows";
-        $_SESSION['passenger_All_Details'] = $rows;
-        
-        $stmt->close(); // close the prepared statement
+            $rows = array();
+            while ($stmt->fetch()) {
+                $rows[] = array('passenger_id' => $passenger_id, 'fullName' => $fullName, 'email' => $email, 'password' => $password, 'gender' => $gender, 'type' => $type);
+            }
+            
+            $_SESSION['passenger_All_Details'] = $rows;
+            
+            $stmt->close(); // close the prepared statement
+            // echo "true";
+            // var_dump($_SESSION['passenger_All_Details'] ) ;
 
-        return true;
-        
+            // if(isset($_SESSION['passenger_All_Details'])){
+                return true;
+            // }
+            // return false;
+            
+        // }
     }else{
-        // echo "problem 1";
-       return false;
+            echo "false";
+            // return false;
     }
+        
+        
+    // }else{
+    //     // echo "problem 1";
+    //    return false;
+    // }
 }
 
 function checkUniqueForRegistration($email){
@@ -68,7 +78,7 @@ function checkUniqueForRegistration($email){
                 $rows[] = array('passenger_id' => $passenger_id);
             }
             
-            // var_dump($rows);
+             var_dump($rows);
             
             $_SESSION['check_Unique_Email'] = $rows;
             

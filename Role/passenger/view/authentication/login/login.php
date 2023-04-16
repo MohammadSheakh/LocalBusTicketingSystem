@@ -32,7 +32,7 @@
                 <fieldset class="fieldSet">
                     <legend class="legend">Login Form </legend>
                     <!-- ---------------------------------------- -->
-                    <form action="../../../controller/authentication/login/loginProcess.php" method="post" novalidate onSubmit="return getLoginErrorMsg(this);">
+                    <form action="../../../controller/authentication/login/loginProcess.php" method="post" novalidate onsubmit="return getLoginErrorMsg(this);">
                         <table>
 
                             <tr>
@@ -86,8 +86,25 @@
                                 <td></td>
                                 <td></td>
                                 <td><button class="submitBtn" type="submit" class="inputName" > Login </button>
+
+
                                 <!-- onClick="login()"     -->
                             </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                <!-- <p class='errorMsg' id='generalErrorMsg'> -->
+
+                                <?php
+                                            if(isset($_SESSION['generalErrorMsg'])){
+                                                echo "<p class='errorMsg'>".$_SESSION['generalErrorMsg']."</p>";
+                                            }
+                                        ?>
+
+                                <!-- </p> -->
+                                </td>
                             </tr>
 
                             <tr>

@@ -87,10 +87,10 @@
                                 <td>
                                     
                                     <input type="radio" id="gender" value="male" name="gender"> 
-                                    <label for="gender">Male</label>
+                                    <label for="gender" class="inputName">Male</label>
 
                                     <input type="radio" id="gender" value="female" name="gender"> 
-                                    <label for="gender">Female</label>
+                                    <label class="inputName" for="gender">Female</label>
 
                                     <?php
                     if(isset($_SESSION['genderErrorMsg'])){
@@ -122,9 +122,9 @@
                                 <td class="inputName">:</td>
                                 <td>
                                       <input type="radio" id="Working People" name="type" value="working people">
-                                      <label for="passenger">Working People</label>
+                                      <label class="inputName" for="passenger">Working People</label>
                                       <input type="radio" id="student" name="type" value="student">
-                                      <label for="employee">Student</label> <br>
+                                      <label class="inputName" for="employee">Student</label> <br>
                                     <?php
                     if(isset($_SESSION['typeErrorMsg'])){
                         echo "<p>".$_SESSION['typeErrorMsg']."</p>";
@@ -161,7 +161,7 @@
     </form>
         
     <div align="center">
-    <h4>Already Have an Accout ? Login <a href="../login/login.php">here</a></h4>
+    <h5 class="inputName">Already Have an Accout ? Login <a href="../login/login.php" class="inputName">here</a></h5>
 
     </div>    
 

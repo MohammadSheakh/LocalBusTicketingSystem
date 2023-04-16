@@ -73,11 +73,14 @@
             if($flag){
 
                 // user valid kina .. ekhane check korte hobe 
-                $flag = checkUserForLogin($email, $password);
                 
-                if($flag === true){
+                $flag1 = checkUserForLogin($email, $password);
+                if($flag1 === true){
+
+                // if(checkUserForLogin($email, $password)){
                     //echo "Flag ->>>>>>>>>".$flag;
                     // er pore amra profile page e redirect kore dibo ..
+                    $condition = false;
                     $passenger_All_Details = $_SESSION['passenger_All_Details'];
                     // Loop through the array and display the data
                     
@@ -99,7 +102,7 @@
                         $password = $row['password'];
                         $gender = $row['gender'];
                         $type = $row['type'];
-
+                        $condition = true;
                     }
 
 
@@ -110,32 +113,37 @@
                     $_SESSION["gender"]= $gender;
                     $_SESSION["type"]=  $type;
 
-                    $_SESSION['status'] = true;
-                    setcookie('status', 'true', time()+3600, '/'); // 60 * 60 => 1 hour .. 
+                    
                     $_SESSION['emailErrorMsg'] = '';
                     $_SESSION['passErrorMsg'] = '';
 
                     
-                    echo "success"; // ei echo ta ki navigation er age korbo naki pore korbo .. 
-                    
-                    // navigation ta rakhbo naki delete kore dibo ..  
-                    header('location:../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
-                    
+                    // echo "login success".$passenger_id.$_SESSION["fullName"]; 
+
+                    if(isset($_SESSION["passenger_id"]) && isset($_SESSION["fullName"]) && $condition){
+                        // echo $_SESSION["passenger_id"];
+                        // echo $_SESSION["fullName"];
+                        // echo " login faild normal";
+                        $_SESSION['status'] = true;
+                        setcookie('status', 'true', time()+3600, '/'); // 60 * 60 => 1 hour .. 
+                        header('location:../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+                    }else{
+                        // echo "sorry";
+                        $_SESSION['generalErrorMsg'] = "Login Credential is invalid !";
+                        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
+                    }
                 }else{
-                    // login page e redirect korbo .. error message shoho 
-                    
+                    echo "login faild 1" ; 
+                    $_SESSION['generalErrorMsg'] = "Login Credential is invalid !";
                     header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
         
                 }
 
-                // $sql = "Select * from `local_bus_ticketing_system`.`passenger` WHERE  email='$email' AND password='$password' ";
                 
-
             }else{
-                // echo "flag : $flag " ;
-                // echo "whats up";
+                echo "login faild2";
+                $_SESSION['generalErrorMsg'] = "Login Credential is invalid !";
                 header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
-                    
             }
         }else{
         //echo "404 Error !";
