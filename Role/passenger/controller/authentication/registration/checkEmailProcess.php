@@ -7,6 +7,8 @@ $Email=$_POST["Email"];
 if($Email=="")
 {
     echo "Email Empty";
+}else if(!filter_var($Email, FILTER_VALIDATE_EMAIL)){
+    echo "This is not correct email format ";
 }
 else
 {

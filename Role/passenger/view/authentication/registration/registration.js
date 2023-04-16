@@ -3,8 +3,23 @@ function showmyuser() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("erroremail").innerHTML = this.responseText;
-            //document.getElementById("CheckEmail").innerHTML ="Helllllloooooooooooooo";
+            if (this.responseText === "Unique Email") {
+                document.getElementById("erroremail").innerHTML =
+                    this.responseText + "✅";
+                document.getElementById("erroremail").style.color = "green";
+            } else if (this.responseText === "Email Empty") {
+                document.getElementById("erroremail").innerHTML =
+                    this.responseText;
+                document.getElementById("erroremail").style.color = "orange";
+            } else if (this.responseText === "Email Already Registered") {
+                document.getElementById("erroremail").innerHTML =
+                    this.responseText + "❌";
+                document.getElementById("erroremail").style.color = "orange";
+            } else {
+                document.getElementById("erroremail").innerHTML =
+                    this.responseText;
+                document.getElementById("erroremail").style.color = "red";
+            }
         } else {
             document.getElementById("erroremail").innerHTML = this.status;
         }
