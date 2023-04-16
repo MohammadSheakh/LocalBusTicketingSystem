@@ -48,4 +48,43 @@ function checkUserForLogin($email, $password){
        return false;
     }
 }
+
+function checkUniqueForRegistration($email){
+    $con = connect();
+    //$sql = "Select * from `local_bus_ticketing_system`.`passenger` WHERE  email='$email' AND password='$password' ";
+    
+    $sql = "Select passenger_id from `local_bus_ticketing_system`.`passenger` WHERE  email=?";
+    
+    $stmt = $con -> prepare($sql);
+    $stmt->bind_param("s", $email);
+    
+    if($stmt -> execute() > 0){     //  or === jodi 1 hoy ..  
+        
+        if($stmt->fetch() > 0){
+            $stmt->bind_result($passenger_id);
+
+            $rows = array();
+            while ($stmt->fetch()) {
+                $rows[] = array('passenger_id' => $passenger_id);
+            }
+            
+            // var_dump($rows);
+            
+            $_SESSION['check_Unique_Email'] = $rows;
+            
+            $stmt->close(); // close the prepared statement
+            // echo "ok".var_dump($rows);
+            return true;
+            
+        }else{
+            // echo "problem 1";
+            return false;
+        }
+        
+    }else{
+        // echo "problem 1";
+       return false;
+    }
+}
+
 ?>

@@ -52,13 +52,14 @@
                                 </td>
                                 <td class="inputName">:</td>
                                 <td>
-                                    <input class="textBox" type="email" id="email" name="email" value=""
+                                    <input class="textBox" onkeyup="showmyuser()" type="email" id="email" name="email" value=""
                                         placeholder="Enter your email...  ">
                                          <?php
                     if(isset($_SESSION['emailErrorMsg'])){
                         echo "<p>".$_SESSION['emailErrorMsg']."</p>";
                     }
                 ?>
+                            <p id="erroremail"></p>
                                 </td>
                             </tr>
                             <tr>
@@ -165,6 +166,6 @@
     </div>    
 
         
-    
+    <script src="./registration.js"></script>
 </body>
 </html>

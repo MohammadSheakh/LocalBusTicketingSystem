@@ -41,7 +41,7 @@
                                 </td>
                                 <td class="inputName">:</td>
                                 <td>
-                                    <input class="textBox"  type="email" id="email" name="email" value=""
+                                    <input class="textBox"   type="email" id="email" name="email" value=""
                                         placeholder="Please enter your email...  ">
                                         <div >
                                          <?php
