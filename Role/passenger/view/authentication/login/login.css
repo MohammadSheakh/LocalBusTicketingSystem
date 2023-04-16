@@ -44,3 +44,7 @@
     color: rgb(17, 237, 237);
     
 }
+
+.errorMsg {
+    color : red !important;
+}

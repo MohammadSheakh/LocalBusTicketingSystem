@@ -30,8 +30,11 @@
             // if input form is empty then show some specific error 
             
             if(empty($email)){
-                $_SESSION['emailErrorMsg'] = "please fill up the email form";
-                echo "please fill up the email form";
+                $_SESSION['emailErrorMsg'] = "please fill up the email form. php validation";
+                //echo "please fill up the email form";
+                echo "emptyEmailField";
+                // echo json_encode($rows); //////////////////////////////////////////////////////// for js
+                    
                 $flag = false;
             }else{
                 // email er formatting thik ase kina check korbo 
@@ -54,9 +57,9 @@
                 $number    = preg_match('@[0-9]@', $password);
                 $specialChars = preg_match('@[^\w]@', $password);
                 if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-                    $_SESSION['passErrorMsg'] = 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+                    $_SESSION['passErrorMsg'] = 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character. php validation';
                     $flag = false;
-                    echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+                    echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character. php validation';
                 }else{
                     //$_SESSION['passErrorMsg'] ='Login credentials is wrong.';
                     //echo "flag from else";
@@ -111,9 +114,11 @@
                     setcookie('status', 'true', time()+3600, '/'); // 60 * 60 => 1 hour .. 
                     $_SESSION['emailErrorMsg'] = '';
                     $_SESSION['passErrorMsg'] = '';
+
                     
+                    echo "success"; // ei echo ta ki navigation er age korbo naki pore korbo .. 
                     
-                    //echo  "<<id >> ",$passenger_id;
+                    // navigation ta rakhbo naki delete kore dibo ..  
                     header('location:../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
                     
                 }else{
@@ -127,9 +132,9 @@
                 
 
             }else{
-                echo "flag : $flag " ;
-                echo "whats up";
-                // header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
+                // echo "flag : $flag " ;
+                // echo "whats up";
+                header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
                     
             }
         }else{

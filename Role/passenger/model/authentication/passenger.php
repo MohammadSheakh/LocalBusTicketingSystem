@@ -36,8 +36,9 @@ function checkUserForLogin($email, $password){
         }
         //echo "in num rows > 0";
         var_dump($rows);
-        echo "after printing rows";
+        // echo "after printing rows";
         $_SESSION['passenger_All_Details'] = $rows;
+        
         $stmt->close(); // close the prepared statement
 
         return true;

@@ -32,7 +32,7 @@
                 <fieldset class="fieldSet">
                     <legend class="legend">Login Form </legend>
                     <!-- ---------------------------------------- -->
-                    <form action="../../../controller/authentication/login/loginProcess.php" method="post" novalidate>
+                    <form action="../../../controller/authentication/login/loginProcess.php" method="post" novalidate onSubmit="return getLoginErrorMsg(this);">
                         <table>
 
                             <tr>
@@ -43,11 +43,16 @@
                                 <td>
                                     <input class="textBox"  type="email" id="email" name="email" value=""
                                         placeholder="Please enter your email...  ">
+                                        <div >
                                          <?php
                                             if(isset($_SESSION['emailErrorMsg'])){
-                                                echo "<p>".$_SESSION['emailErrorMsg']."</p>";
+                                                echo "<p class='errorMsg'>".$_SESSION['emailErrorMsg']."</p>";
                                             }
                                         ?>
+                                        <p  id='emailErrorMsg'></p>
+
+                                        </div>
+                                        
                                         
                                     
                                 </td>
@@ -62,9 +67,10 @@
                                         placeholder="Please enter your email...  ">
                                         <?php
                                             if(isset($_SESSION['passErrorMsg'])){
-                                                echo "<p>".$_SESSION['passErrorMsg']."</p>";
+                                                echo "<p class='errorMsg'>".$_SESSION['passErrorMsg']."</p>";
                                             }
                                         ?>
+                                        <p class='errorMsg' id='passwordErrorMsg'></p>
                                         
                                 </td>
                             </tr>
@@ -79,8 +85,9 @@
                                 <td> </td>
                                 <td></td>
                                 <td></td>
-                                <td><button class="submitBtn" type="submit" class="inputName"> Login </button>
-                                </td>
+                                <td><button class="submitBtn" type="submit" class="inputName" > Login </button>
+                                <!-- onClick="login()"     -->
+                            </td>
                             </tr>
 
                             <tr>
@@ -100,6 +107,7 @@
         </tr>
 
     </table>
+    <script src="./login.js"></script>
 </body>
 
 </html>
