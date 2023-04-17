@@ -76,10 +76,6 @@ function getLoginErrorMsg(form) {
         return false;
     } else {
         console.log("in else statement");
-        // document.getElementById("generalErrorMsg").style.color = "white";
-        // document.getElementById("generalErrorMsg").innerText =
-        //     "Credential is invalid ! from js validation";
-
         return true; // may be ekhaneo false return korte hobe ...
     }
 }

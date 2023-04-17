@@ -6,7 +6,7 @@ if(isset($_GET['notificationId'])){
     $notificationId = $_GET['notificationId']; // storing deleteid in a variable which i get from query parameter
 
     // ekhon delete query likhbo 
-    echo $notificationId;
+    //echo $notificationId;
     $sql = "delete from `local_bus_ticketing_system`.`notification` where notificationId=".$notificationId; // table id is equal to this id 
 
     $result = mysqli_query($con, $sql); 

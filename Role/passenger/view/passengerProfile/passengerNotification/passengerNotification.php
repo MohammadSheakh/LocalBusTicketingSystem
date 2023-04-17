@@ -41,6 +41,13 @@
                             <button class="button">Archived</button>
                             <button class="button">Recycle Bin</button>
                             </td>
+                            <td>
+                                <!-- reload button to grab notification from database .. 
+                                or automatic hoile to kono kotha e nai ..  -->
+                                <form action="Data.php" method="post" onsubmit="return getData();">
+                                    <input type="submit">
+                                </form>
+                            </td>
                         </tr>
 
                         <?php
@@ -122,6 +129,9 @@
 
                     </table>
                 </fieldset>
+                        
+                <script src="./passengerNotification.js"></script>
+            </body>
 
                 <?php
 	}
