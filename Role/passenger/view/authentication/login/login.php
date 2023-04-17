@@ -21,6 +21,7 @@
                     
         // }
         session_start();
+        
     ?>
     
     <table align="center">

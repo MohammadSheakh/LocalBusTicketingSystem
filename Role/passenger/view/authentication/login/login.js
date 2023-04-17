@@ -74,6 +74,16 @@ function getLoginErrorMsg(form) {
         document.getElementById("emailErrorMsg").innerText =
             "Please provide correct email format ! from js validation";
         return false;
+    } else if (
+        !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{7,}$/.test(
+            passwordValue
+        )
+    ) {
+        console.log("in pass value statement");
+        document.getElementById("passwordErrorMsg").style.color = "white";
+        document.getElementById("passwordErrorMsg").innerText =
+            "Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character ! from js validation";
+        return false;
     } else {
         console.log("in else statement");
         return true; // may be ekhaneo false return korte hobe ...

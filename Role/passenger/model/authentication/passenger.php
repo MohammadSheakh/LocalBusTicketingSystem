@@ -78,7 +78,7 @@ function checkUniqueForRegistration($email){
                 $rows[] = array('passenger_id' => $passenger_id);
             }
             
-             var_dump($rows);
+            //  var_dump($rows);
             
             $_SESSION['check_Unique_Email'] = $rows;
             

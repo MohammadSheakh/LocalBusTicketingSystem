@@ -124,6 +124,7 @@
                         // echo $_SESSION["passenger_id"];
                         // echo $_SESSION["fullName"];
                         // echo " login faild normal";
+                        $_SESSION['generalErrorMsg'] = "";
                         $_SESSION['status'] = true;
                         setcookie('status', 'true', time()+3600, '/'); // 60 * 60 => 1 hour .. 
                         header('location:../../../view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
