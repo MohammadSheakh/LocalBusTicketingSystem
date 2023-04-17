@@ -45,7 +45,7 @@
                                 <!-- reload button to grab notification from database .. 
                                 or automatic hoile to kono kotha e nai ..  -->
                                 <form action="Data.php" method="post" onsubmit="return getData();">
-                                    <input type="submit">
+                                    <input class="button" type="submit">
                                 </form>
                             </td>
                         </tr>
