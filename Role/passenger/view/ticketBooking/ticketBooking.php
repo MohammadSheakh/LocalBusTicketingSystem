@@ -13,13 +13,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./ticketBooking.css"/>v
 </head>
 
 <body>
 <?php
     // session_start();
-    include '../database/dbConnect.php';
-        include '../../system/navbar/mainNavbar.php';
+
+    // include '../database/dbConnect.php';
+    require '../../model/ticketBooking/ticketBooking.php';
+        include '../system/navbar/mainNavbar.php';
         $companyName = "";
         $_SESSION["dbError"] = " " ;
         // $_SESSION["route"] = ;
@@ -48,7 +51,7 @@
                     <table align="center">
 
                         <legend>Ticket Booking Form</legend>
-                        <form novalidate action="./ticketBookingProcess.php" method="post">
+                        <form novalidate action="../../controller/ticketBooking/ticketBookingProcess.php" method="post">
                             <tr>
                                 
                                     <td> <label for="area">What area do you live in</label> </td>
@@ -66,21 +69,36 @@
                                             <!-- area gula data base theke ashte hobe ... ei area gula admin save kore rakhbe .. database e -->
                                             <!-- lets pull all Area Name value from database  -->
                                             <?php
-                                                $sql = "select DISTINCT areaName from `local_bus_ticketing_system`.`area`";
-                                                
-                                                $result = mysqli_query($con, $sql);
-                                                if($result){
-                                                    
+
+                                                $flag = showAllAvailableArea();
+                                                if($flag === true){
+
+                                                    $All_Area = $_SESSION['All_Area'];
                                                     echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
-                                                    while($row = mysqli_fetch_assoc($result)){
-                                                        $areaName= $row['areaName'];
+                                                    foreach ($All_Area as $rowAgain) {
+                                                        $areaName= $rowAgain['areaName'];
                                                         echo "<option value='".$areaName."'>$areaName</option>";
                                                     }
-
                                                 }else{
-                                                    // error 
+                                                    // echo "😀😀😀😀😀😀";
                                                     die(mysqli_error($con));
                                                 }
+
+                                                // $sql = "select DISTINCT areaName from `local_bus_ticketing_system`.`area`";
+                                                
+                                                // $result = mysqli_query($con, $sql);
+                                                // if($result){
+                                                    
+                                                //     echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
+                                                //     while($row = mysqli_fetch_assoc($result)){
+                                                //         $areaName= $row['areaName'];
+                                                //         echo "<option value='".$areaName."'>$areaName</option>";
+                                                //     }
+
+                                                // }else{
+                                                //     // error 
+                                                //     die(mysqli_error($con));
+                                                // }
                                             ?>
                                             
                                             <!-- <option value="saab">Saab</option>
@@ -151,40 +169,61 @@
                                     ?>
 
                                     <?php 
-                                        $sql = "select companyName from `local_bus_ticketing_system`.`bus` where routeId = ".$routeIdVariable." ";
-                                        //$_SESSION["sql"] = $sql;
-                                        $result = mysqli_query($con, $sql);
-                                        if($result){
-                                            //$flag = false;
+
+                                                $flag = showCompanyName($routeIdVariable);
+                                                if($flag === true){
+
+                                                    $Company_Name = $_SESSION['Company_Name'];
+                                                    foreach ($Company_Name as $rowAgain) {
+                                                        $_SESSION["companyName"]= $rowAgain['companyName'];
+                                                        echo "<h4>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
+                                                        $flag = true;
+                                                    }
+                                                    if($flag == false){
+                                                        $masterFlag = false; // table show korbo na .. 
+                                                        $scheduleId =  "";
+                                                        $routeId = "";
+                                                        $busId =  "";
+                                                        $areaId = "";
+                                                        $arrivalTime = "" ;
+                                                        $date = "";
+                                                        $availableTotalSeat ="" ;
+                                                        $departureTime = "";
+                                                        echo " <h4> No Bus Available. for this route </h4>";
+                                                    }
+                                                }else{
+                                                    
+                                                }
+
+
+                                        // $sql = "select companyName from `local_bus_ticketing_system`.`bus` where routeId = ".$routeIdVariable." ";
+                                        
+                                        // $result = mysqli_query($con, $sql);
+                                        // if($result){
                                             
-                                            while($row = mysqli_fetch_assoc($result)){
-                                                $_SESSION["companyName"]= $row['companyName'];
+                                        //     while($row = mysqli_fetch_assoc($result)){
+                                        //         $_SESSION["companyName"]= $row['companyName'];
                                                 
                                                 
-                                                echo "<h4>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
-                                                $flag = true;
-                                            }
-                                            if($flag == false){
-                                                $masterFlag = false; // table show korbo na .. 
-                                                $scheduleId =  "";
-                                                $routeId = "";
-                                                $busId =  "";
-                                                $areaId = "";
-                                                $arrivalTime = "" ;
-                                                $date = "";
-                                                $availableTotalSeat ="" ;
-                                                $departureTime = "";
-                                                echo " <h4> No Bus Available. for this route </h4>";
-                                            }
+                                        //         echo "<h4>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
+                                        //         $flag = true;
+                                        //     }
+                                        //     if($flag == false){
+                                        //         $masterFlag = false; // table show korbo na .. 
+                                        //         $scheduleId =  "";
+                                        //         $routeId = "";
+                                        //         $busId =  "";
+                                        //         $areaId = "";
+                                        //         $arrivalTime = "" ;
+                                        //         $date = "";
+                                        //         $availableTotalSeat ="" ;
+                                        //         $departureTime = "";
+                                        //         echo " <h4> No Bus Available. for this route </h4>";
+                                        //     }
                                             
-                                            // echo "Not Error :::::::::".$_SESSION["sql"];
-                                        }else{
+                                        // }else{
                                             
-                                            //echo " <h1> No. Bus Available. for this route </h1>";
-                                            //$_SESSION["dbError"] = mysqli_error($con);
-                                            //die(mysqli_error($con));
-                                            //echo "Error :::::::::".$_SESSION["sql"];
-                                        }
+                                        // }
                                     ?>
                                 </td>
                             </tr>
@@ -377,6 +416,6 @@
 <?php
 	}
 	else {
-		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
 	}
 ?>

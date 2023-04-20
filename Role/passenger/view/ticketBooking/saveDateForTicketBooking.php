@@ -73,6 +73,6 @@ function sanitize($data){
 <?php
 	}
 	else {
-		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
 	}
 ?>
