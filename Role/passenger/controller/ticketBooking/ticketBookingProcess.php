@@ -41,7 +41,7 @@ session_start();
                     header('location: ../../view/ticketBooking/ticketBooking.php');
                     
                 }else{
-                    echo "😥😥😥😥"; // error from database .. 
+                    echo "😥"; // error from database .. 
                     // $_SESSION["dbError"] = mysqli_error($con);
                     // die(mysqli_error($con));
                 }
@@ -49,7 +49,7 @@ session_start();
 
                 
 
-                //😀😀😀😀😀
+                // //😀😀😀😀😀
 
                 // $sqlForRouteId = "select areaName, routeId from `local_bus_ticketing_system`.`area` where routeId IN (select routeId from `local_bus_ticketing_system`.`area` where areaName='$startAreaName')";
                 // $_SESSION["sql"] = $startAreaName;//$sqlForRouteId;

@@ -1,5 +1,4 @@
 <?php 
-// session_start();
 function connectAgain() {
     $con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); // as i am not changing my password so empty
     if(!$con){
@@ -20,14 +19,11 @@ function getAllNotification(){
             $rows[] = array('companyName' => $companyName, 'busRegistrationNo' => $busRegistrationNo, 'notificationId' => $notificationId, 'notification' => $notification, 'busId' => $busId, 'passenger_id' => $passenger_id, 'employeeEmail_id' => $employeeEmail_id, 'employeeId' => $employeeId, 'email' => $email);
         }
         $_SESSION['all_notifications'] = $rows;
-        $stmt->close(); // close the prepared statement
-        //$mysqli->close(); // close the database connection
-        // var_dump($rows);
+        $stmt->close();
         return true;
     }else{
         return false;
     }
 }
-
 
 ?>

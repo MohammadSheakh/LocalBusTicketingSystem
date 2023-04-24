@@ -1,7 +1,11 @@
 <?php
-    if(isset($_COOKIE['status'])){
-         include '/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/model/passengerProfile/messaging/messaging.php';
-        //include '../../../model/passengerProfile/messaging/messaging.php';                                                                                
+// include '/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/model/passengerProfile/messaging/messaging.php';
+// include '../../../model/passengerProfile/messaging/messaging.php';    
+if(isset($_COOKIE['status'])){
+        echo get_include_path();
+        // D:/Application Installed/xamp/htdocs/
+        include 'LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/model/passengerProfile/messaging/messaging.php';
+        //                                                                                
 ?>
 
 <!-- passengerMessaging -->
