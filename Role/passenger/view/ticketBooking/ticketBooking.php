@@ -1,5 +1,6 @@
 <!-- http://localhost/Local%20Bus%20Ticketing%20System/Role/passenger/ticketBooking/ticketBooking.html -->
 <?php
+session_start();
     if(isset($_COOKIE['status'])){
 ?>
 
@@ -138,21 +139,6 @@
                                         <option value="audi">Audi</option> -->
                                     </select>
 
-                                </td>
-                            </tr>
-                            <!-- <tr>
-                                <td align="right">
-                                    <button>Submit</button>
-                                </td>
-
-                            </tr> -->
-                            <tr>
-                                <td>
-                                    <?php 
-                                    // echo "Error::::: ".$_SESSION["dbError"] ; 
-                                    
-                                    ?>
-                                    
                                 </td>
                             </tr>
                             

@@ -23,12 +23,13 @@ session_start();
                 $flag = selectRouteIdAndAreaNameBasedOnStartAreaName($startAreaName);
                 if($flag === true){
                     $AreaName_And_RouteId = $_SESSION['AreaName_And_RouteId'] ;
+                    var_dump($AreaName_And_RouteId);
                     foreach ($AreaName_And_RouteId as $rowAgain) {
                         $areaName = $areaName . $rowAgain['areaName'] ." > ";
                         $routeId = $rowAgain['routeId'];
                     }
                     echo "==================";
-                    echo $areaName.$routeId;
+                    // echo $areaName.$routeId;
                     $_SESSION["route"] = $areaName;
                     $_SESSION["routeId"] = $routeId; ////////////////////////////////////////////////
                     $_SESSION["startArea"] = $startAreaName;
@@ -36,6 +37,9 @@ session_start();
                     $_SESSION["departureTime"] = " ";
                     $_SESSION["arrivalTime"] = " ";
                     $_SESSION["availableTotalSeat"] = " ";
+                    // echo $_SESSION["route"];
+                    // echo $_SESSION["routeId"];
+                    // echo $_SESSION["startArea"];
                     
                     // echo "ok";
                     header('location: ../../view/ticketBooking/ticketBooking.php');
