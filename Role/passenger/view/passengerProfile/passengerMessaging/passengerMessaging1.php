@@ -1,20 +1,33 @@
 <?php
-        $con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); // as i am not changing my password so empty
-        // last one is database name 
-
-        if($con){
-            
-        }else{
-            
-            die("Error From Database : ".mysqli_error($con));
-        }
-    if(isset($_COOKIE['status'])){
+// include '/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/model/passengerProfile/messaging/messaging.php';
+// include '../../../model/passengerProfile/messaging/messaging.php';    
+if(isset($_COOKIE['status'])){
+        echo get_include_path();
+        // D:/Application Installed/xamp/htdocs/
+        include 'D:/Application Installed/xamp/htdocs/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/model/passengerProfile/messaging/messaging.php';
+        //                                                                                
 ?>
 
-
-
-<fieldset>
-                    <legend>Messaging</legend>
+<!-- passengerMessaging -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .fieldSet{
+            border: 1px solid wheat;
+            border-radius: 7px;
+        }
+        .legend{
+            color :white;
+        }
+    </style>
+</head>
+<body>
+<fieldset class="fieldSet">
+                    <legend class="legend">Messaging</legend>
                     <table>
                         <tr>
                             <td>
@@ -43,6 +56,7 @@
             <!-- //employeeEmail_id -------------- emp01@gmail.com 
             employeeId ------------ 1
             busId ------------- 1
+
             passenger email -------------- a@a.com
             passenger name -------------- Mohammad Sheakh
             passenger id --  passenger_id
@@ -68,24 +82,36 @@
                 $conversationExistFlag = false;
                 $conversations_id[] = [];
                 $conversationIds = "";
+
+                $flag = collectAllConversationIdIfExistForAPassenger();
+                if($flag === true){
+                    // shob gula review array theke niye dekhabo 
+                    $conversation_id_exist_from_database = $_SESSION['conversation_id_exist_from_database']; 
+                    // eta ekta array jetar moddhe conversation id gula ase .. amra ei conversation id er upor loop
+                    // kore kaj korte parbo .. 
+                    $conversationExistFlag = true;
+                }else{
+                    //================== jehetu conversation create kora nai .. tai amra conversation create korbo
+
+                    $conversationExistFlag = false;
+                }
+
+
+
                 //$sql = "select conversation_id from `local_bus_ticketing_system`.`conversation` where participantEmail='%".$_SESSION["email"]."%' OR participantEmail='%".$_SESSION["email"]."-% OR participantEmail='%-".$_SESSION["email"]."%'";
                 $sql = "SELECT conversation_id FROM local_bus_ticketing_system.conversation WHERE participantEmail LIKE '%".$_SESSION["email"]."%'";
-                // '%a@a.com%'
-                // echo $sql;
+                
                 $result = mysqli_query($con, $sql); 
-                // $_SESSION['con']
+                
                 if($result){
-                    // while($row = mysqli_fetch_assoc($result)){
-                    //     $conversations_id[] = $row['conversation_id'];
-                    //     $conversationExistFlag = true;
-                    // }
+                    
                     $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     $conversationIds = array_column($rows, 'conversation_id');
                     $conversationExistFlag = true;
                 }else{
                     // //======================================= jehetu conversation create kora nai .. tai amra conversation create korbo
                     $conversationExistFlag = false;
-                    //die(mysqli_error($con));
+                    
                 }
                 //============================ Conversation jehetu exist kore .. taile .. conversation exist er against e 
                 
@@ -150,6 +176,7 @@
                                     </td> 
                                 </tr>
                             </table>
+
                         </form>
                         <button><img src='../../../images/passengerNotifications/delete.png' alt=''></button>
                         <button>Save as Archive</button>
@@ -166,19 +193,18 @@
             <tr>
 
             </tr>
-            
-                      
+
                     </fieldset>
                 </td>
             </tr>
 
-            
                     </table>
                 </fieldset>
+                <body>
 
                 <?php
 	}
 	else {
-		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/login/login.php');
+		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
 	}
 ?>
