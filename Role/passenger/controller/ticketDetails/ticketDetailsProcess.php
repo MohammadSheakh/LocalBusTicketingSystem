@@ -1,6 +1,14 @@
 <?php 
     session_start();
-    include '../database/dbConnect.php';
+
+    $con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); 
+    if($con){
+    }else{
+        die("Error From Database : ".mysqli_error($con));
+    }
+    require '../../model/ticketDetails/ticketDetails.php';
+    
+    // include '../database/dbConnect.php';
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         $flag = true;
         if(isset($_POST['seat_status_A1'])){
@@ -48,7 +56,8 @@
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
                 $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
-                header('location: ./ticketDetails.php');
+                header('location: ../../view/ticketDetails/ticketDetails.php');
+                
                 
             }else{
                 echo "sorry";
@@ -63,7 +72,7 @@
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
                 $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
-                header('location: ./ticketDetails.php');
+                header('location: ../../view/ticketDetails/ticketDetails.php');
             }else{
                 echo "sorry";
                 die(mysqli_error($con));
@@ -77,7 +86,7 @@
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
                 $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
-                header('location: ./ticketDetails.php');
+                header('location: ../../view/ticketDetails/ticketDetails.php');
             }else{
                 echo "sorry";
                 die(mysqli_error($con));
@@ -93,7 +102,7 @@
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
                 $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
-                header('location: ./ticketDetails.php');
+                header('location: ../../view/ticketDetails/ticketDetails.php');
             }else{
                 echo "sorry";
                 die(mysqli_error($con));

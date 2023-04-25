@@ -1,4 +1,5 @@
 <?php
+session_start();
     if(isset($_COOKIE['status'])){
 ?>
 
@@ -13,7 +14,7 @@
 <body>
 <?php
     // session_start();
-        include '../../system/navbar/mainNavbar.php';
+        include '../system/navbar/mainNavbar.php';
     ?>
 
     <table align="center">

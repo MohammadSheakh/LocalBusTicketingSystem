@@ -156,30 +156,32 @@ session_start();
 
                                     <?php 
 
-                                                $flag = showCompanyName($routeIdVariable);
-                                                if($flag === true){
+                                        $flag = showCompanyName($routeIdVariable);
+                                        if($flag === true){
 
-                                                    $Company_Name = $_SESSION['Company_Name'];
-                                                    foreach ($Company_Name as $rowAgain) {
-                                                        $_SESSION["companyName"]= $rowAgain['companyName'];
-                                                        echo "<h4>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
-                                                        $flag = true;
-                                                    }
-                                                    if($flag == false){
-                                                        $masterFlag = false; // table show korbo na .. 
-                                                        $scheduleId =  "";
-                                                        $routeId = "";
-                                                        $busId =  "";
-                                                        $areaId = "";
-                                                        $arrivalTime = "" ;
-                                                        $date = "";
-                                                        $availableTotalSeat ="" ;
-                                                        $departureTime = "";
-                                                        echo " <h4> No Bus Available. for this route </h4>";
-                                                    }
-                                                }else{
-                                                    
-                                                }
+                                            $Company_Name = $_SESSION['Company_Name'];
+                                            $flag = false;
+                                            foreach ($Company_Name as $rowAgain) {
+                                                $_SESSION["companyName"]= $rowAgain['companyName'];
+                                                echo "<h4>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
+                                                $flag = true;
+                                            }
+                                            if($flag == false){
+                                                $masterFlag = false; // table show korbo na .. 
+                                                $scheduleId =  "";
+                                                $routeId = "";
+                                                $busId =  "";
+                                                $areaId = "";
+                                                $arrivalTime = "" ;
+                                                $date = "";
+                                                $availableTotalSeat ="" ;
+                                                $departureTime = "";
+                                                echo " <h4> No Bus Available. for this route </h4>";
+                                            }
+                                            // echo "flag is false here";
+                                        }else{
+                                            // echo "flag is false here else part";
+                                        }
 
 
                                         // $sql = "select companyName from `local_bus_ticketing_system`.`bus` where routeId = ".$routeIdVariable." ";
@@ -236,21 +238,41 @@ session_start();
                                         ?>
                                             
                                             <?php
-                                                $sql = 'select areaName from `local_bus_ticketing_system`.`area` where routeId="'.$_SESSION['routeId'].'" && areaName!="'.$_SESSION['startArea'].'"';
-                                                
-                                                $result = mysqli_query($con, $sql);
-                                                if($result){
-                                                    
+
+                                                $flag = showAllAreaNamesWithoutStartAreaName();
+                                                if($flag === true){
+
+                                                    $destination_area = $_SESSION['destination_area'];
                                                     echo "<option value=".$_SESSION["destinationArea"]. ">".$_SESSION["destinationArea"]. "</option>";
-                                                    while($row = mysqli_fetch_assoc($result)){
-                                                        $areaName= $row['areaName'];
+                                                    foreach ($destination_area as $rowAgain) {
+                                                        $areaName= $rowAgain['areaName'];
                                                         echo "<option value=".$areaName.">$areaName</option>";
                                                     }
                                                     
+                                                    // echo "flag is false here";
                                                 }else{
-                                                    
+                                                    // echo "flag is false here else part";
                                                     die(mysqli_error($con));
                                                 }
+
+
+                                                // 😀😀😀
+
+                                                // $sql = 'select areaName from `local_bus_ticketing_system`.`area` where routeId="'.$_SESSION['routeId'].'" && areaName!="'.$_SESSION['startArea'].'"';
+                                                
+                                                // $result = mysqli_query($con, $sql);
+                                                // if($result){
+                                                    
+                                                //     echo "<option value=".$_SESSION["destinationArea"]. ">".$_SESSION["destinationArea"]. "</option>";
+                                                //     while($row = mysqli_fetch_assoc($result)){
+                                                //         $areaName= $row['areaName'];
+                                                //         echo "<option value=".$areaName.">$areaName</option>";
+                                                //     }
+                                                    
+                                                // }else{
+                                                    
+                                                //     die(mysqli_error($con));
+                                                // }
                                             ?>
                                             
                                         <?php 
@@ -305,22 +327,12 @@ session_start();
                                         if(isset($_SESSION["scheduleId"])){
                                             $scheduledIdVariable = $_SESSION["scheduleId"];
                                         }
-                                                $sql = "select scheduleId, busId, routeId, arrivalTime, departureTime, availableTotalSeat from `local_bus_ticketing_system`.`tripschedule` where scheduleId=".$scheduledIdVariable;
-                                                $_SESSION["sql"] = $sql;
-                                                $result = mysqli_query($con, $sql);
 
-                                                //$sqlForBusTable = "select busRegistrationNo, companyName, type from `local_bus_ticketing_system`.`tripschedule` where busId=".$_SESSION['scheduleId'];
-                                                // $scheduleId =  "";
-                                                // $routeId = "";
-                                                // $busId =  "";
-                                                // $areaId = "";
-                                                // $arrivalTime = "" ;
-                                                // $date = "";
-                                                // $availableTotalSeat ="" ;
-                                                // $departureTime = "";
-                                        
-                                                if($result){
-                                                    echo "
+                                            $flag = showTripScheduleDetails($scheduledIdVariable);
+                                            if($flag === true){
+
+                                                $trip_schedule = $_SESSION['trip_schedule'];
+                                                echo "
                                                     <tr>
                                                         <th>routeId.</th>
                                                         <th>Vehicle Serial No. busId </th>
@@ -329,24 +341,23 @@ session_start();
                                                         <th>Avaiable Total Seat</th>
                                                         <th></th>
                                                     </tr>
-                                                    ";
-                                                    while($row = mysqli_fetch_assoc($result)){
-                                                        $routeId = $row['routeId'];
-                                                        $busId = $row['busId'];
-                                                        $departureTime = $row['departureTime'];
-                                                        $arrivalTime = $row['arrivalTime'];
-                                                        $availableTotalSeat = $row['availableTotalSeat'];
+                                                ";
+                                                foreach ($trip_schedule as $rowAgain) {
+                                                    
+                                                    $routeId = $rowAgain['routeId'];
+                                                    $busId = $rowAgain['busId'];
+                                                    $departureTime = $rowAgain['departureTime'];
+                                                    $arrivalTime = $rowAgain['arrivalTime'];
+                                                    $availableTotalSeat = $rowAgain['availableTotalSeat'];
 
-                                                        $_SESSION["routeId"] = $routeId;
-                                                        $_SESSION["busId"] = $busId;
-                                                        $_SESSION["departureTime"] = $departureTime;
-                                                        $_SESSION["arrivalTime"] = $arrivalTime;
-                                                        $_SESSION["availableTotalSeat"] = $availableTotalSeat;
+                                                    $_SESSION["routeId"] = $routeId;
+                                                    $_SESSION["busId"] = $busId;
+                                                    $_SESSION["departureTime"] = $departureTime;
+                                                    $_SESSION["arrivalTime"] = $arrivalTime;
+                                                    $_SESSION["availableTotalSeat"] = $availableTotalSeat;
+                                                }
 
-                                                        // flag er maddhome control korte hobe ...................................................... 
-                                                    }
-                                                    //echo "routeID===after while loop 309================".$_SESSION["sql"];
-                                                    echo "
+                                                echo "
                                                         <tr>
                                                             <td>".$_SESSION['routeId']."</td>
                                                             <td>".$_SESSION['busId']."</td>
@@ -364,16 +375,77 @@ session_start();
                                                             </td>
                                                         </tr>
                                                         ";
-                                                }else{
-                                                    //echo "routeID===================".$_SESSION["sql"];
+                                                
+                                                // echo "flag is false here";
+                                            }else{
+                                                // echo "flag is false here else part";
+                                                $_SESSION["routeId"] = " ";
+                                                $_SESSION["busId"] = " ";
+                                                $_SESSION["departureTime"] = " ";
+                                                $_SESSION["arrivalTime"] = " ";
+                                                $_SESSION["availableTotalSeat"] = " ";
+
+                                                // die(mysqli_error($con));
+                                            }
+                                                // //😀😀😀😀
+                                                // $sql = "select scheduleId, busId, routeId, arrivalTime, departureTime, availableTotalSeat from `local_bus_ticketing_system`.`tripschedule` where scheduleId=".$scheduledIdVariable;
+                                                // $_SESSION["sql"] = $sql;
+                                                // $result = mysqli_query($con, $sql);
+
+                                                
+                                                // if($result){
+                                                //     echo "
+                                                //     <tr>
+                                                //         <th>routeId.</th>
+                                                //         <th>Vehicle Serial No. busId </th>
+                                                //         <th>departureTime</th>
+                                                //         <th>arrivalTime</th>
+                                                //         <th>Avaiable Total Seat</th>
+                                                //         <th></th>
+                                                //     </tr>
+                                                //     ";
+                                                //     while($row = mysqli_fetch_assoc($result)){
+                                                //         $routeId = $row['routeId'];
+                                                //         $busId = $row['busId'];
+                                                //         $departureTime = $row['departureTime'];
+                                                //         $arrivalTime = $row['arrivalTime'];
+                                                //         $availableTotalSeat = $row['availableTotalSeat'];
+
+                                                //         $_SESSION["routeId"] = $routeId;
+                                                //         $_SESSION["busId"] = $busId;
+                                                //         $_SESSION["departureTime"] = $departureTime;
+                                                //         $_SESSION["arrivalTime"] = $arrivalTime;
+                                                //         $_SESSION["availableTotalSeat"] = $availableTotalSeat;
+
+                                                //     }
                                                     
-                                                    $_SESSION["routeId"] = " ";
-                                                    $_SESSION["busId"] = " ";
-                                                    $_SESSION["departureTime"] = " ";
-                                                    $_SESSION["arrivalTime"] = " ";
-                                                    $_SESSION["availableTotalSeat"] = " ";
-                                                    //die(mysqli_error($con));
-                                                }
+                                                //     echo "
+                                                //         <tr>
+                                                //             <td>".$_SESSION['routeId']."</td>
+                                                //             <td>".$_SESSION['busId']."</td>
+                                                //             <td>".$_SESSION['departureTime']."</td>
+                                                //             <td>".$_SESSION['arrivalTime']."</td>
+                                                //             <td>".$_SESSION['availableTotalSeat']."</td>
+                                                //             <td>
+                                                //                 <button> <a href='../confirmBooking/confirmBooking.php'>Book Now</a></button>
+                                                                
+                                                        
+                                                //                 <a href='../ticketDetails/ticketDetails.php'>
+                                                //                     <button>Details</button>
+                                                //                 </a>
+
+                                                //             </td>
+                                                //         </tr>
+                                                //         ";
+                                                // }else{
+                                                    
+                                                //     $_SESSION["routeId"] = " ";
+                                                //     $_SESSION["busId"] = " ";
+                                                //     $_SESSION["departureTime"] = " ";
+                                                //     $_SESSION["arrivalTime"] = " ";
+                                                //     $_SESSION["availableTotalSeat"] = " ";
+                                                    
+                                                // }
                                         ?>
                                         
                                     </table>

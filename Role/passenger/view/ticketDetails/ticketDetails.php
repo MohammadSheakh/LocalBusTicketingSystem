@@ -1,6 +1,7 @@
 <!-- http://localhost/Local%20Bus%20Ticketing%20System/Role/passenger/ticketBooking/ticketBooking.html -->
 
 <?php
+    require '../../model/ticketDetails/ticketDetails.php';
     if(isset($_COOKIE['status'])){
 ?>
 
@@ -19,9 +20,10 @@
 <body>
     <!-- for main navbar  -->
     <?php
-    // session_start();
-    include '../database/dbConnect.php';
-        include '../../system/navbar/mainNavbar.php';
+    session_start();
+    //include '../database/dbConnect.php';
+        // include '../../system/navbar/mainNavbar.php';
+        include '../../view/system/navbar/mainNavbar.php';
         
         $masterFlag = false;
                                     
@@ -112,11 +114,81 @@
 
                                     </tr>
                                     <tr>
-                                        <td><button>A4</button> </td>
-                                        <td><button>A3</button> </td>
-                                        <td> </td>
-                                        <td><button>A2</button> </td>
-                                        <td><button>A1</button> </td>
+                                    <?php
+                                //     echo '
+                                //     <tr>
+                                //     <td>
+                                //         <p>Status of <input name="seatNo_'.$rowAgain['seatNo'].'" id="seatNo" type="text" size="1" value="'.$rowAgain['seatNo'].'"></input></p>
+                                //     </td>
+                                //     <td>:</td>
+                                //     <td>
+                                    
+                                //         <input    type="radio" id="booked" name="seat_status_'.$rowAgain['seatNo'].'" value="booked">
+                                //         <label for="booked">Booked</label>
+                                //         <input   checked type="radio" id="free" name="seat_status_'.$rowAgain['seatNo'].'" value="free">
+                                //         <label for="free">Free</label>
+                                //     </td>
+                                // </tr>
+                                //     ';
+                                                $flag = selectSeatNoAndSeatStatusByBusId();
+                                                if($flag === true){
+
+                                                    $seatNo_And_seatStatus = $_SESSION['seatNo_And_seatStatus'];
+                                                    foreach ($seatNo_And_seatStatus as $rowAgain) {
+
+                                                        if($rowAgain['seatNo'] == 'A4'){
+                                                            if($rowAgain['seatStatus'] === "Free"){
+                                                                echo "
+                                                                        <td><button style='color:white; background-color:green; border-radius: 4px;'>".$rowAgain['seatNo']."</button> </td>
+                                                                ";
+                                                            }else{
+                                                                echo "
+                                                                        <td><button style='color:white; background-color:red; border-radius: 4px;'>A4</button> </td>
+                                                                ";
+                                                            }
+                                                        } else if($rowAgain['seatNo'] == 'A3'){
+                                                            if($rowAgain['seatStatus'] === "Free"){
+                                                                echo "
+                                                                        <td><button style='color:white; background-color:green; border-radius: 4px;'>".$rowAgain['seatNo']."</button> </td>
+                                                                        <td> </td>
+                                                                        ";
+                                                            }else{
+                                                                echo "
+                                                                        <td> </td>
+                                                                        <td><button style='color:white; background-color:red; border-radius: 4px;'>A3</button> </td>
+                                                                ";
+                                                            }
+                                                        }else if($rowAgain['seatNo'] == 'A2'){
+                                                            if($rowAgain['seatStatus'] === "Free"){
+                                                                echo "
+                                                                        <td><button style='color:white; background-color:green; border-radius: 4px;'>".$rowAgain['seatNo']."</button> </td>
+                                                                ";
+                                                            }else{
+                                                                echo "
+                                                                <td> </td>
+                                                                        <td><button style='color:white; background-color:red; border-radius: 4px;'>A2</button> </td>
+                                                                ";
+                                                            }
+                                                        }else if($rowAgain['seatNo'] == 'A1'){
+                                                            if($rowAgain['seatStatus'] === "Free"){
+                                                                echo "
+                                                                        <td><button style='color:white; background-color:green; border-radius: 4px;'>".$rowAgain['seatNo']."</button> </td>
+                                                                ";
+                                                            }else{
+                                                                echo "
+                                                                        <td><button style='color:white; background-color:red; border-radius: 4px;'>A1</button> </td>
+                                                                ";
+                                                            }
+                                                        }
+                                                    
+                                                    }
+                                                }else{
+                                                    echo "sorry";
+                                                    die(mysqli_error($con));
+                                                }
+                                        ?>
+                                        
+                                                                                
                                     </tr>
                                     <tr>
                                         <td><button>B4</button> </td>
@@ -163,102 +235,205 @@
                                     <!-- ---------------------------------------- -->
                                     
                                     
-                                    <form action="./ticketDetailsProcess.php" novalidate method="post">
+                                    <form action="../../controller/ticketDetails/ticketDetailsProcess.php" novalidate method="post">
                                         <table>
 
                                             <?php
-                                                // echo $_SESSION['busId'];
-                                                $sql = "select seatNo, seatStatus from `local_bus_ticketing_system`.`ticket` where busId=".$_SESSION['busId'];
-                                                $result = mysqli_query($con, $sql);
-                                                if($result){
-                                                    while($row = mysqli_fetch_assoc($result)){
-                                                        // echo $row['seatStatus'];
-                                                        if($row['seatStatus'] === "Free"){
+                                                // selectSeatNoAndSeatStatusByBusId();$_SESSION['busId']
+                                                // selectPerKMCostAndTollCostByRouteId(); $_SESSION['routeId']
+                                                
+                                                //  selectAreaIndexByStartAreaNameAndRouteId(); // $_SESSION['startArea'] ... $_SESSION['routeId']
+                                                $flag = selectSeatNoAndSeatStatusByBusId();
+                                                if($flag === true){
+
+                                                    $seatNo_And_seatStatus = $_SESSION['seatNo_And_seatStatus'];
+                                                    // echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
+                                                    foreach ($seatNo_And_seatStatus as $rowAgain) {
+                                                    
+                                                        if($rowAgain['seatStatus'] === "Free"){
                                                             
                                                             echo '
                                                             <tr>
                                                             <td>
-                                                                <p>Status of <input name="seatNo_'.$row['seatNo'].'" id="seatNo" type="text" size="1" value="'.$row['seatNo'].'"></input></p>
+                                                                <p>Status of <input name="seatNo_'.$rowAgain['seatNo'].'" id="seatNo" type="text" size="1" value="'.$rowAgain['seatNo'].'"></input></p>
                                                             </td>
                                                             <td>:</td>
                                                             <td>
                                                             
-                                                                <input    type="radio" id="booked" name="seat_status_'.$row['seatNo'].'" value="booked">
+                                                                <input    type="radio" id="booked" name="seat_status_'.$rowAgain['seatNo'].'" value="booked">
                                                                 <label for="booked">Booked</label>
-                                                                <input   checked type="radio" id="free" name="seat_status_'.$row['seatNo'].'" value="free">
+                                                                <input   checked type="radio" id="free" name="seat_status_'.$rowAgain['seatNo'].'" value="free">
                                                                 <label for="free">Free</label>
                                                             </td>
                                                         </tr>
                                                             ';
                                                             $masterFlag = true;
                                                         }
-                                                        
                                                     }
-                                                    
-                                                }
-                                                else{
+                                                }else{
+                                                
                                                     echo "sorry";
                                                     die(mysqli_error($con));
                                                 }
-                                        ?>
-                                            
-                                        <?php 
-                                            $sql = "select perKmCost, tollCost from `local_bus_ticketing_system`.`route` where routeId=".$_SESSION['routeId'];
-                                            // echo $sql;
-                                            $result = mysqli_query($con, $sql);
-                                            if($result){
-                                                while($row = mysqli_fetch_assoc($result)){
-                                                    $_SESSION["perKmCost"] = $row['perKmCost'];
-                                                    $_SESSION["tollCost"] = $row['tollCost'];
-                                                }
-                                            }else{
-                                                echo "sorry";
-                                                die(mysqli_error($con));
-                                            }
+                                                
+                                                // 😀😀😀😀
+                                                //$sql = "select perKmCost, tollCost from `local_bus_ticketing_system`.`route` where routeId=".$_SESSION['routeId'];
 
-                                            //$sqlForStartAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area` where routeId IN (select routeId from `local_bus_ticketing_system`.`area` where areaName="'.$_SESSION['startArea'].'")';
-                                            $sqlForStartAreaIndex = 'select areaIndex from `local_bus_ticketing_system`.`area`where areaName="'.$_SESSION['startArea'].'" AND routeId="'.$_SESSION['routeId'].'"';
-                                            $_SESSION["sqlForCheck"] = $sqlForStartAreaIndex;
-                                            $result = mysqli_query($con, $sqlForStartAreaIndex);
-                                            if($result){
-                                                while($row = mysqli_fetch_assoc($result)){
-                                                    // echo "---------areaIndex--------".$row['areaIndex'];
-                                                    $_SESSION["startAreaIndex"] = $row['areaIndex'];
+                                                // echo $_SESSION['busId'];
+                                                // $sql = "select seatNo, seatStatus from `local_bus_ticketing_system`.`ticket` where busId=".$_SESSION['busId'];
+                                                // $result = mysqli_query($con, $sql);
+                                                // if($result){
+                                                //     while($row = mysqli_fetch_assoc($result)){
+                                                //         // echo $row['seatStatus'];
+                                                //         if($row['seatStatus'] === "Free"){
+                                                            
+                                                //             echo '
+                                                //             <tr>
+                                                //             <td>
+                                                //                 <p>Status of <input name="seatNo_'.$row['seatNo'].'" id="seatNo" type="text" size="1" value="'.$row['seatNo'].'"></input></p>
+                                                //             </td>
+                                                //             <td>:</td>
+                                                //             <td>
+                                                            
+                                                //                 <input    type="radio" id="booked" name="seat_status_'.$row['seatNo'].'" value="booked">
+                                                //                 <label for="booked">Booked</label>
+                                                //                 <input   checked type="radio" id="free" name="seat_status_'.$row['seatNo'].'" value="free">
+                                                //                 <label for="free">Free</label>
+                                                //             </td>
+                                                //         </tr>
+                                                //             ';
+                                                //             $masterFlag = true;
+                                                //         }
+                                                        
+                                                //     }
+                                                    
+                                                // }
+                                                // else{
+                                                //     echo "sorry";
+                                                //     die(mysqli_error($con));
+                                                // }
+                                        ?>
+                                        <?php 
+                                                $flag = selectPerKMCostAndTollCostByRouteId();
+                                                if($flag === true){
+
+                                                    $perKmCost_And_tollCost = $_SESSION['perKmCost_And_tollCost'];
+                                                    // echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
+                                                    foreach ($perKmCost_And_tollCost as $rowAgain) {
+                                                        $_SESSION["perKmCost"] = $rowAgain['perKmCost'];
+                                                        $_SESSION["tollCost"] = $rowAgain['tollCost'];
+                                                    }
+                                                }else{
+                                                
+                                                    echo "sorry";
+                                                    die(mysqli_error($con));
                                                 }
-                                            }else{
-                                                echo "sorry";
-                                                die(mysqli_error($con));
-                                            }
+                                            // // 😀😀😀😀  
+                                            // $sql = "select perKmCost, tollCost from `local_bus_ticketing_system`.`route` where routeId=".$_SESSION['routeId'];
+                                            // // echo $sql;
+                                            // $result = mysqli_query($con, $sql);
+                                            // if($result){
+                                            //     while($row = mysqli_fetch_assoc($result)){
+                                            //         $_SESSION["perKmCost"] = $row['perKmCost'];
+                                            //         $_SESSION["tollCost"] = $row['tollCost'];
+                                            //     }
+                                            // }else{
+                                            //     echo "sorry";
+                                            //     die(mysqli_error($con));
+                                            // }
+                                            $areaVariable = $_SESSION['startArea'];
+                                            $flag = selectAreaIndexByStartOrDestAreaNameAndRouteId($areaVariable);
+                                                if($flag === true){
+
+                                                    $Area_Index = $_SESSION['Area_Index'];
+                                                    // echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
+                                                    foreach ($Area_Index as $rowAgain) {
+                                                        $_SESSION["startAreaIndex"] = $rowAgain['areaIndex'];
+                                                    }
+                                                }else{
+                                                    echo "sorry";
+                                                    die(mysqli_error($con));
+                                                }
+                                            
+                                            // // 😀😀😀😀
+                                            // //$sqlForStartAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area` where routeId IN (select routeId from `local_bus_ticketing_system`.`area` where areaName="'.$_SESSION['startArea'].'")';
+                                            // $sqlForStartAreaIndex = 'select areaIndex from `local_bus_ticketing_system`.`area`where areaName="'.$_SESSION['startArea'].'" AND routeId="'.$_SESSION['routeId'].'"';
+                                            // $_SESSION["sqlForCheck"] = $sqlForStartAreaIndex;
+                                            // $result = mysqli_query($con, $sqlForStartAreaIndex);
+                                            // if($result){
+                                            //     while($row = mysqli_fetch_assoc($result)){
+                                            //         // echo "---------areaIndex--------".$row['areaIndex'];
+                                            //         $_SESSION["startAreaIndex"] = $row['areaIndex'];
+                                            //     }
+                                            // }else{
+                                            //     echo "sorry";
+                                            //     die(mysqli_error($con));
+                                            // }
                                             //$sqlForDestAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area` where routeId IN (select routeId from `local_bus_ticketing_system`.`area` where areaName="'.$_SESSION["destinationArea"].'")';
                                             
-                                            $sqlForDestAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area`where areaName="'.$_SESSION['destinationArea'].'" AND routeId="'.$_SESSION['routeId'].'"';
-                                            $result2 = mysqli_query($con, $sqlForDestAreaIndex);
-                                            if($result2){
-                                                while($row = mysqli_fetch_assoc($result2)){
-                                                    // echo "-----------destination index-------".$row['areaIndex'];
-                                                    $_SESSION["destinationAreaIndex"] = $row['areaIndex'];
+                                            $areaVariable = $_SESSION['destinationArea'];
+                                            $flag = selectAreaIndexByStartOrDestAreaNameAndRouteId($areaVariable);
+                                                if($flag === true){
+
+                                                    $Area_Index = $_SESSION['Area_Index'];
+                                                    foreach ($Area_Index as $rowAgain) {
+                                                        $_SESSION["destinationAreaIndex"] = $rowAgain['areaIndex'];
+                                                    }
+                                                }else{
+                                                
+                                                    echo "sorry";
+                                                    die(mysqli_error($con));
                                                 }
-                                            }else{
-                                                echo "sorry";
-                                                die(mysqli_error($con));
-                                            }
+
+                                            // // 😀😀😀😀
+                                            // $sqlForDestAreaIndex  = 'select areaIndex from `local_bus_ticketing_system`.`area`where areaName="'.$_SESSION['destinationArea'].'" AND routeId="'.$_SESSION['routeId'].'"';
+                                            // $result2 = mysqli_query($con, $sqlForDestAreaIndex);
+                                            // if($result2){
+                                            //     while($row = mysqli_fetch_assoc($result2)){
+                                            //         // echo "-----------destination index-------".$row['areaIndex'];
+                                            //         $_SESSION["destinationAreaIndex"] = $row['areaIndex'];
+                                            //     }
+                                            // }else{
+                                            //     echo "sorry";
+                                            //     die(mysqli_error($con));
+                                            // }
                                             
                                             //////////////////////////////////////////////////////////////////////////////////////
-                                            $skipStartAreaPreviousDistance = $_SESSION["startAreaIndex"]+1;
-                                            $sqlForCalculateDistance = 'select distanceFromPrevArea from `local_bus_ticketing_system`.`area` where ( areaIndex BETWEEN "'.$skipStartAreaPreviousDistance.'+1" AND "'.$_SESSION["destinationAreaIndex"].'") AND routeId='.$_SESSION['routeId'];
-                                            $result3 = mysqli_query($con, $sqlForCalculateDistance);
-                                            $_SESSION["distanceCalculation"] = 0;
-                                            if($result3){
-                                                while($row = mysqli_fetch_assoc($result3)){
-                                                    // echo "Distance From Prev Area ->".$row['distanceFromPrevArea']." ->> ";
-                                                    $_SESSION["distanceCalculation"] = $_SESSION["distanceCalculation"] + $row['distanceFromPrevArea'];
+                                            
+                                            // ekhane amra try korbo .. prepared statement niye kaj korar jonno ... 
+
+                                            $skipStartAreaPreviousDistance = $_SESSION["startAreaIndex"]+2; // may be plus 2 kore dilei problem ta solve hoye jabe ...  
+                                            $flag = calculateDistance($skipStartAreaPreviousDistance);
+                                            $_SESSION["distanceCalculation"] = 0;    
+                                            if($flag === true){
+                                                    
+                                                    $distance_From_Prev_Area = $_SESSION['distance_From_Prev_Area'];
+                                                    foreach ($distance_From_Prev_Area as $rowAgain) {
+                                                        // $_SESSION["destinationAreaIndex"] = $rowAgain['distanceFromPrevArea'];
+                                                        $_SESSION["distanceCalculation"] = $_SESSION["distanceCalculation"] + $rowAgain['distanceFromPrevArea'];
+                                                        //$_SESSION["distanceCalculation"]  = "0";
+                                                    }
+                                                }else{
+                                                
+                                                    echo "sorry";
+                                                    die(mysqli_error($con));
                                                 }
-                                                // echo $_SESSION["distanceCalculation"]
-                                            }else{
-                                                echo "sorry";
-                                                die(mysqli_error($con));
-                                            }
-                                            //echo "perKmCost -> ".$_SESSION["perKmCost"]."tollCost -> ".$_SESSION["tollCost"]."startAreaIndex -> ".$_SESSION["startAreaIndex"]."destinationAreaIndex -> ".$_SESSION["destinationAreaIndex"]." distanceCalculate -> ".$_SESSION["distanceCalculation"]."";//.$_SESSION["distanceCalculation"]
+
+                                            // //😀😀😀😀
+                                            // $skipStartAreaPreviousDistance = $_SESSION["startAreaIndex"]+1;
+                                            // $sqlForCalculateDistance = 'select distanceFromPrevArea from `local_bus_ticketing_system`.`area` where ( areaIndex BETWEEN "'.$skipStartAreaPreviousDistance.'+1" AND "'.$_SESSION["destinationAreaIndex"].'") AND routeId='.$_SESSION['routeId'];
+                                            // $result3 = mysqli_query($con, $sqlForCalculateDistance);
+                                            // $_SESSION["distanceCalculation"] = 0;
+                                            // if($result3){
+                                            //     while($row = mysqli_fetch_assoc($result3)){
+                                                    
+                                            //         $_SESSION["distanceCalculation"] = $_SESSION["distanceCalculation"] + $row['distanceFromPrevArea'];
+                                            //     }
+                                                
+                                            // }else{
+                                            //     echo "sorry";
+                                            //     die(mysqli_error($con));
+                                            // }
                                         ?>  
                                             <tr>
                                                 <td>

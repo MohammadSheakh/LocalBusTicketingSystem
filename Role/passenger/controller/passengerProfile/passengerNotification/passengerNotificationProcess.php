@@ -1,5 +1,15 @@
 <?php
-include '../../database/dbConnect.php';
+
+$con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); 
+
+
+if($con){
+    
+}else{
+    
+    die("Error From Database : ".mysqli_error($con));
+}
+// include '../../database/dbConnect.php';
 
 if(isset($_GET['notificationId'])){
     // get method er maddhome amra variable / parameter access korte pari .. 
@@ -15,7 +25,8 @@ if(isset($_GET['notificationId'])){
         // if query has execute successfully 
         //echo "Data deleted successfully sql ".$sql ; // show me this 
         
-        header('location: ../subNavbar/personalInformation/personalInformation.php');
+        header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/passengerProfile/subNavbar/personalInformation/personalInformation.php');
+        
     }else{
         // error 
         echo "Data deleted successfully" ; 
