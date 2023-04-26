@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./ticketDetails.css">
 </head>
 
 <body>
@@ -33,19 +34,19 @@
     <table align="center">
         <tr>
             <td>
-                <fieldset>
+                <fieldset class='fieldSet'>
                     <table>
-                        <legend>Ticket / Trip Details Page</legend>
+                        <legend class='legend'>Ticket / Trip Details Page</legend>
 
                         <div>
-                            <h3>
+                            <h3 class="inputName">
                             <?php 
-                                        echo $_SESSION["startArea"] ?? " "; 
+                                        echo   $_SESSION["startArea"] ?? " "; 
                                         ?>
-                                
-                            to 
+                                to
+                            
                             <?php 
-                                        echo $_SESSION["destinationArea"] ?? " "; //////// 😀
+                                        echo  $_SESSION["destinationArea"] ?? " "; //////// 😀
                                         ?>
                                         
                                     </h3>
@@ -55,15 +56,15 @@
                                 <tr>
                                     <td>
                                         <!-- Picture of Bus  -->
-                                        <img height="80px" src="../images/ticketDetailsPage/busPicture.png" alt="">
+                                        <img class='busImage' height="80px" src="../images/ticketDetailsPage/busPicture.png" alt="">
 
                                     </td>
                                     <td>
-                                        <h5><?php 
+                                        <h5  class="inputName"><?php 
                                         echo $_SESSION["companyName"]." Paribahan" ?? " ";
                                         ?>
                                             </h5>
-                                            <h5>Root No. 
+                                            <h5  class="inputName">Root No. 
                                         <?php 
                                         echo $_SESSION["routeId"] ?? " ";
                                         ?>
@@ -72,10 +73,10 @@
                                     </td>
 
                                     <td>
-                                        <h5>Arrival Time : <?php 
+                                        <h5  class="inputName">Arrival Time : <?php 
                                         echo $_SESSION["arrivalTime"] ?? " ";
                                         ?></h5>
-                                        <h5>Leave 
+                                        <h5  class="inputName">Leave 
                                         <?php 
                                         echo $_SESSION["startArea"] ?? " "; 
                                         ?>
@@ -97,12 +98,12 @@
 
                         <tr>
                             <td>
-                                <h3>Available Seats</h3>
+                                <h3  class="inputName">Available Seats</h3>
                                 <!-- ekhane amra table er moddhe arekta table dekhabo 
                                         -->
 
 
-                                <table border="1">
+                                <table border="1" class="my-table">
                                     <tr>
                                         <td>Gate</td>
                                         <td>&nbsp;</td>
@@ -153,8 +154,9 @@
                                                                         <td> </td>
                                                                         ";
                                                             }else{
+                                                                // <td> </td>
                                                                 echo "
-                                                                        <td> </td>
+                                                                         
                                                                         <td><button style='color:white; background-color:red; border-radius: 4px;'>A3</button> </td>
                                                                 ";
                                                             }
@@ -164,8 +166,9 @@
                                                                         <td><button style='color:white; background-color:green; border-radius: 4px;'>".$rowAgain['seatNo']."</button> </td>
                                                                 ";
                                                             }else{
-                                                                echo "
-                                                                <td> </td>
+                                                                // <td> </td>
+                                                                echo "<td> </td>
+                                                                 
                                                                         <td><button style='color:white; background-color:red; border-radius: 4px;'>A2</button> </td>
                                                                 ";
                                                             }
@@ -190,35 +193,36 @@
                                         
                                                                                 
                                     </tr>
-                                    <tr>
-                                        <td><button>B4</button> </td>
+                                    <!-- class='seatColor' -->
+                                    <tr class='seatColor'>
+                                        <td><button >B4</button> </td>
                                         <td><button>B3</button> </td>
                                         <td> </td>
                                         <td><button>B2</button> </td>
                                         <td><button>B1</button> </td>
                                     </tr>
-                                    <tr>
+                                    <tr class='seatColor'>
                                         <td><button>C4</button> </td>
                                         <td><button>C3</button> </td>
                                         <td> </td>
                                         <td><button>C2</button> </td>
                                         <td><button>C1</button> </td>
                                     </tr>
-                                    <tr>
+                                    <tr class='seatColor'>
                                         <td><button style="">D4</button> </td>
                                         <td><button>D3</button> </td>
                                         <td> </td>
                                         <td><button>D2</button> </td>
                                         <td><button>D1</button> </td>
                                     </tr>
-                                    <tr>
+                                    <tr class='seatColor'>
                                         <td><button>E4</button> </td>
                                         <td><button>E3</button> </td>
                                         <td> </td>
                                         <td><button>E2</button> </td>
                                         <td><button>E1</button> </td>
                                     </tr>
-                                    <tr>
+                                    <tr class='seatColor'>
                                         <td><button>F5</button> </td>
                                         <td><button>F4</button> </td>
 
@@ -231,7 +235,7 @@
 
                             </td>
                             <td>
-                                <fieldset>
+                                <fieldset class='fieldSet'>
                                     <!-- ---------------------------------------- -->
                                     
                                     
@@ -255,15 +259,15 @@
                                                             echo '
                                                             <tr>
                                                             <td>
-                                                                <p>Status of <input name="seatNo_'.$rowAgain['seatNo'].'" id="seatNo" type="text" size="1" value="'.$rowAgain['seatNo'].'"></input></p>
+                                                                <p class="inputName">Status of <input readonly class="textBox" name="seatNo_'.$rowAgain['seatNo'].'" id="seatNo" type="text" size="1" value="'.$rowAgain['seatNo'].'"></input></p>
                                                             </td>
                                                             <td>:</td>
                                                             <td>
                                                             
                                                                 <input    type="radio" id="booked" name="seat_status_'.$rowAgain['seatNo'].'" value="booked">
-                                                                <label for="booked">Booked</label>
+                                                                <label class="inputName" for="booked">Booked</label>
                                                                 <input   checked type="radio" id="free" name="seat_status_'.$rowAgain['seatNo'].'" value="free">
-                                                                <label for="free">Free</label>
+                                                                <label class="inputName" for="free">Free</label>
                                                             </td>
                                                         </tr>
                                                             ';
@@ -275,7 +279,63 @@
                                                     echo "sorry";
                                                     die(mysqli_error($con));
                                                 }
+
+                                                //////////////////////////////// 😅😅😅😅😅😅/////////////////////////////////////////////////
+                                                // ekhon amra ei passenger ei bus er jonno jei ticket gula book korse already shegula dekhabo 
+
+                                                $flag8 = selectSeatNoAndSeatStatusByBusIdAndPassengerId();
+                                                if($flag8 === true){
+                                                    
+                                                    
+
+                                                    $seatNo_And_seatStatus = $_SESSION['seatNo_And_seatStatus'];
+                                                    
+                                                    if((isset($_SESSION['seatNo_And_seatStatus']) && count($_SESSION['seatNo_And_seatStatus']) > 0 )){
+                                                        echo "
+                                                            <tr> 
+                                                                <td>
+                                                                    <h3 > Your Booked Seat </h3>
+                                                                </td>  
+                                                            </tr>
+                                                        ";
+                                                    }
+                                                    // echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
+                                                        
+                                                    foreach ($seatNo_And_seatStatus as $rowAgain) {
+                                                    
+                                                        if($rowAgain['seatStatus'] === "Booked"){
+                                                            
+                                                            echo '
+                                                            
+
+                                                            <tr >
+
+                                                            <td class="border-bottom">
+                                                                <p class="inputName">Status of <input readonly class="textBox" name="seatNo_'.$rowAgain['seatNo'].'" id="seatNo" type="text" size="1" value="'.$rowAgain['seatNo'].'"></input></p>
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td>
+                                                            
+                                                                <input  checked  type="radio" id="booked" name="seat_status_'.$rowAgain['seatNo'].'" value="booked">
+                                                                <label class="inputName" for="booked">Booked</label>
+                                                                <input    type="radio" id="free" name="seat_status_'.$rowAgain['seatNo'].'" value="free">
+                                                                <label class="inputName" for="free">Free</label>
+                                                            </td>
+                                                        </tr>
+                                                            ';
+                                                            $masterFlag = true;
+                                                        }
+                                                    }
+                                                }else{
                                                 
+                                                    // echo "sorry";
+                                                    // die(mysqli_error($con));
+                                                }
+                                                
+
+
+
+
                                                 // 😀😀😀😀
                                                 //$sql = "select perKmCost, tollCost from `local_bus_ticketing_system`.`route` where routeId=".$_SESSION['routeId'];
 
@@ -445,11 +505,15 @@
                                                 <td>
                                                     <?php 
                                                     if($masterFlag){
-                                                        echo "<button type='submit'>Submit</button>";
+                                                        echo "<button class='submitBtn'  type='submit'>Submit</button>";
                                                     }
                                                     ?>
                                                 
                                                 </td>
+                                            </tr>
+
+                                            <tr>
+
                                             </tr>
                                             
                                         </table>
@@ -457,7 +521,7 @@
                                     </form>
 
                                     <!-- ----------------------------------------- -->
-                                    <legend>Details seat plan</legend>
+                                    <legend class='legend'>Details seat plan</legend>
                                     <!-- <h5>You have selected A1, A2, A3 seat</h5> -->
                                     <?php
                                         $seatCountVariable = 0;
@@ -465,14 +529,14 @@
                                             $seatCountVariable = $_SESSION['seatCount'];
                                         }
                                         $_SESSION['totalPrice'] = ($_SESSION["distanceCalculation"] * $_SESSION["perKmCost"]) * $seatCountVariable;
-                                        echo "<p>Per kilometer price : ". $_SESSION["perKmCost"] ."Tk</p>
-                                        <p>Total Distance : ".$_SESSION["distanceCalculation"]." kilometer</p>
-                                        <p>Total Seat : ".$seatCountVariable."</p>
-                                        <p>Total Price : (".$_SESSION["distanceCalculation"]." * ".$_SESSION["perKmCost"].") * ".$seatCountVariable." => 
+                                        echo "<p class='inputName'>Per kilometer price : ". $_SESSION["perKmCost"] ."Tk</p>
+                                        <p  class='inputName'>Total Distance : ".$_SESSION["distanceCalculation"]." kilometer</p>
+                                        <p  class='inputName'>Total Seat : ".$seatCountVariable."</p>
+                                        <p  class='inputName'>Total Price : (".$_SESSION["distanceCalculation"]." * ".$_SESSION["perKmCost"].") * ".$seatCountVariable." => 
                                         ".$_SESSION['totalPrice'] ."
                                         Taka</p>
-                                        <p> Passenger Id :".$_SESSION['passenger_id']." </p>
-                                        <p> Passenger Name :".$_SESSION['fullName']." </p>
+                                        <p  class='inputName'> Passenger Id :".$_SESSION['passenger_id']." </p>
+                                        <p  class='inputName'> Passenger Name :".$_SESSION['fullName']." </p>
                                         ";
                                         // .$_SESSION["startAreaIndex"]
                                         // .$_SESSION["sqlForCheck"]
@@ -482,8 +546,8 @@
                                     
 
                                         
-                                    <button> <a href="../confirmBooking/confirmBooking.php">Confirm Booking</a> </button>
-                                    <button>Cancel </button> 
+                                    <button class='submitBtn'> <a class='submitBtnAnchor' href="../confirmBooking/confirmBooking.php">Confirm Booking</a> </button>
+                                    <button class='cancelBtn'>Cancel </button> 
                                     <!-- Cancel button e press korle .. ... total seat er session .. khali kore dite hobe ..   -->
                                 </fieldset>
                             </td>

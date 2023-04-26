@@ -36,6 +36,25 @@ function selectSeatNoAndSeatStatusByBusId(){
     }  
 }
 
+function selectSeatNoAndSeatStatusByBusIdAndPassengerId(){
+    $con = connect();
+    $sqlForRouteId = "select seatNo, seatStatus from `local_bus_ticketing_system`.`ticket` where busId= ? AND passengerId = ?";
+    $stmt = $con -> prepare($sqlForRouteId);   
+    $stmt->bind_param("ii", $_SESSION['busId'], $_SESSION['passenger_id']); // busId string o hoite pare ..   
+    if($stmt -> execute() > 0){
+        $stmt->bind_result($seatNo, $seatStatus);
+        $rows = array();
+        while ($stmt->fetch()) {
+            $rows[] = array('seatNo' => $seatNo,  'seatStatus' => $seatStatus);
+        }
+        $_SESSION['seatNo_And_seatStatus'] = $rows;
+        $stmt->close();
+        return true;
+    }else{
+        return false;
+    }  
+}
+
 function selectPerKMCostAndTollCostByRouteId(){
     $con = connect();
     $sqlForRouteId = "select perKmCost, tollCost from `local_bus_ticketing_system`.`route` where routeId= ?";

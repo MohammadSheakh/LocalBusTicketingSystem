@@ -14,7 +14,92 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./ticketBooking.css"/>v
+    <link rel="stylesheet" href="./ticketBooking.css"/>
+    <style>
+        * {
+            background-color: #01263f;
+        }
+        .fieldSet{
+            border: 1px solid wheat;
+            border-radius: 7px;
+        }
+        .legend{
+            color :white;
+        }
+        .inputName{
+            color : white !important;
+        }
+        .textBox{
+            border: 1px solid #4985 ;
+            border-radius: 4px;
+            width : 99%;
+            color :white;
+        }
+        .textBox:focus {
+            background-color: teal;
+        }
+        .textBox:not(:focus) {
+            background-color: teal;
+        }
+
+        .submitBtn{
+    border: 2px solid #4988;
+    border-radius: 7px;
+    padding : 3px;
+    background-color: rgb(4, 123, 83);
+}
+/* .option:hover{
+    background-color: white;
+} */
+.errorMsg {
+    color : red !important;
+}
+.my-table {
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+.my-table th, .my-table td {
+  text-align: center; 
+  /* age theke left deowa chilo  */
+  padding: 8px;
+  border: 1px solid rgb(4, 123, 83);
+  color : white;
+  /* border-radius:7px !important; */
+}
+
+.my-table th {
+  background-color: rgb(4, 101, 83);
+  font-weight: bold;
+  color :black;
+  /* border-radius:7px !important; */
+}
+
+.detailsBtn{
+    border: 2px solid #4988;
+    border-radius: 7px;
+    padding : 3px;
+    background-color: rgb(4, 123, 83);
+    color : purple;
+}
+
+.bookNowBtn{
+    border: 2px solid #4988;
+    border-radius: 7px;
+    padding : 3px;
+    background-color: rgb(4, 123, 83);
+}
+
+.bookNowBtnLink{
+    border: none;
+    border-radius: 7px;
+    padding : 3px;
+    background-color: rgb(4, 123, 83);
+    text-decoration: none;
+}
+    </style>
+    
 </head>
 
 <body>
@@ -48,15 +133,15 @@ session_start();
     <table align="center">
         <tr>
             <td>
-                <fieldset>
+                <fieldset class="fieldSet">
                     <table align="center">
 
-                        <legend>Ticket Booking Form</legend>
+                        <legend class="legend">Ticket Booking Form</legend>
                         <form novalidate action="../../controller/ticketBooking/ticketBookingProcess.php" method="post">
                             <tr>
                                 
-                                    <td> <label for="area">What area do you live in</label> </td>
-                                    <td>:</td>
+                                    <td > <label for="area" class="inputName">What area do you live in</label> </td>
+                                    <td class="inputName">:</td>
                                     <td>
                                         <!-- input form-->
                                         <?php 
@@ -65,7 +150,7 @@ session_start();
                                             $startAreaVariable = $_SESSION["startArea"];
                                         }
 
-                                        echo ' <select name="startAreaName" id="startAreaName" value=" '.$startAreaVariable .'">'
+                                        echo ' <select class="textBox" name="startAreaName" id="startAreaName" value=" '.$startAreaVariable .'">'
                                         ?>
                                             <!-- area gula data base theke ashte hobe ... ei area gula admin save kore rakhbe .. database e -->
                                             <!-- lets pull all Area Name value from database  -->
@@ -75,7 +160,7 @@ session_start();
                                                 if($flag === true){
 
                                                     $All_Area = $_SESSION['All_Area'];
-                                                    echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
+                                                    echo "<option class='option' value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
                                                     foreach ($All_Area as $rowAgain) {
                                                         $areaName= $rowAgain['areaName'];
                                                         echo "<option value='".$areaName."'>$areaName</option>";
@@ -120,19 +205,19 @@ session_start();
                                     
                                 </td>
                                     <td>
-                                    <button type="submit">Submit</button>
+                                    <button class="submitBtn" type="submit">Submit</button>
                                     </td>
                             </tr>
                             </form>
                             <tr>
-                                <td> <label for="area">Available route</label> </td>
-                                <td>:</td>
+                                <td> <label class="inputName" for="area">Available route</label> </td>
+                                <td class="inputName">:</td>
                                 <td>
                                     <!-- input form-->
-                                    <select width="300px" name="area" id="area">
+                                    <select class='textBox' width="300px" name="area" id="area">
                                         <!-- ekhane shei route gulai show korbe .. jegula oi place related  -->
                                         <?php
-                                            echo "<option value='volvo'>".$_SESSION["route"]."</option>";
+                                            echo "<option  value='volvo'>".$_SESSION["route"]."</option>";
                                         ?>
                                         <!-- <option value="saab">Saab</option>
                                         <option value="mercedes">Mercedes</option>
@@ -151,7 +236,7 @@ session_start();
                                         if(isset($_SESSION['routeId'])){
                                             $routeIdVariable = $_SESSION['routeId'];
                                         }
-                                        echo "<h3>Available bus of route [ ".$routeIdVariable." ] </h3>";
+                                        echo "<h3  class='inputName'>Available bus of route [ ".$routeIdVariable." ] </h3>";
                                     ?>
 
                                     <?php 
@@ -163,7 +248,7 @@ session_start();
                                             $flag = false;
                                             foreach ($Company_Name as $rowAgain) {
                                                 $_SESSION["companyName"]= $rowAgain['companyName'];
-                                                echo "<h4>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
+                                                echo "<h4  class='inputName'>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
                                                 $flag = true;
                                             }
                                             if($flag == false){
@@ -176,7 +261,7 @@ session_start();
                                                 $date = "";
                                                 $availableTotalSeat ="" ;
                                                 $departureTime = "";
-                                                echo " <h4> No Bus Available. for this route </h4>";
+                                                echo " <h4  class='errorMsg'> No Bus Available. for this route </h4>";
                                             }
                                             // echo "flag is false here";
                                         }else{
@@ -225,8 +310,8 @@ session_start();
                         <form action="./saveDateForTicketBooking.php" method="post" novalidate>
                             
                             <tr>
-                                <td> <label for="area">Select your destination</label> </td>
-                                <td>:</td>
+                                <td> <label  class='inputName' for="area">Select your destination</label> </td>
+                                <td  class='inputName'>:</td>
                                 <td>
                                     
                                     <?php 
@@ -234,7 +319,7 @@ session_start();
                                         if(isset($_SESSION["destinationArea"])){
                                             $destArea = $_SESSION["destinationArea"];
                                         }
-                                        echo ' <select name="destinationAreaName" id="destinationAreaName" value=" '.$destArea.'">'
+                                        echo ' <select class="textBox" name="destinationAreaName" id="destinationAreaName" value=" '.$destArea.'">'
                                         ?>
                                             
                                             <?php
@@ -286,13 +371,13 @@ session_start();
                             
                             <tr>
                                 <td>
-                                    <label for="dateOfBirth">Date</label>
+                                    <label for="dateOfBirth"  class='date'>Date</label>
 
                                 </td>
-                                <td>:</td>
+                                <td  class='inputName'>:</td>
                                 <td>
                                     
-                                    <input type="date" id="dateForTicketBooking" name="dateForTicketBooking"><br>
+                                    <input  class='inputName' type="date" id="dateForTicketBooking" name="dateForTicketBooking"><br>
                                 </td>
                             </tr>
 
@@ -304,16 +389,16 @@ session_start();
                                     
                                 </td>
                                     <td>
-                                    <button type="submit">Submit</button>
+                                    <button type="submit"  class='submitBtn'>Submit</button>
                                     </td>
                             </tr>
                         </form>
 
                             <tr>
                                 <td>
-                                    <h3>Available bus of list and seat no.</h3>
+                                    <h3  class='inputName'>Available bus of list and seat no.</h3>
                                     
-                                    <table border="1">
+                                    <table border="1" class="my-table">
                                             <!-- <tr>
                                                 <th>routeId.</th>
                                                 <th>Vehicle Serial No. busId </th>
@@ -323,6 +408,13 @@ session_start();
                                                 <th></th>
                                             </tr> -->
                                         <?php 
+
+                                                    $_SESSION["routeId"] = '';
+                                                    $_SESSION["busId"] = '';
+                                                    $_SESSION["departureTime"] = '';
+                                                    $_SESSION["arrivalTime"] = '';
+                                                    $_SESSION["availableTotalSeat"] = '';
+
                                         $scheduledIdVariable = '';
                                         if(isset($_SESSION["scheduleId"])){
                                             $scheduledIdVariable = $_SESSION["scheduleId"];
@@ -365,11 +457,11 @@ session_start();
                                                             <td>".$_SESSION['arrivalTime']."</td>
                                                             <td>".$_SESSION['availableTotalSeat']."</td>
                                                             <td>
-                                                                <button> <a href='../confirmBooking/confirmBooking.php'>Book Now</a></button>
+                                                                <button  class='bookNowBtn'> <a href='../confirmBooking/confirmBooking.php'  class='bookNowBtnLink'>Book Now</a></button>
                                                                 
                                                         
                                                                 <a href='../ticketDetails/ticketDetails.php'>
-                                                                    <button>Details</button>
+                                                                    <button class='detailsBtn'>Details</button>
                                                                 </a>
 
                                                             </td>

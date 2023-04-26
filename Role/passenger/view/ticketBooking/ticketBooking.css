@@ -1,5 +1,15 @@
 * {
     background-color: #01263f;
-    /* background-color: teal; */
-    
+}
+.fieldSet{
+    border: 1px solid wheat;
+    border-radius: 7px;
+}
+.legend{
+    color :white;
+}
+
+
+.inputName{
+    color : white !important;
 }

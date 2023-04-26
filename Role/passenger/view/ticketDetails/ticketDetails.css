@@ -1,0 +1,86 @@
+* {
+    background-color: #01263f;
+}
+
+.fieldSet {
+    border: 1px solid wheat;
+    border-radius: 7px;
+}
+
+.legend {
+    color: white;
+}
+
+
+.inputName {
+    color: white !important;
+}
+
+.busImage {
+    border-radius: 8px;
+    margin-right: 8px;
+}
+
+.my-table {
+    border-collapse: collapse;
+    width: 10%;
+
+}
+
+.my-table th,
+.my-table td {
+    text-align: center;
+
+    padding: 4px;
+    border: 1px solid white;
+    /* border: 1px solid rgb(4, 123, 83); */
+    color: white;
+
+}
+
+.my-table th {
+    background-color: rgb(4, 101, 83);
+    font-weight: bold;
+    color: black;
+    /* border-radius:7px !important; */
+}
+
+.border-bottom {
+    border: 1px solid white;
+}
+
+
+.seatColor>td>button {
+    background-color: rgb(139, 129, 255);
+    border-radius: 4px;
+}
+
+.textBox {
+    border: 1px solid #4985;
+    border-radius: 4px;
+    width: 19%;
+    color: white;
+}
+
+.submitBtn {
+    border: 2px solid #4988;
+    border-radius: 7px;
+    padding: 3px;
+    background-color: rgb(4, 123, 83);
+
+}
+
+.submitBtnAnchor {
+    /* border: 2px solid #4988; */
+    border-radius: 7px;
+    padding: 3px;
+    background-color: rgb(4, 123, 83);
+    text-decoration: none;
+}
+
+.cancelBtn {
+    border: 2px solid #4988;
+    border-radius: 7px;
+    padding: 3px;
+    background-color: red;
+}

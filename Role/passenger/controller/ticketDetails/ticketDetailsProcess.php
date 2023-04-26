@@ -108,9 +108,25 @@
                 die(mysqli_error($con));
             }
             
+        }else if($seatNo_A4 && $seatStatusA4 == "free"){
+
+
+            // ekhane arekta kaj korbo .. sheta hocche seat remove korar jonno 
+            // tokhon seatCount er value 1 remove korbo .. 
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Free', passengerId=' ', passengerName=' '  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A4."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                $_SESSION['seatCount'] = $_SESSION['seatCount'] - 1;
+                header('location: ../../view/ticketDetails/ticketDetails.php');
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
+            
         }
                     
-                
+        
+        
 
 
 
