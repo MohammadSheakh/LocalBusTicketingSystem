@@ -1,6 +1,6 @@
 <?php
     if(isset($_COOKIE['status'])){
-    
+        // session_start();
 ?>
 <head>
     <meta charset="UTF-8">
@@ -51,50 +51,16 @@
                         </tr>
 
                         <?php
-                        // require '../../../model/passengerProfile/notification/notification.php';
                         
                         echo "<tr>
                         <td>";
 
-                        $flag = getAllNotification();
-                        if($flag === true){
-                            // shob gula review array theke niye dekhabo 
-                            $all_notifications = $_SESSION['all_notifications'];
-                            // var_dump($all_notifications);
-                            // Loop through the array and display the data
-                            foreach ($all_notifications as $rowAgain) {
-                                $notificationId= $rowAgain['notificationId'];
-                                $notification= $rowAgain['notification'];
-                                $busId= $rowAgain['busId'];
-                                $passenger_id= $rowAgain['passenger_id'];
-                                $email= $rowAgain['email'];
-                                $employeeEmail_id= $rowAgain['employeeEmail_id'];
-                                $employeeId= $rowAgain['employeeId'];
-                                $companyName= $rowAgain['companyName'];
-                                $busRegistrationNo= $rowAgain['busRegistrationNo'];
-                                // <fieldset class='fieldSet'>
-                                echo " <div class='divInsideFieldSet'>";
-                                echo "<p  class='divInsideFieldSet'>".$companyName."-".$busRegistrationNo."&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;".$notification."</p>";
-                                // echo "notificationid".$notificationId;
-                                echo "
-                                <div  class='divInsideFieldSet' align='right'>
-                                <button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=".$notificationId."'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button>
-                                        <button class='button'>Save as Archive</button>
-                                </div>
-                                ";
-                                echo "</div><br>";
-                                // </fieldset>
-                            }
-                        }
-
-                        // show conversationId er against e  message table er shob gula message dekhabo 
-                        // $notification = '';
-                        // $sqlAgain = "select companyName, busRegistrationNo, notificationId, notification, busId, passenger_id, email, employeeEmail_id, employeeId from `local_bus_ticketing_system`.`notification` where passenger_Id='".$_SESSION["passenger_id"]."'";
-                        // $resultAgain = mysqli_query($con, $sqlAgain);
-                        // if($resultAgain){
+                        // $flag = getAllNotification();
+                        // if($flag === true){
                             
-                        //     while($rowAgain = mysqli_fetch_assoc($resultAgain)){
-                        //         echo "<fieldset>";
+                        //     $all_notifications = $_SESSION['all_notifications'];
+                            
+                        //     foreach ($all_notifications as $rowAgain) {
                         //         $notificationId= $rowAgain['notificationId'];
                         //         $notification= $rowAgain['notification'];
                         //         $busId= $rowAgain['busId'];
@@ -104,25 +70,23 @@
                         //         $employeeId= $rowAgain['employeeId'];
                         //         $companyName= $rowAgain['companyName'];
                         //         $busRegistrationNo= $rowAgain['busRegistrationNo'];
-                        //         echo "<p>".$companyName."-".$busRegistrationNo."&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;".$notification."</p>";
-                        //         echo "notificationid".$notificationId;
+                                
+                        //         echo " <div class='divInsideFieldSet'>";
+                        //         echo "<p  class='divInsideFieldSet'>".$companyName."-".$busRegistrationNo."&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;".$notification."</p>";
+                                
                         //         echo "
-                        //         <div align='right'>
-                        //         <button><a href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=".$notificationId."'><img  src='../../../images/passengerNotifications/delete.png' ></a></button>
-                        //                 <button>Save as Archive</button>
+                        //         <div  class='divInsideFieldSet' align='right'>
+                        //         <button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=".$notificationId."'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button>
+                        //                 <button class='button'>Save as Archive</button>
                         //         </div>
-                                    
                         //         ";
-                        //         echo "</fieldset><br>";
+                        //         echo "</div><br>";
+                                
                         //     }
-                            
-                            
                         // }
-                    
-                
-                
+                        echo "<div id='i2'></div>";
 
-                //========================= Reply to a conversation =============================
+                        
             ?>
                     
 
@@ -130,7 +94,26 @@
                     </table>
                 </fieldset>
                         
-                <script src="./passengerNotification.js"></script>
+                <!-- <script src="./passengerNotification.js"></script> -->
+                <script>
+                    function getData() {
+                        const xhttp = new XMLHttpRequest();
+                        xhttp.onload = function () {
+                            const resp = JSON.parse(this.responseText);
+                            console.log(resp);
+                            // document.getElementById("i2").innerHTML = resp;
+                        };
+                        xhttp.open(
+                            "GET",
+                            "../../../controller/passengerProfile/passengerNotification/showNotificationProcess.php"
+                            // true
+                        );
+                        xhttp.send();
+
+                        // return false;
+                    }
+                    setInterval(getData, 2000); // mili second por por ami call korbo .
+                </script>
             </body>
 
                 <?php

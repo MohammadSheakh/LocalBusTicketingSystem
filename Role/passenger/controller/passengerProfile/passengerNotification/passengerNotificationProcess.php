@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); 
 
 

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 function connectAgain() {
     $con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); // as i am not changing my password so empty
     if(!$con){
