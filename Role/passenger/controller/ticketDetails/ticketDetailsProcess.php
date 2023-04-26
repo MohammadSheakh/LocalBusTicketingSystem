@@ -55,7 +55,8 @@
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName='".$_SESSION['fullName']."'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A1."'";
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
-                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                $count = $_SESSION['seatCount'];
+                $_SESSION['seatCount'] = $count + 1;
                 header('location: ../../view/ticketDetails/ticketDetails.php');
                 
                 
@@ -64,6 +65,22 @@
                 die(mysqli_error($con));
             }
             
+        }
+        if($seatNo_A1 && $seatStatusA1 == "free"){
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Free', passengerId=' ', passengerName=' '  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A1."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                if($_SESSION['seatCount'] > 0){
+                    $_SESSION['seatCount'] = $_SESSION['seatCount'] - 1;
+                }else{
+                    $_SESSION['seatCount'] = 0;
+                }
+                
+                header('location: ../../view/ticketDetails/ticketDetails.php');
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
         }
 
         if($seatNo_A3 && $seatStatusA3 == "booked"){
@@ -71,7 +88,8 @@
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName='".$_SESSION['fullName']."'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A3."'";
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
-                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                $count = $_SESSION['seatCount'];
+                $_SESSION['seatCount'] = $count + 1;
                 header('location: ../../view/ticketDetails/ticketDetails.php');
             }else{
                 echo "sorry";
@@ -79,19 +97,50 @@
             }
             
         }
+        if($seatNo_A3 && $seatStatusA3 == "free"){
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Free', passengerId=' ', passengerName=' '  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A3."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                if($_SESSION['seatCount'] > 0){
+                    $_SESSION['seatCount'] = $_SESSION['seatCount'] - 1;
+                }else{
+                    $_SESSION['seatCount'] = 0;
+                }
+                header('location: ../../view/ticketDetails/ticketDetails.php');
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
+        }
 
         if($seatNo_A2 && $seatStatusA2 == "booked"){
             
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName='".$_SESSION['fullName']."'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A2."'";
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
-                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                $count = $_SESSION['seatCount'];
+                $_SESSION['seatCount'] = $count + 1;
                 header('location: ../../view/ticketDetails/ticketDetails.php');
             }else{
                 echo "sorry";
                 die(mysqli_error($con));
             }
             
+        }
+        if($seatNo_A2 && $seatStatusA2 == "free"){
+            $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Free', passengerId=' ', passengerName=' '  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A2."'";
+            $result = mysqli_query($con, $sqlForSeatBooking);
+            if($result){
+                if($_SESSION['seatCount'] > 0){
+                    $_SESSION['seatCount'] = $_SESSION['seatCount'] - 1;
+                }else{
+                    $_SESSION['seatCount'] = 0;
+                }
+                header('location: ../../view/ticketDetails/ticketDetails.php');
+            }else{
+                echo "sorry";
+                die(mysqli_error($con));
+            }
         }
         
         
@@ -101,14 +150,16 @@
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName='".$_SESSION['fullName']."'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A4."'";
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
-                $_SESSION['seatCount'] = $_SESSION['seatCount'] + 1;
+                $count = $_SESSION['seatCount'];
+                $_SESSION['seatCount'] = $count + 1;
                 header('location: ../../view/ticketDetails/ticketDetails.php');
             }else{
                 echo "sorry";
                 die(mysqli_error($con));
             }
             
-        }else if($seatNo_A4 && $seatStatusA4 == "free"){
+        }
+        if($seatNo_A4 && $seatStatusA4 == "free"){
 
 
             // ekhane arekta kaj korbo .. sheta hocche seat remove korar jonno 
@@ -116,7 +167,11 @@
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Free', passengerId=' ', passengerName=' '  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A4."'";
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
-                $_SESSION['seatCount'] = $_SESSION['seatCount'] - 1;
+                if($_SESSION['seatCount'] > 0){
+                    $_SESSION['seatCount'] = $_SESSION['seatCount'] - 1;
+                }else{
+                    $_SESSION['seatCount'] = 0;
+                }
                 header('location: ../../view/ticketDetails/ticketDetails.php');
             }else{
                 echo "sorry";

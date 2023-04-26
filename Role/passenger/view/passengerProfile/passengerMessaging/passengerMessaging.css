@@ -1,0 +1,47 @@
+h6{
+    color :#14b8a6 !important;
+}
+.fieldSet{
+    border: 1px solid wheat;
+    border-radius: 7px;
+}
+.legend{
+    color :rgb(138, 135, 135) !important;
+}
+.legend1{
+    color :white;
+}
+.button{
+    
+    background: linear-gradient(to right, #06b6d4, #14b8a6 );/**50%, transparent 50%, transparent */
+    border: 2px solid #14b8a6;
+    color: black;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.divInsideFieldSet{
+    background-color: teal !important;
+    padding: 3px;
+    border-radius:7px;
+}   
+.textBox {
+    border: 1px solid #4985;
+    border-radius: 4px;
+    width: 19%;
+    color: brown !important;
+}
+
+.textBox:focus {
+    background-color: teal;
+    color : black !important;
+}
+.textBox:not(:focus) {
+    background-color: teal;
+    color : black !important;
+}
+
+.timeStamp{
+    color :#70a8b6 !important;
+}
+

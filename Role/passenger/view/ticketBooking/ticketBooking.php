@@ -98,6 +98,11 @@ session_start();
     background-color: rgb(4, 123, 83);
     text-decoration: none;
 }
+.busName{
+    background-color: rgb(4, 123, 83);
+    border-radius: 7px;
+    border: 2px solid #4988;
+}
     </style>
     
 </head>
@@ -248,7 +253,7 @@ session_start();
                                             $flag = false;
                                             foreach ($Company_Name as $rowAgain) {
                                                 $_SESSION["companyName"]= $rowAgain['companyName'];
-                                                echo "<h4  class='inputName'>Bus Company Name : <span><button>".$_SESSION["companyName"]."</button></span> </h4>";
+                                                echo "<h4  class='inputName'>Bus Company Name : <span><button class='busName'>".$_SESSION["companyName"]."</button></span> </h4>";
                                                 $flag = true;
                                             }
                                             if($flag == false){
@@ -371,7 +376,7 @@ session_start();
                             
                             <tr>
                                 <td>
-                                    <label for="dateOfBirth"  class='date'>Date</label>
+                                    <label for="dateOfBirth"  class='inputName '>Date</label>
 
                                 </td>
                                 <td  class='inputName'>:</td>

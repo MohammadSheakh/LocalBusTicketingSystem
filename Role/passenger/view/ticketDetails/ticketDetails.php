@@ -167,7 +167,7 @@
                                                                 ";
                                                             }else{
                                                                 // <td> </td>
-                                                                echo "<td> </td>
+                                                                echo "
                                                                  
                                                                         <td><button style='color:white; background-color:red; border-radius: 4px;'>A2</button> </td>
                                                                 ";
@@ -292,29 +292,30 @@
                                                     
                                                     if((isset($_SESSION['seatNo_And_seatStatus']) && count($_SESSION['seatNo_And_seatStatus']) > 0 )){
                                                         echo "
-                                                            <tr> 
-                                                                <td>
-                                                                    <h3 > Your Booked Seat </h3>
+                                                            <tr > 
+                                                            
+                                                            <td></td>
+                                                                <td >
+                                                                    <h6 class='inputName'> Your Booked Seat </h6>
                                                                 </td>  
-                                                            </tr>
+                                                                <td></td>
+                                                                </tr>
                                                         ";
+                                                        // </tr>
                                                     }
                                                     // echo "<option value=".$_SESSION["startArea"]. ">".$_SESSION["startArea"]. "</option>";
                                                         
                                                     foreach ($seatNo_And_seatStatus as $rowAgain) {
                                                     
                                                         if($rowAgain['seatStatus'] === "Booked"){
-                                                            
+                                                            // <tr >
                                                             echo '
-                                                            
-
-                                                            <tr >
-
-                                                            <td class="border-bottom">
+                                                            <tr>
+                                                            <td class="border-bottom" style="border-right: none;">
                                                                 <p class="inputName">Status of <input readonly class="textBox" name="seatNo_'.$rowAgain['seatNo'].'" id="seatNo" type="text" size="1" value="'.$rowAgain['seatNo'].'"></input></p>
                                                             </td>
-                                                            <td>:</td>
-                                                            <td>
+                                                            <td class="border-bottom inputName" style="border-right: none; border-left: none;">:</td>
+                                                            <td class="border-bottom" style="border-left: none;">
                                                             
                                                                 <input  checked  type="radio" id="booked" name="seat_status_'.$rowAgain['seatNo'].'" value="booked">
                                                                 <label class="inputName" for="booked">Booked</label>

@@ -11,35 +11,73 @@
     if(isset($_COOKIE['status'])){
 ?>
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="passengerMessaging.css">
+    <style>
+        .description {
+            /* margin: 0 auto;
+            width: 80%;
+            height: 300px;
+            overflow-x: hidden;
+            overflow-y: scroll;
 
+            box-sizing: border-box;
 
-<fieldset>
-                    <legend>Messaging</legend>
-                    <table>
-                        <tr>
-                            <td>
-                            <button>Archived</button>
-                            <button>Recycle Bin</button>
-                            
-                            </td>
-                        </tr>
-                        <tr>
-                        <!-- //========================= Create  a new conversation ============================= -->
+            border: 1px solid rgb(202, 201, 201);
+            box-shadow: 3px 3px 4px gray;
+            border-radius: 5px; */
 
-                                <Form novalidate  action="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerMessaging/passengerMessagingProcess.php" method="post">
-                                <td>
-                                <textarea cols="50" rows="2" type="textarea" id="message" name="message" value=""
-                                    placeholder="Please Enter Your Message Here...  "></textarea>
-                                    </td>
-                                    <td>
-                                    <input type="email" id="receiverEmail" name="receiverEmail" value=""
-                                    placeholder="Enter Receiver's email...  ">
-                                    </td>
-                                    <td>
-                                    <button><img src="../../../images/passengerNotifications/send.png" alt=""></button></td>
-                                </Form>
-                                
-                        </tr>
+            border-radius:8px;
+            padding : 8px;
+            width : auto;
+            height : 200px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .description::-webkit-scrollbar {
+            border-radius: 25px !important;
+        }
+
+        .description::-webkit-scrollbar-thumb {
+            background: linear-gradient(#833ab4, #fd1d1d, #fcb045) !important;
+            border-radius: 25px !important;
+        }
+    </style>
+</head>
+<body>
+
+<fieldset class="fieldSet">
+        <legend class="legend">Messaging</legend>
+        <table>
+            <tr>
+                <td>
+                <button class='button'>Archived</button>
+                <button  class='button'>Recycle Bin</button>
+                
+                </td>
+            </tr>
+            <tr>
+            <!-- //========================= Create  a new conversation ============================= -->
+
+                    <Form novalidate  action="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/passengerMessagingProcess.php" method="post">
+                    <td>
+                    <textarea class='textBox' cols="50" rows="2" type="textarea" id="message" name="message" value=""
+                        placeholder="Please Enter Your Message Here...  "></textarea>
+                        </td>
+                        <td>
+                        <input class='textBox' type="email" id="receiverEmail" name="receiverEmail" value=""
+                        placeholder="Enter Receiver's email...  ">
+                        </td>
+                        <td>
+                        <button class="button"><img class='button' src="../../../images/passengerNotifications/send.png" alt=""></button></td>
+                    </Form>
+                    
+            </tr>
             <!-- //employeeEmail_id -------------- emp01@gmail.com 
             employeeId ------------ 1
             busId ------------- 1
@@ -103,7 +141,11 @@
                         $sqlAgain = "select messageId, senderEmail, receiverEmail, message, timeStamps from `local_bus_ticketing_system`.`message` where conversationId='".$convId."'";
                         $resultAgain = mysqli_query($con, $sqlAgain);
                         if($resultAgain){
-                            echo "<fieldset>";
+                            // ei fieldset tar height width set korte hobe .. 
+                            // scroll korar option thakte hobe ..  
+                            // echo "<fieldset class='conversation'>";
+                            //echo "<div style='border: 1px solid white; width : 320px; border-radius:8px;'><div  style='border-radius:8px; padding : 8px; width : auto; height : 200px; overflow-y: scroll;' >";
+                            echo "<div style='border: 1px solid white; width : 320px; border-radius:8px;'><div class='description'>";
                             while($rowAgain = mysqli_fetch_assoc($resultAgain)){
                                 
                                 $messageId= $rowAgain['messageId'];
@@ -115,24 +157,27 @@
                                 // echo "<p>Raida Poribohon - Dhk-Metro-Ja20-42132-1</p>"
                                 if($senderEmail === $_SESSION["email"]){
                                     $actualReceiverEmail = $receiverEmail;
-                                    echo "<p align='right'>
+                                    echo "<p class='legend' align='right'>
                                     ".str_replace("@gmail.com", "", $senderEmail)." : ".$message." 
                                     </p>
-                                    <h6 align='right'>".$timeStamps."</h6>
+                                    <h6 style='color:rgb(138, 135, 135);' class='legend' align='right'>".$timeStamps."</h6>
                                     ";
                                 }else if($receiverEmail === $_SESSION["email"]){
                                     $actualReceiverEmail = $senderEmail;
                                     echo"
-                                    <p align='left'>
+                                    <p class='legend' align='left'>
                                     ".str_replace("@gmail.com", "", $senderEmail)." :  ".$message." 
                                         </p>
-                                        <h6 align='left'>".$timeStamps."</h6>
+                                        <h6 style='color:rgb(138, 135, 135);' class='legend' align='left'>".$timeStamps."</h6>
                                     ";
                                 }
                                 
                             }
                             echo "
-                            <form novalidate action='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerMessaging/passengerMessagingProcess.php' method='post'>
+
+                            </div>
+                            <div>
+                            <form novalidate action='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/passengerMessagingProcess.php' method='post'>
                             <table>
                                 <tr>
                                     <td>
@@ -140,7 +185,7 @@
                                     </td>
                                     <td> :</td>
                                     <td>
-                                    <textarea type='textarea' name='message' id='message' rows='1' cols='20'> </textarea>
+                                    <textarea class='textBox' type='textarea' name='message' id='message' rows='1' cols='20'> </textarea>
                                     </td>
                                     <td>
                                         <button><img src='../../../images/passengerNotifications/send.png'/> </button>
@@ -151,11 +196,14 @@
                                 </tr>
                             </table>
                         </form>
-                        <button><img src='../../../images/passengerNotifications/delete.png' alt=''></button>
-                        <button>Save as Archive</button>
+                        
+                        <button class='button' style='margin-left:3px; margin-bottom:3px;'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=".$notificationId."'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button>
+                        <button class='button'>Save as Archive</button>
                             ";
-                            echo "</fieldset><br>";
-                            // echo $actualReceiverEmail;
+                            // <button><img src='../../../images/passengerNotifications/delete.png' alt=''></button>
+                            //echo "</fieldset><br>";
+                            echo "</div> </div><br>";
+                            
                         }
                     }
                 }
@@ -166,8 +214,6 @@
             <tr>
 
             </tr>
-            
-                      
                     </fieldset>
                 </td>
             </tr>
@@ -175,7 +221,13 @@
             
                     </table>
                 </fieldset>
-
+                <script>
+                    window.onload = function() {
+                        var descriptionDiv = document.getElementByClass("description");
+                        descriptionDiv.scrollTop = descriptionDiv.scrollHeight;
+                    }
+                </script>
+            </body>
                 <?php
 	}
 	else {
