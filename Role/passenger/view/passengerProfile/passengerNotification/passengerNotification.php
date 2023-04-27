@@ -99,13 +99,15 @@
                     function getData() {
                         const xhttp = new XMLHttpRequest();
                         xhttp.onload = function () {
-                            const resp = JSON.parse(this.responseText);
+                            let resp = JSON.parse(this.responseText);
                             console.log(resp);
-                            // document.getElementById("i2").innerHTML = resp;
+                            // console.log(this.responseText);
+
+                            //document.getElementById("i2").innerHTML = resp;
                         };
                         xhttp.open(
                             "GET",
-                            "../../../controller/passengerProfile/passengerNotification/showNotificationProcess.php"
+                            "/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/showNotificationProcess.php"
                             // true
                         );
                         xhttp.send();
