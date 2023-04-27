@@ -45,7 +45,10 @@
                                 <!-- reload button to grab notification from database .. 
                                 or automatic hoile to kono kotha e nai ..  -->
                                 <form action="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/showNotificationProcess.php" method="post" onsubmit="return getDataAgain();">
-                                    <input class="button" type="submit">
+                                    <button class="button" type='submit'>
+                                        <img  width='20 ' class="button" style=' border-radius:50%' src="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/images/passengerNotifications/ag.png" alt="">
+                                    </button>    
+                                <!-- <input class="button" type="submit"> -->
                                 </form>
                             </td>
                         </tr>
