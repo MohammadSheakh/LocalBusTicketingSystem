@@ -44,7 +44,7 @@
                             <td>
                                 <!-- reload button to grab notification from database .. 
                                 or automatic hoile to kono kotha e nai ..  -->
-                                <form action="Data.php" method="post" onsubmit="return getData();">
+                                <form action="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/showNotificationProcess.php" method="post" onsubmit="return getDataAgain();">
                                     <input class="button" type="submit">
                                 </form>
                             </td>
@@ -54,7 +54,7 @@
                         
                         echo "<tr>
                         <td>";
-
+                        // 😀 normal way
                         // $flag = getAllNotification();
                         // if($flag === true){
                             
@@ -84,11 +84,12 @@
                                 
                         //     }
                         // }
-                        echo "<div id='i2'></div>";
+                        // echo "<div id='i2'></div>";
 
                         
             ?>
-                    
+                    <!-- // 😀 with ajax -->
+                    <div id='i2'></div>
 
 
                     </table>
@@ -100,10 +101,34 @@
                         const xhttp = new XMLHttpRequest();
                         xhttp.onload = function () {
                             let resp = JSON.parse(this.responseText);
-                            console.log(resp);
-                            // console.log(this.responseText);
+                            // console.log(resp);
 
-                            //document.getElementById("i2").innerHTML = resp;
+                            let t = "";
+                            for (let i = 0; i < resp.length; i++) {
+                                //console.log( typeof( resp[i].companyName));
+                                t += "<div class='divInsideFieldSet'>";
+                                t +=
+                                    "<p  class='divInsideFieldSet'>" +
+                                    resp[i].companyName +
+                                    "-" +
+                                    resp[i].busRegistrationNo +
+                                    "&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;" +
+                                    resp[i].notification +
+                                    "</p>";
+
+                                t +=
+                                    "<div  class='divInsideFieldSet' align='right'><button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=" +
+                                    resp[i].notificationId +
+                                    "'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button><button class='button'>Save as Archive</button></div>";
+                                t += "</div><br>";
+                            }
+
+                            console.log(t);
+                            
+                            
+                            document.getElementById("i2").innerHTML = t;
+                            
+                            
                         };
                         xhttp.open(
                             "GET",
@@ -114,7 +139,51 @@
 
                         // return false;
                     }
-                    setInterval(getData, 2000); // mili second por por ami call korbo .
+                    setInterval(getData, 10000); // mili second por por ami call korbo .
+
+
+                    function getDataAgain() {
+                        const xhttp = new XMLHttpRequest();
+                        xhttp.onload = function () {
+                            let resp = JSON.parse(this.responseText);
+                            // console.log(resp);
+
+                            let t = "";
+                            for (let i = 0; i < resp.length; i++) {
+                                //console.log( typeof( resp[i].companyName));
+                                t += "<div class='divInsideFieldSet'>";
+                                t +=
+                                    "<p  class='divInsideFieldSet'>" +
+                                    resp[i].companyName +
+                                    "-" +
+                                    resp[i].busRegistrationNo +
+                                    "&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;" +
+                                    resp[i].notification +
+                                    "</p>";
+
+                                t +=
+                                    "<div  class='divInsideFieldSet' align='right'><button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=" +
+                                    resp[i].notificationId +
+                                    "'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button><button class='button'>Save as Archive</button></div>";
+                                t += "</div><br>";
+                            }
+
+                            console.log(t);
+                            
+                            
+                            document.getElementById("i2").innerHTML = t;
+                            
+                            
+                        };
+                        xhttp.open(
+                            "GET",
+                            "/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/showNotificationProcess.php", false
+                            // true
+                        );
+                        xhttp.send();
+
+                        return false;
+                    }
                 </script>
             </body>
 
@@ -124,3 +193,19 @@
 		header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/login/login.php');
 	}
 ?>
+
+<!-- let t = "<div class='divInsideFieldSet'>";
+t +=
+    "<p  class='divInsideFieldSet'>" +
+    resp[i].companyName +
+    "-" +
+    resp[i].busRegistrationNo +
+    "&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;" +
+    resp[i].notification +
+    "</p>";
+
+t +=
+    "<div  class='divInsideFieldSet' align='right'><button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=" +
+    resp[i].notificationId +
+    "'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button><button class='button'>Save as Archive</button></div>";
+t += "</div><br>"; -->
