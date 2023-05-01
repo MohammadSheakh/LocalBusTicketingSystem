@@ -252,7 +252,7 @@
 
                             </div>
                             <div>
-                            <form novalidate action='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/passengerMessagingProcess.php' method='post'>
+                            <form novalidate action='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/passengerMessagingProcess.php' method='post'  onsubmit='return getReviewErrorMsg(this);'>
                             <table>
                                 <tr>
                                 
@@ -299,36 +299,7 @@
                         descriptionDiv.scrollTop = descriptionDiv.scrollHeight;
                     }
 
-                    // const toggleBtn = document.getElementById("toggleBtn");
-                    // const myDiv = document.getElementById("myDiv");
-
-                    // toggleBtn.addEventListener("click", function() {
-                    // if (myDiv.style.display === "none") {
-                    //     myDiv.style.display = "block"; // show the div
-                    // } else {
-                    //     myDiv.style.display = "none"; // hide the div
-                    // }
-                    // });
-                    // ////////////////////////////////////////////
-
-                    // const buttons = document.querySelectorAll('tooltip btn');
-                    // const divs = document.querySelectorAll('tooltip #myDiv');
-                    // buttons.forEach((button, index) => {
-                    //     button.id = `button-${index+1}`;
-                    //     divs[index].id = `div-${index+1}`;
-                    // });
-                    // // Add click event listeners to each button
-                    // buttons.forEach((button) => {
-                    // button.addEventListener('click', () => {
-                    //     // Get the corresponding div by button's ID
-                    //     const div = document.querySelector(`#divs #div-${button.id.split('-')[1]}`);
-                        
-                    //     // Toggle the visibility of the div
-                    //     div.classList.toggle('hidden');
-                    // });
-                    // });
-                    // Get the button element by ID
-
+                    
                     // Get all the buttons with class "btn"
 var buttons = document.querySelectorAll('btn');
 
@@ -345,6 +316,64 @@ buttons.forEach(function(button, index) {
     }
   });
 });
+
+                ////////////////////////////////////////////////////////////////////////////
+                
+                function getReviewErrorMsg(form) {
+                    let emailValue = form.message.value;
+                    let passwordValue = form.receiverEmail.value;
+
+                    console.log(emailValue, passwordValue);
+                    if (!emailValue && !passwordValue) {
+                        document.getElementById("emailErrorMsg").style.color = "white";
+                        document.getElementById("emailErrorMsg").innerText =
+                            "Please provide your name ! from js validation";
+                        document.getElementById("passwordErrorMsg").style.color = "red";
+                        document.getElementById("passwordErrorMsg").innerText =
+                            "Please provide message to send ! from js validation";
+                        return false;
+                    } else if (!passwordValue) {
+                        console.log("in elif statement");
+                        document.getElementById("passwordErrorMsg").style.color = "red";
+                        document.getElementById("passwordErrorMsg").innerText =
+                            "Please provide review ! from js validation";
+                        return false;
+                    } else if (!emailValue) {
+                        console.log("in if statement");
+                        document.getElementById("emailErrorMsg").style.color = "white";
+                        document.getElementById("emailErrorMsg").innerText =
+                            "Please provide your name ! from js validation";
+                        return false;
+                    } else {
+                        /// amra ekhane review pull korbo ajax er maddhome .. page reload na kore ..
+
+                        let xhttp = new XMLHttpRequest();
+                        xhttp.onload = function () {
+                            console.log(this.reponseText);
+                        };
+                        xhttp.open("POST", "/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/passengerMessagingProcess.php");
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        );
+                        xhttp.send("receiverEmail=" +   passwordValue+ "&message=" + emailValue);
+
+                        // post done ..
+                        //////////////////////////////////////////////////////////////////////////////////
+                        
+
+                        return false;
+
+                        /// ekhon post hoye gese ... AJAX er maddhome .. ekhon abar review reload kora chara .. pull kore
+                        // niye ashte hobe ..
+
+                        // return true; // return true korle .. php process page e giye post hobe ..
+                    }
+                }
+
+
+
+                ///////////////////////////////////////////////////////////////////////
                 </script>
             </body>
                 <?php
