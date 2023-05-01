@@ -244,6 +244,10 @@
                                 }
                                 
                             }
+                            // <td>
+                            //             Mohammad Sheakh 
+                            //         </td>
+                            //         <td> :</td>
                             echo "
 
                             </div>
@@ -251,12 +255,10 @@
                             <form novalidate action='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/passengerMessagingProcess.php' method='post'>
                             <table>
                                 <tr>
+                                
+                                <td> </td>
                                     <td>
-                                        Mohammad Sheakh 
-                                    </td>
-                                    <td> :</td>
-                                    <td>
-                                    <textarea class='textBox' type='textarea' name='message' id='message' rows='1' cols='20'> </textarea>
+                                    <textarea class='textBox' type='textarea' name='message' id='message' rows='1' cols='32'> </textarea>
                                     </td>
                                     <td>
                                         <button><img src='../../../images/passengerNotifications/send.png'/> </button>

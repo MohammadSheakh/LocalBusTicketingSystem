@@ -161,6 +161,5 @@ function showAllReview() {
     );
     xhttp.send();
 }
-
+setInterval(showAllReview, 6000);
 showAllReview();
-// setInterval(postAReview, 4000);
