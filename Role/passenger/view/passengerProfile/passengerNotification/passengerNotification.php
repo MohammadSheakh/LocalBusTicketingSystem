@@ -142,7 +142,8 @@
 
                         // return false;
                     }
-                    setInterval(getData, 10000); // mili second por por ami call korbo .
+                    getData();
+                    setInterval(getData, 4000); // mili second por por ami call korbo .
 
 
                     function getDataAgain() {

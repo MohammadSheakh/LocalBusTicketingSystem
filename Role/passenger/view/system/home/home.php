@@ -194,54 +194,57 @@
 
         <tr>
             <?php 
-            // showAllReview
-                $flag = showAllReview();
-                if($flag === true){
-                    // shob gula review array theke niye dekhabo 
-                    $all_reviews = $_SESSION['all_reviews'];
-                    // Loop through the array and display the data
-                    echo "<div class='allReview'>";
-                    foreach ($all_reviews as $rowAgain) {
+            // // showAllReview
+            //     $flag = showAllReview();
+            //     if($flag === true){
+            //         // shob gula review array theke niye dekhabo 
+            //         $all_reviews = $_SESSION['all_reviews'];
+            //         // Loop through the array and display the data
+            //         echo "<div class='allReview'>";
+            //         foreach ($all_reviews as $rowAgain) {
 
-                        $reviewId= $rowAgain['reviewId'];
-                        $passengerId= $rowAgain['passengerId'];
-                        $fullName= $rowAgain['fullName'];
-                        $review= $rowAgain['review'];
-                        $likeNumber= $rowAgain['likeNumber'];
-                        $dislikeNumber= $rowAgain['dislikeNumber'];
+            //             $reviewId= $rowAgain['reviewId'];
+            //             $passengerId= $rowAgain['passengerId'];
+            //             $fullName= $rowAgain['fullName'];
+            //             $review= $rowAgain['review'];
+            //             $likeNumber= $rowAgain['likeNumber'];
+            //             $dislikeNumber= $rowAgain['dislikeNumber'];
                         
-                        echo "
-                        <td>
-                        <div class='singleReview'>
-                            <h5 class='reviewTitle'>".$fullName."</h5>
-                            <pre class='reviewBody'>".$review."</pre>
-                            <div> 
-                                <button class='bookNowBtn'> <a class='innerBtn' href='./updateLikeProcess.php?updateId=".$reviewId."'>
-                                <img  class='innerBtn' src='../image/home/like.png' alt=''>
-                                    <span class='innerBtn'>".$likeNumber."</span>
-                                </a>
+            //             echo "
+            //             <td>
+            //             <div class='singleReview'>
+            //                 <h5 class='reviewTitle'>".$fullName."</h5>
+            //                 <pre class='reviewBody'>".$review."</pre>
+            //                 <div> 
+            //                     <button class='bookNowBtn'> <a class='innerBtn' href='./updateLikeProcess.php?updateId=".$reviewId."'>
+            //                     <img  class='innerBtn' src='../image/home/like.png' alt=''>
+            //                         <span class='innerBtn'>".$likeNumber."</span>
+            //                     </a>
                                     
-                                </button>
-                                <button class='bookNowBtn'>
-                                <a class='innerBtn' href='./updateDislikeProcess.php?updateId=".$reviewId."'> 
-                                <img class='innerBtn' src='../image/home/dislike.png' alt=''>
-                                    <span class='innerBtn'>".$dislikeNumber."</span>
-                                </a>
+            //                     </button>
+            //                     <button class='bookNowBtn'>
+            //                     <a class='innerBtn' href='./updateDislikeProcess.php?updateId=".$reviewId."'> 
+            //                     <img class='innerBtn' src='../image/home/dislike.png' alt=''>
+            //                         <span class='innerBtn'>".$dislikeNumber."</span>
+            //                     </a>
                                     
-                                </button>
-                            </div>
+            //                     </button>
+            //                 </div>
                             
-                        </div>
-                    </td>
-                        ";
-                    }
-                    echo "</div>";
-                }else{
-                    /// kono review e kichui dekhabo na .. 
-                    echo "No review Found !";
-                }
+            //             </div>
+            //         </td>
+            //             ";
+            //         }
+            //         echo "</div>";
+            //     }else{
+            //         /// kono review e kichui dekhabo na .. 
+            //         echo "No review Found !";
+            //     }
                 
             ?>
+
+            <!-- // 😀 with ajax -->
+            <div id='i2' class='allReview'></div>
             
         </tr>
         
