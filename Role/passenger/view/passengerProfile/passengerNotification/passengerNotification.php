@@ -118,9 +118,9 @@
                                     "&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;" +
                                     resp[i].notification +
                                     "</p>";
-
+                                    // /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/
                                 t +=
-                                    "<div  class='divInsideFieldSet' align='right'><button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=" +
+                                    "<div  class='divInsideFieldSet' align='right'><button class='button'><a class='button' href='passengerNotificationProcess.php?notificationId=" +
                                     resp[i].notificationId +
                                     "'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button><button class='button'>Save as Archive</button></div>";
                                 t += "</div><br>";
@@ -165,7 +165,7 @@
                                     "</p>";
 
                                 t +=
-                                    "<div  class='divInsideFieldSet' align='right'><button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=" +
+                                    "<div  class='divInsideFieldSet' align='right'><button class='button'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=" +
                                     resp[i].notificationId +
                                     "'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button><button class='button'>Save as Archive</button></div>";
                                 t += "</div><br>";

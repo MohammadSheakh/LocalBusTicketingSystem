@@ -1,6 +1,15 @@
 <?php 
 session_start();
-    include '../../passenger/database/dbConnect.php';
+    // include '../../passenger/database/dbConnect.php';
+    $con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); 
+
+
+        if($con){
+            
+        }else{
+            
+            die("Error From Database : ".mysqli_error($con));
+        }
     $flag = false;
     $masterFlagForDelete = false;
     if(isset($_GET['updateId'])){ // review id for updating like values 

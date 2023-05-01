@@ -14,6 +14,16 @@
         
         <?php
         // include '../../passenger/database/dbConnect.php';
+        // session_start();
+        $con = new mysqli("localhost", "root", "", "local_bus_ticketing_system"); 
+
+
+        if($con){
+            
+        }else{
+            
+            die("Error From Database : ".mysqli_error($con));
+        }
         require '../../../model/system/home/review.php';
         include '../navbar/mainNavbar.php';
     ?>
@@ -258,17 +268,27 @@
                         <fieldset class="fieldSet">
                             <legend class="legend">Review Form </legend>
                             <!-- ---------------------------------------- -->
-                            <form action="./homeProcess.php" novalidate method='post'>
+                            <form action="../../../controller/system/home/homeProcess.php" novalidate method='post' onsubmit="return getReviewErrorMsg(this);">
                                 <table>
+
                                     <tr>
-                                        <td>
-                                            <p class="inputName">Name</p>
+                                        <td class="inputName">
+                                            <p>Name</p>
                                         </td>
                                         <td class="inputName">:</td>
                                         <td>
                                             <input  class="textBox" type="text" id="name" name="name" value=""
                                                 placeholder="Enter your name...  ">
-                                             
+                                            
+                                            <div >
+                                             <?php
+                                                if(isset($_SESSION['emailErrorMsg'])){
+                                                    echo "<p class='errorMsg'>".$_SESSION['emailErrorMsg']."</p>";
+                                                }
+                                            ?>
+                                            <p class='errorMsg'  id='emailErrorMsg'></p>
+
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -279,6 +299,13 @@
                                         <td>
                                             <textarea class="textBox" type="textarea" id="review" name="review" value=""
                                                 placeholder="Please enter your Review...  "></textarea>
+                                                <?php
+                                                    if(isset($_SESSION['passErrorMsg'])){
+                                                            echo "<p class='errorMsg'>".$_SESSION['passErrorMsg']."</p>";
+                                                        }
+                                                ?>
+                                                <p class='errorMsg' id='passwordErrorMsg'></p>
+                                                
                                         </td>
                                     </tr>
 
@@ -292,11 +319,6 @@
                                             </button>
                                         </td>
                                     </tr>
-
-
-
-
-
                                 </table>
                             </form>
 
@@ -311,7 +333,7 @@
     </table>
     <hr>
     <!------------------------ Post a review section End Here --------------------------------->
-
+    <script src="./home.js"></script>
 </body>
 
 </html>

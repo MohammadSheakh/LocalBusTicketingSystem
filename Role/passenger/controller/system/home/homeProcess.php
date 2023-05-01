@@ -8,9 +8,9 @@
 </head>
 <body>
     <?php
-    session_start();
+    // session_start();
     // include '../../passenger/database/dbConnect.php';
-
+    include '../../../model/system/home/review.php';
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
             // general information
@@ -21,11 +21,11 @@
         
             // if input form is empty then show some specific error 
             if(empty($name)){
-                echo "please fill up the name form";
+                echo "please fill up the name form from php validation";
                 $flag = false;
             }
             if(empty($review)){
-                echo "please fill up the review form";
+                echo "please fill up the review form  from php validation";
                 $flag = false;
             }
         
@@ -37,12 +37,12 @@
                 
                 if($flag === true){
                     //echo $name.$review;
-                    header('location: ./home.php');
+                    header('location: ../../../view/system/home/home.php');
                 }else{
                     // error 
-                    die(mysqli_error($con));
-                    // 😀 home ei return korbo .. but error dekhabo session er maddhome front end e 
-                }
+                    header('location: ../../../view/system/home/home.php');
+                    // die(mysqli_error($con));
+                    }
             }
         }else{
             echo "404 Error !";

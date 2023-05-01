@@ -1,44 +1,43 @@
-function login() {
-    let emailValue = document.getElementById("email").value;
-    let passwordValue = document.getElementById("password").value;
-    if (!emailValue) {
-        document.getElementById("errorMsg").style.color = "red";
-        document.getElementById("emailErrorMsg").innerHTML =
-            "Please provide your email address !";
-        return false;
-    } else if (!passwordValue) {
-        document.getElementById("errorMsg").style.color = "red";
-        document.getElementById("passwordErrorMsg").innerHTML =
-            "Please provide correct password !";
-        return false;
-    } else {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function () {
-            const resp = this.responseText;
+// function login() {
+//     let emailValue = document.getElementById("email").value;
+//     let passwordValue = document.getElementById("password").value;
+//     if (!emailValue) {
+//         document.getElementById("errorMsg").style.color = "red";
+//         document.getElementById("emailErrorMsg").innerHTML =
+//             "Please provide your email address !";
+//         return false;
+//     } else if (!passwordValue) {
+//         document.getElementById("errorMsg").style.color = "red";
+//         document.getElementById("passwordErrorMsg").innerHTML =
+//             "Please provide correct password !";
+//         return false;
+//     } else {
+//         const xhttp = new XMLHttpRequest();
+//         xhttp.onload = function () {
+//             const resp = this.responseText;
 
-            if (resp === "success") {
-                window.location.href = "./login.php";
-            } else if (resp === "emptyEmailField") {
-                window.location.href = "./login.php";
-            } else {
-                document.getElementById("login1").innerHTML = resp;
-                document.getElementById("login1").style.display = "block";
-            }
-        };
-        xhttp.open(
-            "POST",
-            "../../../controller/authentication/login/loginProcess.php",
-            true
-        );
-        xhttp.setRequestHeader(
-            "Content-type",
-            "application/x-www-form-urlencoded"
-        );
-        xhttp.send("username=" + username + "&password=" + password);
-        return true;
-        // return true;
-    }
-}
+//             if (resp === "success") {
+//                 window.location.href = "./login.php";
+//             } else if (resp === "emptyEmailField") {
+//                 window.location.href = "./login.php";
+//             } else {
+//                 document.getElementById("login1").innerHTML = resp;
+//                 document.getElementById("login1").style.display = "block";
+//             }
+//         };
+//         xhttp.open(
+//             "POST",
+//             "../../../controller/authentication/login/loginProcess.php",
+//             true
+//         );
+//         xhttp.setRequestHeader(
+//             "Content-type",
+//             "application/x-www-form-urlencoded"
+//         );
+//         xhttp.send("username=" + username + "&password=" + password);
+//         return true;
+//     }
+// }
 
 function getLoginErrorMsg(form) {
     // let emailValue = document.getElementById("email").value;

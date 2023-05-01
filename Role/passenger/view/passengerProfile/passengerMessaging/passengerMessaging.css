@@ -20,6 +20,14 @@ h6{
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
+.optionButton{
+    background: linear-gradient(to right, #06b6d4, #14b8a6 );/**50%, transparent 50%, transparent */
+    border: 2px solid #14b8a6;
+    color: black;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
 .divInsideFieldSet{
     background-color: teal !important;
     padding: 3px;
@@ -45,3 +53,10 @@ h6{
     color :#70a8b6 !important;
 }
 
+.hidden {
+    display: none;
+  }
+
+  [id^="myDiv"] {
+    display: none;
+  }

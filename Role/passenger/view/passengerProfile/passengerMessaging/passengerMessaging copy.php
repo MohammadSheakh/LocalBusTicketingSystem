@@ -53,27 +53,24 @@
             /* background-color : red; */
         }
         /* Tooltip container */
-        .tooltip {
+        /* .tooltip {
         position: relative;
-
-        /* display: inline-block; */
-        }
+        display: inline-block;
+        } */
 
         /* Tooltip text */
         .tooltiptext {
         visibility: hidden;
-        width: auto;
-        background-color: #0f2920;
-        color: white;
+        width: 120px;
+        background-color: #000;
+        color: #fff;
         text-align: center;
         padding: 5px 0;
         border-radius: 6px;
         position: absolute;
         z-index: 1;
-        left: 170px;
-        top: -45px;
-        /* bottom: 100%;
-        left: 50%; */
+        bottom: 100%;
+        left: 50%;
         margin-left: -60px;
         }
 
@@ -81,36 +78,6 @@
         .tooltip:hover .tooltiptext {
         visibility: visible;
         }
-        .rightSingleMessage{
-            text-align: right;
-            /* width: 200px;
-            height: auto;
-            border : 1px solid black; */
-        }
-        .leftSingleMessage{
-            text-align: left;
-        }
-
-        #hidden-div {
-            display: none;
-        }
-
-        #hidden-div:target {
-            display: block; 
-        }
-        .btn{
-            border: none;
-            
-        }
-
-        #myDiv {
-        display: none; /* hide the div by default */
-        }
-
-
-
-        
-
     </style>
 </head>
 <body>
@@ -194,7 +161,7 @@
                 
                     
                 if($conversationExistFlag){
-                    $conversationId = '';
+                    
                     $actualReceiverEmail = '';
                     foreach ($conversationIds as $convId) {
                         //echo $convId . '<br>';
@@ -202,7 +169,7 @@
                         echo "<tr>
                         <td>";
                         // show conversationId er against e  message table er shob gula message dekhabo 
-                        $sqlAgain = "select conversationId, messageId, senderEmail, receiverEmail, message, timeStamps from `local_bus_ticketing_system`.`message` where conversationId='".$convId."'";
+                        $sqlAgain = "select messageId, senderEmail, receiverEmail, message, timeStamps from `local_bus_ticketing_system`.`message` where conversationId='".$convId."'";
                         $resultAgain = mysqli_query($con, $sqlAgain);
                         if($resultAgain){
                             // ei fieldset tar height width set korte hobe .. 
@@ -211,36 +178,31 @@
                             //echo "<div style='border: 1px solid white; width : 320px; border-radius:8px;'><div  style='border-radius:8px; padding : 8px; width : auto; height : 200px; overflow-y: scroll;' >";
                             echo "<div style='border: 1px solid white; width : 320px; border-radius:8px;'><div class='description'>";
                             while($rowAgain = mysqli_fetch_assoc($resultAgain)){
-                                $conversationId = $rowAgain['conversationId'];
+                                
                                 $messageId= $rowAgain['messageId'];
                                 $senderEmail= $rowAgain['senderEmail'];
                                 $receiverEmail= $rowAgain['receiverEmail'];
                                 $message= $rowAgain['message'];
                                 $timeStamps= $rowAgain['timeStamps'];
+                                //$timeStamps= $rowAgain['timeStamps']; // 😀😀😀 amar conversation id tao lagbe delete korar jonno ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                 
+                                // echo "<p>Raida Poribohon - Dhk-Metro-Ja20-42132-1</p>"
                                 if($senderEmail === $_SESSION["email"]){
                                     $actualReceiverEmail = $receiverEmail;
-                                    echo "<div class='tooltip'><p class='legend rightSingleMessage  ' >
+                                    echo "<p class='legend singleMessage tooltip' align='right'>
                                     ".str_replace("@gmail.com", "", $senderEmail)." : ".$message." 
-                                    <span> <button class='btn' id='toggleBtn'><img  src='../../../images/passengerNotifications/option.png' ></button> </span>    
+                                    <h6 style='color:rgb(138, 135, 135);' class='legend tooltiptext' align='right'>".$timeStamps."</h6>
                                     </p>
-                                    <h6 style='color:rgb(138, 135, 135);' class='legend  rightSingleMessage tooltiptext' >".$timeStamps."</h6>
-                                    </div>
-                                    <div id='myDiv'>This is the div to show/hide.</div>
+                                    
                                     ";
                                 }else if($receiverEmail === $_SESSION["email"]){
                                     $actualReceiverEmail = $senderEmail;
                                     echo"
-                                    <div class='tooltip'>
-                                    
-                                    <p class='legend leftSingleMessage' >
+                                    <p class='legend' align='left'>
                                     ".str_replace("@gmail.com", "", $senderEmail)." :  ".$message." 
-                                        <span> <button class='btn'><img   src='../../../images/passengerNotifications/option.png' ></button> </span>    
-                                    </p>
-                                        <h6 style='color:rgb(138, 135, 135);' class='legend leftSingleMessage tooltiptext' >".$timeStamps."</h6>
-                                       
-                                    </div>
-                                        ";
+                                        </p>
+                                        <h6 style='color:rgb(138, 135, 135);' class='legend' align='left'>".$timeStamps."</h6>
+                                    ";
                                 }
                                 
                             }
@@ -268,7 +230,7 @@
                             </table>
                         </form>
                         
-                        <button class='button' style='margin-left:3px; margin-bottom:3px;'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/conversationDeleteProcess.php?conversationId=".$conversationId."'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button>
+                        <button class='button' style='margin-left:3px; margin-bottom:3px;'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerNotification/passengerNotificationProcess.php?notificationId=".$notificationId."'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button>
                         <button class='button'>Save as Archive</button>
                             ";
                             // <button><img src='../../../images/passengerNotifications/delete.png' alt=''></button>
@@ -297,53 +259,6 @@
                         var descriptionDiv = document.getElementByClass("description");
                         descriptionDiv.scrollTop = descriptionDiv.scrollHeight;
                     }
-
-                    // const toggleBtn = document.getElementById("toggleBtn");
-                    // const myDiv = document.getElementById("myDiv");
-
-                    // toggleBtn.addEventListener("click", function() {
-                    // if (myDiv.style.display === "none") {
-                    //     myDiv.style.display = "block"; // show the div
-                    // } else {
-                    //     myDiv.style.display = "none"; // hide the div
-                    // }
-                    // });
-                    // ////////////////////////////////////////////
-
-                    // const buttons = document.querySelectorAll('tooltip btn');
-                    // const divs = document.querySelectorAll('tooltip #myDiv');
-                    // buttons.forEach((button, index) => {
-                    //     button.id = `button-${index+1}`;
-                    //     divs[index].id = `div-${index+1}`;
-                    // });
-                    // // Add click event listeners to each button
-                    // buttons.forEach((button) => {
-                    // button.addEventListener('click', () => {
-                    //     // Get the corresponding div by button's ID
-                    //     const div = document.querySelector(`#divs #div-${button.id.split('-')[1]}`);
-                        
-                    //     // Toggle the visibility of the div
-                    //     div.classList.toggle('hidden');
-                    // });
-                    // });
-                    // Get the button element by ID
-
-                    // Get all the buttons with class "btn"
-var buttons = document.querySelectorAll('btn');
-
-// Loop through each button and add a click event listener
-buttons.forEach(function(button, index) {
-  button.addEventListener('click', function() {
-    // Find the corresponding div with an ID that matches "myDiv" + the current index
-    var div = document.getElementById('myDiv' + (index + 1));
-    // Toggle the visibility of the div
-    if (div.style.display === 'none') {
-      div.style.display = 'block';
-    } else {
-      div.style.display = 'none';
-    }
-  });
-});
                 </script>
             </body>
                 <?php
