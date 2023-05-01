@@ -184,13 +184,9 @@
     <hr>
 
     <!-- Reviews Section Starts Here  -->
-
+    <h3  align="center" class="title">Review</h3>
     <table align="center">
-        <tr>
-            <td>
-                <h3  class="title">Review</h3>
-            </td>
-        </tr>
+        
 
         <tr>
             <?php 
@@ -244,7 +240,7 @@
             ?>
 
             <!-- // 😀 with ajax -->
-            <div id='i2' class='allReview'></div>
+            <td id='i2' class='allReview' ></td>
             
         </tr>
         

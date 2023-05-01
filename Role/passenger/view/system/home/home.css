@@ -61,7 +61,7 @@
     /* gap: 0px 10px  ; */
     border: 1px solid #ffff;
     padding : 6px;
-    border-radius : 7px;
+    border-radius :7px;
 }
 .reviewTitle{
     color : #6c7bf0;
@@ -109,3 +109,4 @@
     /* width : 70%; */
     text-decoration : none;
 }
+

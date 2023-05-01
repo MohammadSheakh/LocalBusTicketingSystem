@@ -46,12 +46,12 @@ function getReviewErrorMsg(form) {
             let resp = JSON.parse(this.responseText);
             console.log(resp);
 
-            let t = "<div class='allReview'>";
+            let t = "<div class='allReview' >";
             for (let i = 0; i < resp.length; i++) {
                 console.log(typeof resp[i].fullName);
 
                 t +=
-                    "<td><div class='singleReview'>" +
+                    "<td><div class='singleReview' >" +
                     "<h5 class='reviewTitle'>" +
                     resp[i].fullName +
                     "</h5>" +

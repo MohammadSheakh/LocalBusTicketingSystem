@@ -273,8 +273,7 @@
                         <button class='button' style='margin-left:3px; margin-bottom:3px;'><a class='button' href='/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/passengerProfile/passengerMessaging/conversationDeleteProcess.php?conversationId=".$conversationId."'><img class='button'  src='../../../images/passengerNotifications/delete.png' ></a></button>
                         <button class='button'>Save as Archive</button>
                             ";
-                            // <button><img src='../../../images/passengerNotifications/delete.png' alt=''></button>
-                            //echo "</fieldset><br>";
+                            
                             echo "</div> </div><br>";
                             
                         }
