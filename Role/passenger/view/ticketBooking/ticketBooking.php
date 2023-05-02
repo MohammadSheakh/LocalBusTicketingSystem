@@ -142,7 +142,7 @@ session_start();
                     <table align="center">
 
                         <legend class="legend">Ticket Booking Form</legend>
-                        <form novalidate action="../../controller/ticketBooking/ticketBookingProcess.php" method="post">
+                        <form novalidate action="../../controller/ticketBooking/ticketBookingProcess.php" method="post"  onsubmit="return getStartAreaErrorMsg(this);">
                             <tr>
                                 
                                     <td > <label for="area" class="inputName">What area do you live in</label> </td>
@@ -207,7 +207,8 @@ session_start();
 
                                 </td>
                                 <td>
-                                    
+                                    <p class='errorMsg'  id='emailErrorMsg'></p>
+                                    <!-- error message for start area  -->
                                 </td>
                                     <td>
                                     <button class="submitBtn" type="submit">Submit</button>
@@ -312,7 +313,7 @@ session_start();
                                 
                             }
                             ?>
-                        <form action="./saveDateForTicketBooking.php" method="post" novalidate>
+                        <form action="./saveDateForTicketBooking.php" method="post" novalidate   onsubmit="return getEndAreaErrorMsg(this);">
                             
                             <tr>
                                 <td> <label  class='inputName' for="area">Select your destination</label> </td>
@@ -391,7 +392,8 @@ session_start();
 
                                 </td>
                                 <td>
-                                    
+                                    <p class='errorMsg'  id='passErrorMsg'></p>  
+                                    <!-- this is for desnitation and date error message  -->
                                 </td>
                                     <td>
                                     <button type="submit"  class='submitBtn'>Submit</button>
@@ -563,7 +565,7 @@ session_start();
     </table>
     <!--ticket booking form end here-->
 
-
+    <script src="./ticketBooking.js"></script>
 </body>
 
 </html>
