@@ -9,8 +9,8 @@
 <body>
     <?php
 session_start();
-    include '../../database/dbConnect.php';
-
+    // include '../../database/dbConnect.php';
+    
         if($_SERVER['REQUEST_METHOD'] === "POST"){
             $flag = true;
             // general information
@@ -105,17 +105,22 @@ session_start();
                     $_SESSION['passwordErrorMsg']  ="";
                     $_SESSION['emailErrorMsg'] = "";
 
-
-                    header('location:../login/login.php');
+                    echo "process page1 ";
+                      // 😀😀
+                     // header('location:../login/login.php');
                 }else{
+                    echo "process page 2";
                     // error 
                     die(mysqli_error($con));
                 }
             }else{
-                header('location:/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/authentication/registration/registration.php');
+                echo "process page3 ";
+                // 😀😀
+                // header('location: /LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/authentication/registration/registration.php');
                 
             }
         }else{
+            echo "process page4 ";
             echo "404 Error !";
         }
 

@@ -32,32 +32,34 @@
                                     <td>
                                         <!-- Picture of Bus  -->
                                         <?php
-                                        require '../../../../model/passengerProfile/subNavbar/personalInformation/passenger.php';
-                                                $flag = getProfilePicture($_SESSION["passenger_id"]);
-                                                $passengerImage = '';
-                                                if($flag === true){
-                                                    //$passenger_All_Image = $_SESSION["passenger_image"];
-                                                    // foreach ($passenger_All_Image as $row) {
-                                                    //     $passengerImage =  $row['passenger_image'];
-                                                    // }
-                                                    //$_SESSION["passenger_single_image"] = $passengerImage;
-                                                    $image_data = base64_decode($_SESSION["passenger_image"]['passenger_image']);
-                                                    // echo $image_data;
-                                                    if(isset($_SESSION["passenger_image"])){
-                                                        // header("Content-type: image/jpeg");
-                                                        echo " <img src='data:image/jpeg;base64,".base64_encode($_SESSION["passenger_image"]['passenger_image'])."' height='100' width='100'> "; // alt='Image'
-                                                        //echo $_SESSION["passenger_image"]['passenger_image'];
-                                                //echo "<img height='80px' src='data:image/jpeg;base64," . base64_encode($_SESSION["passenger_image"]['passenger_image']) . "' alt='Image'>";
-                                                    }else{
-                                                        echo "session is not set";
-                                                    }
-                                                }
+                                        // require '../../../../model/passengerProfile/subNavbar/personalInformation/passenger.php';
+                                        //         $flag = getProfilePicture($_SESSION["passenger_id"]);
+                                        //         $passengerImage = '';
+                                        //         if($flag === true){
+                                        //             //$passenger_All_Image = $_SESSION["passenger_image"];
+                                        //             // foreach ($passenger_All_Image as $row) {
+                                        //             //     $passengerImage =  $row['passenger_image'];
+                                        //             // }
+                                        //             //$_SESSION["passenger_single_image"] = $passengerImage;
+                                        //             $image_data = base64_decode($_SESSION["passenger_image"]['passenger_image']);
+                                        //             // echo $image_data;
+                                        //             if(isset($_SESSION["passenger_image"])){
+                                        //                 // header("Content-type: image/jpeg");
+                                        //                 echo " <img src='data:image/jpeg;base64,".base64_encode($_SESSION["passenger_image"]['passenger_image'])."' height='100' width='100'> "; // alt='Image'
+                                        //                 //echo $_SESSION["passenger_image"]['passenger_image'];
+                                        //         //echo "<img height='80px' src='data:image/jpeg;base64," . base64_encode($_SESSION["passenger_image"]['passenger_image']) . "' alt='Image'>";
+                                        //             }else{
+                                        //                 echo "session is not set";
+                                        //             }
+                                        //         }
                                         ?>
+                                        <!-- <img src="../images/passengerProfile/profileImage.png" alt="image" height='100' width='100'> -->
+                                        <img height="100px" src="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/images/passengerProfile/profileImage.png" alt="">
                                     </td>
                                     <td>
                                     <?php 
                                     
-                                        echo "<h5>".$_SESSION["fullName"]."</h5> " ?? ''
+                                        echo "<h5 style='color:white; margin-left:20px;'>".$_SESSION["fullName"]."</h5> " ?? '';
                                     ?>
                                         <!-- <h5>Mohammad Bin Ab. Jalil Sheakh</h5> -->
                                         <!-- // ekhane amake database theke image niye dekhate hobe ..  -->
@@ -69,13 +71,17 @@
                                         </i>
 
                                         <?php 
-                                        echo $_SESSION["phoneNo"] ?? ''
+                                        
+                                        // echo $_SESSION["phoneNo"] ?? '';
+                                        echo "<span style='color:white; margin-left:10px;'>".$_SESSION["phoneNo"]."</span> " ?? '';
                                         ?>
                                         </h6>
 
-                                        <h6> <i><img src="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/images/passengerProfile/home.png" alt=""></i>Lives in
+                                        <h6> <i><img src="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/view/images/passengerProfile/home.png" alt=""></i>
                                         <?php 
-                                        echo $_SESSION["address"] ?? ''
+                                        //echo "<span style='color:white; margin-left:10px;'>".$_SESSION["address"]."</span> " ?? 'Dhaka Bangladesh';
+                                        
+                                        echo $_SESSION["address"] ?? '<span style="color:white; margin-left:10px;">Lives in Dhaka Bangladesh</span> '
                                         ?>
                                         </h6>
                                     </td>

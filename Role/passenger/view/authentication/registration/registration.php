@@ -27,10 +27,9 @@
                 <br>
                 <fieldset class="fieldSet">
                     <legend class="legend">Registration Form </legend>
-                    <!-- ---------------------------------------- -->
-                    <form action="../../../controller/authentication/registration/registrationProcess.php" novalidate>
+                    <!-- -------------------------------------onsubmit="return getReviewErrorMsg(this);"--- -->
+                    <form action="/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/authentication/registration/registrationProcess.php" novalidate  >
                         <table>
-                        
                             <tr>
                                 <td>
                                     <p class="inputName">Full Name</p>
@@ -43,7 +42,8 @@
                                 if(isset($_SESSION['fullNameErrorMsg'])){
                                     echo "<p>".$_SESSION['fullNameErrorMsg']."</p>";
                                 }
-                ?>
+                                ?>
+                                <p class='errorMsg'  id='fullNameErrorMsg'></p>
                                 </td>
                             </tr>
                             <tr>

@@ -59,10 +59,12 @@
                 $_SESSION['seatCount'] = $count + 1;
                 header('location: ../../view/ticketDetails/ticketDetails.php');
                 
+                
             }else{
                 echo "sorry";
                 die(mysqli_error($con));
             }
+            
         }
         if($seatNo_A1 && $seatStatusA1 == "free"){
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Free', passengerId=' ', passengerName=' '  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A1."'";
@@ -80,7 +82,9 @@
                 die(mysqli_error($con));
             }
         }
+
         if($seatNo_A3 && $seatStatusA3 == "booked"){
+            
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName='".$_SESSION['fullName']."'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A3."'";
             $result = mysqli_query($con, $sqlForSeatBooking);
             if($result){
@@ -108,6 +112,7 @@
                 die(mysqli_error($con));
             }
         }
+
         if($seatNo_A2 && $seatStatusA2 == "booked"){
             
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName='".$_SESSION['fullName']."'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A2."'";
@@ -137,6 +142,9 @@
                 die(mysqli_error($con));
             }
         }
+        
+        
+
         if($seatNo_A4 && $seatStatusA4 == "booked"){
             
             $sqlForSeatBooking = "UPDATE `local_bus_ticketing_system`.`ticket` SET seatStatus='Booked', passengerId=".$_SESSION['passenger_id'].", passengerName='".$_SESSION['fullName']."'  where busId=".$_SESSION['busId']." AND seatNo='".$seatNo_A4."'";
@@ -171,6 +179,9 @@
             }
             
         }
+                    
+        
+        
 
 
 

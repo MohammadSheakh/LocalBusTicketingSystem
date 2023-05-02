@@ -95,7 +95,7 @@ session_start();
                 ?> 
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td class='inputName'>
             Bus Company Name 
             </td><td class='inputName'>:</td>
@@ -104,7 +104,7 @@ session_start();
                     $_SESSION["companyName"]  ;
                 ?> 
             </td>
-        </tr>
+        </tr> -->
         <tr>
             <td class='inputName'>
             Root No. 
@@ -185,7 +185,8 @@ session_start();
     </table>
 
     <div align="center">
-        <h4>To Confirm Booking And Get Ticket Serial No. Please Payment First By Online Payment System</h4>
+        <!-- // etar kaj shamne kora lagbe ..  -->
+        <!-- <h4>To Confirm Booking And Get Ticket Serial No. Please Payment First By Online Payment System</h4> -->
         <br>
         <button class='cancelBtn'> <a  class='cancelBtn' href="../ticketBooking/ticketBooking.php">Go Back</a> </button>
         <!-- <button> <a href="../confirmBooking/confirmBooking.php">Make payment</a> </button> -->
