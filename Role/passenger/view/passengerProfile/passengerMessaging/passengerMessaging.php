@@ -207,8 +207,7 @@
                         if($resultAgain){
                             // ei fieldset tar height width set korte hobe .. 
                             // scroll korar option thakte hobe ..  
-                            // echo "<fieldset class='conversation'>";
-                            //echo "<div style='border: 1px solid white; width : 320px; border-radius:8px;'><div  style='border-radius:8px; padding : 8px; width : auto; height : 200px; overflow-y: scroll;' >";
+                            ////////////////////////////////////////////////////////
                             echo "<div style='border: 1px solid white; width : 320px; border-radius:8px;'><div class='description'>";
                             while($rowAgain = mysqli_fetch_assoc($resultAgain)){
                                 $conversationId = $rowAgain['conversationId'];
@@ -238,16 +237,11 @@
                                         <span> <button class='btn'><img   src='../../../images/passengerNotifications/option.png' ></button> </span>    
                                     </p>
                                         <h6 style='color:rgb(138, 135, 135);' class='legend leftSingleMessage tooltiptext' >".$timeStamps."</h6>
-                                       
                                     </div>
                                         ";
                                 }
-                                
                             }
-                            // <td>
-                            //             Mohammad Sheakh 
-                            //         </td>
-                            //         <td> :</td>
+                            
                             echo "
 
                             </div>
@@ -267,6 +261,9 @@
                                         <input type='checkbox' checked name='receiverEmail' id='receiverEmail'  value='".$actualReceiverEmail."' />   
                                     </td> 
                                 </tr>
+                                <tr>
+                                    <p class='errorMsg'  id='emailErrorMsg'></p>
+                                </tr>
                             </table>
                         </form>
                         
@@ -277,12 +274,24 @@
                             echo "</div> </div><br>";
                             
                         }
+
+                        ///////////////////////////////////////////////////////////////😀😀 Ajax 
+
+                        // 😀😀 ajax 
+
+                        echo "<td id='i2'>
+
+                        </td>";
+                        ////////////////////////////////////////////////////////////// 😀😀 Ajax
+
                     }
                 }
                 
 
                 //========================= Reply to a conversation =============================
             ?>
+
+            
             <tr>
 
             </tr>
@@ -316,6 +325,17 @@ buttons.forEach(function(button, index) {
     }
   });
 });
+
+function getSessionVariable(variableName, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      callback(xhr.responseText);
+    }
+  };
+  xhr.open("GET", "./getSenderEmailProcess.php?variableName=" + variableName, true);
+  xhr.send();
+}
 
                 ////////////////////////////////////////////////////////////////////////////
                 
@@ -361,6 +381,76 @@ buttons.forEach(function(button, index) {
                         // post done ..
                         //////////////////////////////////////////////////////////////////////////////////
                         
+                        // now load all review in ajax
+
+                        
+
+
+
+
+                        // 😀 er age amake session variable access kora lagbe .. js er moddhe 
+                        getSessionVariable("variableName", function(value) {
+                            console.log("The value of $_SESSION['variableName'] is: " + value);
+                        });
+
+
+                        xhttp = new XMLHttpRequest();
+                        xhttp.onload = function () {
+                            let resp = JSON.parse(this.responseText);
+                            console.log(resp);
+
+                            let t = "<div style='border: 1px solid white; width : 320px; border-radius:8px;'><div class='description'>";
+                            for (let i = 0; i < resp.length; i++) {
+                                console.log(resp[i].message);
+                                if(resp[i].senderEmail === )
+                                t += "
+                                
+                                ";
+                                t +=
+                                    "<td><div class='singleReview' >" +
+                                    "<h5 class='reviewTitle'>" +
+                                    resp[i].fullName +
+                                    "</h5>" +
+                                    "<pre class='reviewBody'>" +
+                                    resp[i].review +
+                                    "</pre>" +
+                                    "<div>" +
+                                    "<button class='bookNowBtn'> <a class='innerBtn' href='./updateLikeProcess.php?updateId=" +
+                                    resp[i].reviewId +
+                                    "'>" +
+                                    "<img  class='innerBtn' src='../image/home/like.png' alt=''>" +
+                                    "   <span class='innerBtn'>" +
+                                    resp[i].likeNumber +
+                                    "</span>" +
+                                    "</a>" +
+                                    "</button>" +
+                                    "<button class='bookNowBtn'>" +
+                                    "<a class='innerBtn' href='./updateDislikeProcess.php?updateId=" +
+                                    resp[i].reviewId +
+                                    "'> " +
+                                    "<img class='innerBtn' src='../image/home/dislike.png' alt=''>" +
+                                    "    <span class='innerBtn'>" +
+                                    resp[i].dislikeNumber +
+                                    "</span>" +
+                                    "</a>" +
+                                    "</button>" +
+                                    " </div>" +
+                                    " </div>" +
+                                    "</td>";
+                            }
+                            t += "</div>";
+
+                            // console.log(t);
+
+                            document.getElementById("i2").innerHTML = t;
+                        };
+                        xhttp.open(
+                            "GET",
+                            "/LocalBusTicketingSystem/LocalBusTicketingSystem/Role/passenger/controller/system/home/showReviewProcess.php",
+                            false
+                            // true
+                        );
+                        xhttp.send();
 
                         return false;
 
