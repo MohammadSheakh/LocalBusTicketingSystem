@@ -1,0 +1,31 @@
+* {
+    background-color: #01263f;
+}
+.inputName {
+    color: white !important;
+}
+
+.submitBtn {
+    border: 2px solid #4988;
+    border-radius: 7px;
+    padding: 3px;
+    background-color: rgb(4, 123, 83);
+
+}
+
+.submitBtnAnchor {
+    /* border: 2px solid #4988; */
+    
+    border-radius: 7px;
+    padding: 3px;
+    background-color: rgb(4, 123, 83);
+    text-decoration: none;
+}
+
+.cancelBtn {
+    color : white !important;
+    /* border: 2px solid #4988; */
+    border-radius: 7px;
+    padding: 3px;
+    background-color: red;
+}
