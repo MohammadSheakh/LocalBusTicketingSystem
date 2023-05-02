@@ -163,12 +163,13 @@
                                                         }else if($rowAgain['seatNo'] == 'A2'){
                                                             if($rowAgain['seatStatus'] === "Free"){
                                                                 echo "
+                                                                <td> </td>
                                                                         <td><button style='color:white; background-color:green; border-radius: 4px;'>".$rowAgain['seatNo']."</button> </td>
                                                                 ";
                                                             }else{
                                                                 // <td> </td>
                                                                 echo "
-                                                                 
+                                                                <td> </td>
                                                                         <td><button style='color:white; background-color:red; border-radius: 4px;'>A2</button> </td>
                                                                 ";
                                                             }
@@ -239,7 +240,7 @@
                                     <!-- ---------------------------------------- -->
                                     
                                     
-                                    <form action="../../controller/ticketDetails/ticketDetailsProcess.php" novalidate method="post">
+                                    <form action="../../controller/ticketDetails/ticketDetailsProcess.php" novalidate method="post" onsubmit="return seatBooking(this);">
                                         <table>
 
                                             <?php
@@ -506,7 +507,8 @@
                                                 <td>
                                                     <?php 
                                                     if($masterFlag){
-                                                        echo "<button class='submitBtn'  type='submit'>Submit</button>";
+                                                        echo " <p class='errorMsg'  id='emailErrorMsg'></p> 
+                                                         <button class='submitBtn'  type='submit'>Submit</button>";
                                                     }
                                                     ?>
                                                 
@@ -571,7 +573,7 @@
     </table>
     <!--ticket booking form end here-->
 
-
+    <script src="./ticketDetails.js"></script>
 </body>
 
 </html>

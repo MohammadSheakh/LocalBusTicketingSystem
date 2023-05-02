@@ -546,12 +546,9 @@ session_start();
                                                     
                                                 // }
                                         ?>
-                                        
                                     </table>
-                            
                                 </td>
                             </tr>
-            
                     </table>
                 </fieldset>
             </td>

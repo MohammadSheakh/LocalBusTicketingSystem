@@ -70,11 +70,13 @@
                                     if($fullNameModeVariable == "edit"){
                                         $_SESSION["field_name"] = "fullName";
                                         echo'
-                                            <form    action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=save" method="post" novalidate >
+                                            <form    action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=save" method="post" novalidate onsubmit="return getNameErrorMsg(this);" >
                                             <input class="textBox" type="fullName" id="fullName" name="fullName" value= " '.$_SESSION["fullName"].' " placeholder="Enter your full name here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button class="submitBtn" type="submit"><img class="submitBtn" src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        <p class="errorMsg"  id="emailErrorMsg"></p>
                                         ';
+                                    
                                     }else{
                                         echo '<span class="text">'.$_SESSION["fullName"].'</span>'    ?? '';
                                         echo '&nbsp;&nbsp;<span><button class="submitBtn"><a href="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fullName_mode=edit"><img class="submitBtn" src="../../../images/passengerProfile/edit.png" alt=""></a>  </button></span>';
@@ -99,10 +101,11 @@
                                     
                                         $_SESSION["field_name"] = "email";
                                         echo'
-                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?email_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?email_mode=save" method="post" novalidate  onsubmit="return getEmailErrorMsg(this);" >
                                             <input  class="textBox"  type="email" id="email" name="email" value= " '.$_SESSION["email"].' " placeholder="Enter your email here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        <p class="errorMsg"  id="emailErrorMsg"></p>
                                         ';
                                     }else{
                                         echo '<span class="text">'.$_SESSION["email"].'</span>'    ?? '';
@@ -165,10 +168,11 @@
                                     
                                         $_SESSION["field_name"] = "fatherName";
                                         echo'
-                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fatherName_mode=save" method="post" novalidate >
+                                            <form action ="../../../../controller/passengerProfile/subNavbar/personalInformation/personalInformationProcess.php?fatherName_mode=save" method="post" novalidate  onsubmit="return getFatherNameErrorMsg(this);" >
                                             <input class="textBox" type="text" id="fatherName" name="fatherName" value= "'.$_SESSION["fatherName"].'" placeholder="Enter your fathers name here...">&nbsp;&nbsp;'
                                         ;
                                         echo '<span><button type="submit"><img src="../../../images/passengerProfile/diskette.png" alt=""></button></span>
+                                        <p class="errorMsg"  id="emailErrorMsg"></p>
                                         ';
                                     }else{
                                         // echo $_SESSION["fatherName"]   ?? '';
@@ -377,7 +381,7 @@
     </table>
     <!--ticket booking form end here-->
 
-
+    <script src="./personalInformation.js"></script>
 </body>
 
 </html>
